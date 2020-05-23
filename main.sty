@@ -1,0 +1,48 @@
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[usenames, dvipsnames, svgnames, table]{xcolor}
+\usepackage{amsfonts}
+\usepackage[intlimits]{amsmath}
+\allowdisplaybreaks
+\usepackage{amssymb}
+\usepackage[ngerman,english]{babel}
+\usepackage[babel, german=quotes]{csquotes}
+\usepackage[backend=biber, style=alphabetic]{biblatex}
+\usepackage{expdlist}
+\usepackage[pdftex]{graphicx}
+\usepackage{longtable}
+\usepackage{MnSymbol}
+\usepackage[automark, headsepline]{scrlayer-scrpage}
+\usepackage{titling}
+\usepackage{tikz}
+\usepackage{lipsum}
+\usetikzlibrary{calc}
+\usetikzlibrary{positioning}
+\usepackage[german]{varioref}
+
+\newcommand{\subsubsubsection}[1]{\paragraph{#1} ~ \vspace{1.7ex plus 0.2ex}}
+
+\newenvironment{todo}%
+{\large \textsc{Todo:} \normalsize \begin{itemize} \color{blue}}%
+{\end{itemize}}
+
+\newcommand{\red}[1]{\color{red}{#1}}%
+
+% Page Style Optionen
+\pagestyle{scrheadings}
+
+% ToC Optionen
+\setcounter{tocdepth}{4}
+\setcounter{secnumdepth}{4}
+
+% Hyperref
+\usepackage[pdftex]{hyperref}
+\hypersetup{%
+bookmarksopen=true,%
+citecolor=black,%
+colorlinks=true,%
+linkcolor=black,%
+urlcolor=black,%
+pdfborder={0 0 0}%
+}
