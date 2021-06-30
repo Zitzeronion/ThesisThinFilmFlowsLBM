@@ -1,5 +1,6 @@
 \chapter{Introduction}
 \label{chapter:intro}
+\epigraph{\textit{So kaputt kriegst du mich nie, das schaff ich nur ganz alleine}}{Von Wegen Lisbeth}
 
 Thin liquid films appear in our daily life in multiple forms. 
 Many of this forms are not even recognized by us.
@@ -24,21 +25,37 @@ Even worse to move liquid on top of dry surface would need an infinite amount of
 This has to do with the so called contact line and is called the ''Huh-Scriven paradox''~\cite{HUH197185}.
 Of course nature finds a way around that issue and I hope that this manuscript will help to understand what a contact line is and why it moves.
 
-Following will be of course the introduction of the mathematical model with its partial differential equation. 
-However this is nothing more than a rather efficient way of describing the problem.
-Strictly speaking mathematics as well as algorithm serve as a tools not as the goal. 
+Following will be of course the introduction of the mathematical models with their partial differential equation. 
+However this is nothing more than a efficient way of describing the problem.
+Strictly speaking mathematics as well as algorithm serve as tools not as the goal. 
 Therefore I try my best to keep it as simple as possible with analogies and self explaining pictograms.
 
 \section{Thin Film Applications}
 \label{section:applications}
+
+
 
 \section{Literature Overview}
 \label{section:literature}
 Theory concerning lubrication is as old as the Navier-Stokes equations. 
 Osborn Reynolds was the first to deduce the lubrication approximation~\cite{ReynoldsLubr} already in 1886.
 
+Since the theory of lubrication was first derived it had gotten several extensions.
+
+
 \section{Outline}
 \label{section:outline}
+After this short introduction I would like to move to the key concepts of this thesis.
+Starting with the next chapter a detailed explanation of the theoretical ideas will be presented.
+Thus the starting point will be the equations of motion of a fluid, the Navier Stokes equations.
+Using dimensional arguments and assuming that one dimension is much smaller than the others the Navier Stokes equations will be reduced to the thin film equation.
+Astonishingly the same arguments of having a much smaller dimension than the others also  yields another system of differential equations the Saint-Venant or shallow water equations~\cite{saint1871theorie, williamson1992standard}.
+In principle these two kinds of systems describe different physical phenomena.
+While the latter is strictly true in the inviscid regime $\mu\rightarrow 0$, the lubrication approach assumes the viscosity as a large contribution.
+
+In chapter~\ref{chapter:method} numerical methods will be introduced to deal with the systems of differential equations.
+
+
 
 
 
