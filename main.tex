@@ -5,7 +5,7 @@
 \addbibresource{bibliography/references.bib}%
 
 \author{Stefan Zitz}%
-\title{Dynamics of thin liquid film flows studied with a lattice Boltzmann method}%
+\title{Dynamics of thin liquid film flows studied with the lattice Boltzmann method}%
 \date{\today}%
 
 %\includeonly{chapters/example}%
@@ -24,6 +24,13 @@
 %
 \cleardoublepage%
 %
+\definecolor{pyblue}{HTML}{1F77B4}
+\definecolor{pyorange}{HTML}{FF7F0C}
+\definecolor{pygreen}{HTML}{2CA02C}
+\definecolor{pyred}{HTML}{D62728}
+\definecolor{jlblue}{rgb}{0.0,0.6056031611752245,0.9786801175696073}
+\definecolor{jlorange}{rgb}{0.8888735002725198,0.43564919034818994,0.2781229361419438}
+
 \pagestyle{scrheadings}%
 \pagenumbering{roman}%
 \setcounter{page}{1}%
@@ -43,8 +50,12 @@
 \include{chapters/Introduction}%
 \include{chapters/Theory}
 \include{chapters/Method}
-\include{chapters/Benchmark_problems}
-\include{chapters/Thermal_fluctuations}
+\include{chapters/Paper_four}
+\include{chapters/Paper_one}
+\include{chapters/Paper_two}
+\include{chapters/Paper_three}
+\include{chapters/Conclusion}
+%
 %
 %
 \cleardoublepage%
@@ -52,12 +63,17 @@
 \printbibliography%
 %
 %
-\cleardoublepage%
-%
+\cleardoublepage
+% 
 \appendix%
 \renewcommand{\thepage}{\Alph{chapter}\ \arabic{page}}%
 %
-\setcounter{page}{1}%
-\include{appendix/example}%
+\cleardoublepage%
+%
+% \setcounter{page}{1}%
+\include{others/acknowledgements}
+%
+
+%\include{appendix/example}%
 %
 \end{document}
