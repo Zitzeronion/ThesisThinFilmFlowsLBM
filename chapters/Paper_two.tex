@@ -1,5 +1,20 @@
 \chapter{Lattice Boltzmann simulations of stochastic thin film dewetting}
 \label{chapter:second_paper}
+\epigraph{\textit{Während um mich herum die Welt im Akkord progressiert, bleibt stumm, wer sich in Dissonanz verliert}}{Yukno}
+
+\textit{\small{This chapter has been published and can be found as: Zitz, S., Scagliarini, A., \& Harting, J. (2021). Lattice Boltzmann simulations of stochastic thin film dewetting. Physical Review E, 104(3), 034801.}}
+\\
+\\
+
+We study numerically the effect of thermal fluctuations and of variable 
+fluid-substrate interactions on the spontaneous dewetting of thin liquid films.
+To this aim, we use a recently developed lattice Boltzmann method for 
+thin liquid film flows, equipped with a properly devised stochastic term.
+While it is known that thermal fluctuations yield shorter rupture times,
+we show that this is a general feature of hydrophilic substrates, irrespective of the contact angle $\theta$.
+The ratio between deterministic and stochastic rupture times, though, decreases with $\theta$. 
+Finally, we discuss the case of fluctuating thin film dewetting on chemically patterned substrates
+and its dependence on the form of the wettability gradients.
 
 \section{Introduction}\label{sec:intro}
 A liquid wetting a solid surface is a process that appears in many everyday life situations, like, e.g., when a rain drop hits the leaf of a plant or when coffee is spilt on a table.
@@ -36,19 +51,19 @@ A strong agreement between experiments and the stochastic thin-film equation was
 The influence of thermal fluctuations on the short and long time morphology of a film has been studied with simulations of the one and two dimensional stochastic thin-film equations~\cite{PhysRevE.92.061002, alizadeh_pahlavan_cueto-felgueroso_hosoi_mckinley_juanes_2018}. 
 Recently, new theoretical insights have been gained explaining film rupture as a consequence of the combined action of thermal fluctuations and drainage, both numerically~\cite{shah_van_steijn_kleijn_kreutzer_2019} and experimentally~\cite{PhysRevLett.125.158001}.
 
-\textcolor{black}{To the best of our knowledge, the impact of thermal fluctuations on thin film dewetting
+To the best of our knowledge, the impact of thermal fluctuations on thin film dewetting
 of chemically patterned substrates has so far been overlooked.
 The purpose of this paper is to fill this gap, studying the role of heterogeneous substrate properties in the fluctuating dewetting dynamics.
 To this aim we perform numerical simulations of the deterministic and stochastic thin-film equations with space-varying contact angle 
 (parametrizing the chemical pattering of the substrate). In particular, since we aim to simulate large systems, in order to achieve reliable 
-statistics in terms of number of droplets, we specialize the study to the one-dimensional geometry, for computational feasibility.}
+statistics in terms of number of droplets, we specialize the study to the one-dimensional geometry, for computational feasibility.
 
 This paper is organized as follows. In Sec.~\ref{sec:stoch_thin_film} we shortly discuss the stochastic thin-film equation and its linear stability analysis. Then, we introduce the key features of our lattice Boltzmann model for 
 the thin-film equation and its extension to include thermal fluctuations in Sec.~\ref{sec:num_method}. 
-The results are presented and discussed in Sec.~\ref{sec:results}. 
+The results are presented and discussed in Sec.~\ref{sec:results_two}. 
 Finally, conclusions and summary are provided in Sec.~\ref{sec:sum_conclu}. 
 
-\section{\textcolor{black}{Linear stability analysis of the stochastic thin-film equation}}\label{sec:stoch_thin_film}
+\section{Linear Stability Analysis of the Stochastic Thin-Film Equation}\label{sec:stoch_thin_film}
 The one-dimensional stochastic thin-film equation reads~\cite{Grun2006, Mecke_2005}:
 \begin{equation}\label{eq:stoch_thin_film_simple}
     \partial_t h = \partial_x \left[\frac{h^3}{3\mu}\partial_x p + \sqrt{\frac{2k_BTh^3}{3\mu}}\mathcal{N}\right],
@@ -104,7 +119,7 @@ $S \sim S_{\text{cw}} \propto \frac{k_BT}{\gamma q^2}$, as $t \rightarrow \infty
 Moreover, while the maximum $q_0$ is independent of time in the deterministic case, the maximum $q_m$ of 
 (\ref{eq:structure_factor}) approaches $q_0$ from the right as the time increases.
 It follows that the most unstable wavelength, $\lambda_{\text{max}} = 2\pi/q_m$, grows with time.
-We will come back to this fact in Sec.~\ref{sec:results} and show that indeed this behavior is reproduced and observed in our simulations.
+We will come back to this fact in Sec.~\ref{sec:results_two} and show that indeed this behavior is reproduced and observed in our simulations.
 
 \section{Thin Film Lattice Boltzmann Model}\label{sec:num_method}
 Performing numerical simulations of the thin-film equation is challenging, even in the deterministic case;
@@ -116,7 +131,7 @@ finite differences~\cite{PhysRevE.63.011208}, finite elements~\cite{Grun2006} an
 To simulate the dynamics of thin liquid films described by Eq.~(\ref{eq:thin_film}), we employ a recently developed~\cite{PhysRevE.100.033313} lattice Boltzmann method (LBM), built on 
 a class of models originally devised for the shallow water equations~\cite{Salmon:1999:0022-2402:503,PhysRevE.65.036309,zhou2004lattice,van2010study}.
 The one-dimensional lattice Boltzmann equation for the discrete particle distribution functions $f_i$ reads
-\begin{equation}\label{eq:LBE}
+\begin{equation}\label{eq:LBE_two}
     \begin{split}
         &f_i(x+c^{(i)}\Delta t,t+\Delta t) = \\
         &\left(1 - \frac{\Delta t}{\tau}\right) f_i(x,t) + \frac{\Delta t}{\tau} f_i^{(eq)}(x,t) + w_i \frac{\Delta t}{c_s^2} c^{(i)} F,
@@ -128,7 +143,7 @@ Algorithmically, this equation is composed of two steps.
 In the local collision step, the distribution functions $f_i$ relax towards their local equilibria $f^{(eq)}_i$ with a relaxation time $\tau$.
 In the streaming step, the $Q$ distribution functions $f_i$ are moved over the lattice according to their lattice velocities $c^{(i)}$.
 We adopt here the standard one-dimensional D1Q3 scheme with $3$ lattice velocities, given by
-\begin{equation}\label{eq:speeds}
+\begin{equation}\label{eq:speeds_two}
 %c^{(i)}  = [0, 1, -1], \quad i = 0, 1, 2,
 c^{(i)}  = [0, c, -c], \quad i = 0, 1, 2,
 \end{equation}
@@ -140,7 +155,7 @@ and speed of sound $c_s^2=\frac{c^2}{3}$.
 The equilibrium distribution functions $f_i^{(eq)}$ read~\cite{van2010study}:
 \begin{gather}
     f_{0}^{eq} = h\left(1-\frac{1}{2c^2}gh - \frac{1}{c^2}u^2\right),\nonumber\\
-    f_{1}^{eq} = h\left(\frac{1}{4c^2}gh + \frac{1}{2c}u + \frac{1}{2c^2}u^2\right)\label{eq:equilibria},\\
+    f_{1}^{eq} = h\left(\frac{1}{4c^2}gh + \frac{1}{2c}u + \frac{1}{2c^2}u^2\right)\label{eq:equilibria_two},\\
     f_{2}^{eq} = h\left(\frac{1}{4c^2}gh - \frac{1}{2c}u + \frac{1}{2c^2}u^2\right),\nonumber
 \end{gather}
 with $g$ being the gravitational acceleration (which will be 
@@ -150,8 +165,8 @@ distribution functions $f_i$ as:
 \begin{equation}\label{eq:hydrofields}
 h= \sum_{i=0}^2 f_i \qquad hu = \sum_{i=0}^2 c^{(i)} f_i.
 \end{equation}
-The force $F$ in (\ref{eq:LBE}) consists of two terms,
-\begin{equation}\label{eq:force}
+The force $F$ in (\ref{eq:LBE_two}) consists of two terms,
+\begin{equation}\label{eq:force_two}
 F = F_{\text{cap}} + F_{\text{fric}}.  
 \end{equation}
 In the first term the effect of the film pressure $p$, Eq.~(\ref{eq:pressure}), is 
@@ -169,7 +184,7 @@ where $\nu=\mu/\rho_0$ is the fluid kinematic viscosity (related to the relaxati
 \end{equation}
 depends on the film height and on the particular fluid velocity boundary 
 condition at the substrate surface, parameterised by a slip length $\delta$.
-It can be shown that in the limit of vanishing inertia, negligible gravity and small film thickness, the model defined by Eqs.~(\ref{eq:LBE}-\ref{eq:fric_alpha})
+It can be shown that in the limit of vanishing inertia, negligible gravity and small film thickness, the model defined by Eqs.~(\ref{eq:LBE_two}-\ref{eq:fric_alpha})
 represents a numerical solver for the system of equations
 \begin{equation}\label{eq:lubr2eq}
 \begin{cases}
@@ -199,11 +214,11 @@ limit $\delta \rightarrow 0$,
 \begin{equation}\label{eq:thermal_force}
     F_{\text{fluc}} = \frac{1}{\rho_0}\sqrt{\frac{6k_BT\mu}{h}}\mathcal{N}.
 \end{equation}
-The fluctuating force $F_{\text{fluc}}$ enters in the scheme by being added to the total force, Eq.~(\ref{eq:force}), that becomes
+The fluctuating force $F_{\text{fluc}}$ enters in the scheme by being added to the total force, Eq.~(\ref{eq:force_two}), that becomes
 \begin{equation}\label{eq:tot_force}
 F = F_{\text{cap}} + F_{\text{fric}} + F_{\text{fluc}}
 \end{equation}
-and appears in the lattice Boltzmann equation (\ref{eq:LBE}).
+and appears in the lattice Boltzmann equation (\ref{eq:LBE_two}).
 
 \subsection{Fluid-substrate interactions: the contact angle}\label{subsec:fluid_substrate}
 For the disjoining pressure $\Pi(h)$ we use the following 
@@ -220,7 +235,7 @@ the values of $\theta$ (since, at the contact point, $\partial_x h \sim \tan(\th
 \textcolor{black}{To ensure numerical stability we introduce a regularizing term $h_c$; the value $h_{\ast} - h_c > 0$, 
 at which the disjoining pressure vanishes, sets the thickness of the precursor film covering the substrate.}
 
-\section{Results}\label{sec:results}
+\section{Results}\label{sec:results_two}
 \begin{center}
 \begin{table}
     \centering
@@ -247,7 +262,7 @@ at which the disjoining pressure vanishes, sets the thickness of the precursor f
 \end{table}
 \end{center}
 \textcolor{black}{We simulate numerically the model 
-(\ref{eq:LBE}-\ref{eq:hydrofields}), with forcing term (\ref{eq:capillary_force}-\ref{eq:fric_force}-\ref{eq:thermal_force}-\ref{eq:tot_force}) (and $\Delta x = \Delta t = 1$), on a domain 
+(\ref{eq:LBE_two}-\ref{eq:hydrofields}), with forcing term (\ref{eq:capillary_force}-\ref{eq:fric_force}-\ref{eq:thermal_force}-\ref{eq:tot_force}) (and $\Delta x = \Delta t = 1$), on a domain 
 of length $L=4096$,
 with a relaxation time $\tau = 1$, corresponding to a kinematic viscosity $\nu = 1/6$.
 The surface tension $\gamma$ is set to $0.01$ and we use, as exponents appearing in the disjoining pressure (Eq. (\ref{eq:disjoin_p})),
@@ -517,7 +532,7 @@ that the "spinodal" maximum at $q \lesssim q_0$ is much more enhanced, than it w
 \subsubsection{Square wave pattern}\label{subsubsec:square_wave}
 \begin{figure}
     \centering
-    \includegraphics[width=0.48\textwidth]{graphics/spacedepCA_['delta', '1e7', '10', 25, '9_3', 2000000.0]_v2.png}
+    \includegraphics[width=0.95\textwidth]{graphics/spacedepCA_['delta', '1e7', '10', 25, '9_3', 2000000.0]_v2.png}
     \caption{Space-time plot of the height field $h(x,t)$ evolution over a square-wave patterned substrate undergoing athermal 
     (panel (a)) and fluctuating (panel (b)) dewetting, respectively. In panel (c) we report the contact angle profile $\theta(x)$ (Eq.~(\ref{eq:sharp_contact_angle_spatial})).} 
     \label{fig:patterned_step8_difference_20-30}
@@ -627,8 +642,7 @@ In the second place, we underline that the versatility of the numerical scheme w
 the dynamics of thin film of more complex liquids, such as non-Newtonian and active fluids \cite{Eggers1997,Carenza2019}.
 }
 
-\begin{acknowledgements}
+\section{Acknowledgements}\label{sec:ack_two}
 The authors acknowledge financial support by the Deutsche Forschungsgemeinschaft (DFG) within the Cluster of Excellence ''Engineering of Advanced Materials'' (project EXC 315) (Bridge Funding). 
 The work has been partly performed under the Project HPC-EUROPA3 (INFRAIA-2016-1-730897), with the support of the EC Research Innovation Action under the H2020 Programme; in particular, S. Z. gratefully acknowledges the support of Consiglio Nazionale delle Ricerche (CNR) and the computer resources and technical support provided by CINECA.
 We thank Paolo Malgaretti, Massimo Bernaschi and Mauro Sbragaglia for fruitful discussions.
-\end{acknowledgements}

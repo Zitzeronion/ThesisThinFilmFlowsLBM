@@ -1,37 +1,81 @@
 \begin{abstract}
 \section*{Abstract}
-Thin liquid film flows are encountered in our every days life in many occasions.
-Starting from large weather systems on planetary scales ($10^6$m) reaching down to wetting problems on the nanometric scale ($10^{-9}$m). 
-That a single set of equations can describe both the movement of atmospheric layers as well as the displacment of the contact line of a droplet with a diameter smaller than a micron ($10^{-6}$m)  is highly non trivial and related to the scale invariant nature of flow problems.
+Fluid dynamics is a part of our everyday life.
+The governing equations describe not only large weather systems on planetary scales ($10^6$m) but also reach down to wetting problems on the nanometric scale ($10^{-9}$m). 
+That a single theory can describe both the movement of atmospheric layers as well as the displacement of the contact line of a droplet with a diameter smaller than a micron ($10^{-6}$m) is highly non trivial and related to the scale invariant nature of flow problems.
 
-The lubrication approximation was first thought of by Osborn Reynolds as he understood that in the case of a small third dimension the Navier-Stokes equations can be simplified.
-Since then the thin film equation has shed new light on fluid dynamics. 
+The lubrication approximation was first thought of by Osborn Reynolds in the $19^{\text{th}}$ century. 
+He understood that in the case of a single small dimension the Navier-Stokes equations can be simplified.
+Since then the functional formulation of the lubrication approximation the so called thin film equation has shed new light on diverse problems. 
 
-Today the thin film equation is used to understand several process in nature and industry. 
-Especially in the low Reynolds number regime (Re$<1$) a vast amount of problems can be addressed with this approach. 
-Just to name a few, the classical coating problem can be addressed with the thin film equation.
-On the other hand many droplet related problems are in fact solveable with the thin film equation.
+Today the thin film equation is used to understand several phenomena in nature and on the other hand to optimize various industrial applications.
+Insects for example need to have a water repellent exoskeleton. 
+Due to their size they would not be able to overcome the surface tension of water and therefore could become trapped inside a drop.
+In agriculture on the other hand the distribution of pesticides relies on the adhesion between the pesticides transport fluid and the plants surface. 
+Having a too low affinity would just wash off the pesticide, however by reducing the surface tension via so called surfactants it is more likely that the pesticide sticks to the plant. 
+Another application relates to the production of computer chips.
+The process itself is fairly complex, however at some point the yield on the wafer heavily relies on the evenly distribution of photoresist, and therefore on wetting.
 
-Over the past two decades numerical techniques have been developed to study this kind of systems.
-Within this work a novel approach based on the lattice Boltzmann method (LBM) will be introduced.
-This numerical tool is tested against known thin film results, such as instabilities, substrate dewetting and droplet flows.
-Further new insights on the stochastic thin film equation will be shown and discussed.
+Over the past six decades numerical methods have become more and more essential to study fluid dynamics. 
+Culminating in a topic of research of its own called computational fluid dynamics (CFD). 
+Not only is it used in an academic environment but also in areas that do not come to mind at first glance, e.g. computer games and animated movies.
+One numerical approach among the vast zoo of CFD methods is the lattice Boltzmann method (LBM).
+Instead of a direct simulation of the fluids density and velocity the LBM uses a statistical approach based on the Boltzmann equation. 
+We make use of this approach and derive a model that is capable of solving the thin film equation.
+Starting point will be the shallow water lattice Boltzmann method. 
+Interestingly enough with well defined approximations the shallow water dynamics can be recast to the thin film equation.
+This approach is tested and in agreement with known numerical and experimental results such as instabilities, droplet dynamics and dewetting.
 
+Dewetting, as such the process when a liquid retracts from a surface, is extensively studied in this thesis. 
+When it comes to dewetting one mostly ignored effect of experiments is the presence of thermal fluctuations.
+The here developed approach is able to study the stochastic thin film (STF) equation and its coupling to the substrates wettability with minor extensions.
+Showing that fluctuations do in fact accelerate dewetting which is in agreement with previous studies.
+
+Dewetting can also be addressed using a time and spatially dependent wettability.
+The priority program SPP 2171 tries to increase our understanding of liquid substrate interactions.
+Our contribution to this program is the study of so called switchable substrates.
+With simple arguments it is shown that a morphological transition during dewetting can be induced. 
+Instead of several droplets fewer rivulets are present based on the dynamics of the local wettability.
+
+\pagebreak
 \section*{Kurzfassung}
-Thin liquid film flows are encountered in our every days life in many occasions.
-Starting from large weather systems on planetary scales reaching down to wetting problems on the nano scale. 
-This so called scale invariance is what makes the thin film equation or in other words, the lubrication approximation a valuable tool to study flows.
+Hydrodynamik, als solches die Bewegung von Flüssigkeiten, ist ein wichtiger Teil unseres Alltags.
+Die definierenden Gleichungen beschreiben nicht nur die Dynamik von Wettersystemen planetarer Ordnung ($10^6$m) sonder auch die Benetzung fein strukturierter Oberflächen ($10^{-9}$m).
+Es ist erstaunlich, dass die Theorie der Hydrodynamik sowohl die Bewegung von atmosphärischen Schichten als auch die Verschiebung der Kontaktline eines Tropfens mit einer Größe kleiner als einem Mikrometer ($10^{-6}$m) beschreiben kann.
+Diese Eigenschaft der Skaleninvarianz macht die Hydrodynamik zum einem äußerst interessanten Forschungsgebiet.
 
-The lubrication approximation was first thought of by Osborn Reynolds as he understood that in the case of a small third dimension the Navier-Stokes equations can be simplified.
-Since then the thin film equation has shed new light on fluid dynamics. 
+Osborn Reynolds hatte sich bereits im 19. Jahrhundert mit der Frage der Schmiermittelreibung beschäftigt, dabei stellte er fest, dass im Falle einer vernachlässigbar kleinen Dimension die Dynamik der Navier-Stokes Gleichungen vereinfacht werden kann.
+Diese Lubrikations Approximation fand ihre Anwendung in der Dünnfilm Gleichung die seit damals neues Licht auf diese vermeintlich einfachen Probleme wirft.
 
-Today the thin film equation is used to understand several process in nature and industry. 
-Especially in the low Reynolds number regime (Re$<1$) a vast amount of problems can be addressed with this approach. 
-Just to name a few, the classical coating problem can be addressed with the thin film equation.
-On the other hand many droplet related problems are in fact solveable with the thin film equation.
+Heutzutage wird die Dünnfilm Gleichung genutzt um Phänomene in der Natur zu studieren und um industrielle Prozesse zu optimieren.
+Insekten würden zum Beispiel in einem Wassertropfen ertrinken wenn Sie von einem Tropfen benetzt würden. 
+Als Antwort auf dieses Problem ist ein Insektenpanzer nur schwer benetzbar oder einfacher gesagt wasserabweisend.
+In der Landwirtschaft wiederum sollten Pestizide an den Pflanzen haften und nicht einfach im Boden versickern.
+Ob die Pestizide an der Pflanze haften oder nicht hängt von den Benetzungseigenschaften der Trägerflüssigkeit des Pestizids ab. 
+Um eine bessere Benetzung zu garantieren wird mit Oberflächenspannungs reduzierenden Komponenten, sogenannten Tensiden gearbeitet.
+Ein anderer Industrieller Sektor der auch noch in Zukunft wichtiger werden wird beschäftigt sich mit der Herstellung von Computer Chips.
+Der Prozess vom Silizium Einkristall zum logischen Schaltkreisen ist hochkomplex, aber an einem Punkt der Produktion wird per Lithographie eine Struktur aufgedruckt. 
+Dieser Schritt ist unter anderem dadurch begrenzt wie gleichmäßig sich der Photoresist am Wafer verteilt hat. 
+Es handelt sich hierbei also ein klassisches Benutzungsproblem.
 
-Over the past two decades numerical techniques have been developed to study this kind of systems.
-Within this work a novel approach based on the lattice Boltzmann method (LBM) will be introduced.
-This numerical tool is tested against known thin film results, such as instabilities, substrate dewetting and droplet flows.
-Further new insights on the stochastic thin film equation will be shown and discussed.
+In den letzten sechzig Jahren sind numerische Methoden zur Untersuchung von hydrodynamischen Problem immer wichtiger geworden.
+Kluminiert ist dieser Trend in einem eigenen Forschungsfeld der numerische Strömungsmechanik (CFD).
+Aber auch außerhalb der Forschung findet CFD Anwendung zum Beispiel in Filmen und Computerspielen.
+Eine von vielen Methoden der numerischen Strömungsmechanik ist die Gitter Boltzmann Methode (LBM), die sich der Boltzmann Gleichung der Statistischen Physik bedient.
+Um die Dynamik dünner Flüssigkeitsfilme mit der LBM zu simulieren bedarf es einiger Annahmen und Erweiterungen.
+Ausgangspunkt für unser Model ist die LBM für seichte Gewässer (shallow waters), die in wohl definierten Limiten sich zur Dünnfilm Gleichung umformen lässt.
+Dieser Ansatz wird mit bekannten Problem der Dünnfilm Gleichung, z.B. Instabilitäten, Tropfendynamik und Entnetzung von Oberflächen getestet und verifiziert.
+
+Als Entnetzung wird der Prozess bezeichnet, wenn ein Flüssigkeitsfilm aufbricht und sich einzelne Tropfen bilden. 
+Im Laufe dieser Arbeit wird Entnetzung ein immer wiederkehrendes Thema sein.
+Üblicherweise wird in Entnetzungsexperimenten die Rolle der thermischen Fluktuationen nicht berücksichtigt.
+Der hier definierte Ansatz macht es möglich, mit simplen Erweiterungen, deren Effekt zu simulieren und klassifizieren.
+Die somit gewonnen Erkenntnisse können vorherige Studien reproduzieren und teilweise ergänzen.
+
+Entnetzung von Flüssigkeiten kann viele Gründe haben, zum Beispiel durch räumlich and zeitliche Änderungen der Benetzbarkeit der Oberfläche.
+Dieses Problem ist in keinster Weise trivial, das Forschungsprogramm SPP 2171 versucht ein tieferes Verständnis der Wechselwirkung von Substrate mit Dünnfilmen zu erreichen.
+Deswegen widmet sich diese Arbeit auch dem Themenkomplex der ''switchable substrates'', also Oberflächen die ihre Benetzungseigenschaft durch z.B. Beleuchtung ändern.
+Mit einem einfachen Modell wird gezeigt, dass es möglich ist die Entnetzungsmorphologie des dünnen Films zu ändern.
+Anstatt von Tropfen werden Bandstrukturen gebildet, deren Dynamik allein auf der Dynamik der Benetzbarkeit beruht.
+
 \end{abstract}
