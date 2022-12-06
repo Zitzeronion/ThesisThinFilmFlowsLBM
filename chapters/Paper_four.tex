@@ -2,7 +2,7 @@
 \label{chapter:fourth_paper}
 \epigraph{\textit{Okay die Eisbären gehen unter denn der Wasserspiegel steigt, ist mir egal in meinem Baccardi ist noch Eis}}{Neodisco}
 
-\textit{\small{This chapter has been submitted as a regular contribution to the Journal of open source software. The review process is performed under the issue number \href{https://github.com/openjournals/joss-reviews/issues/3728}{3728}}}
+\textit{\small{This chapter has been published and can be found as: Zitz et al., (2022). Swalbe.jl: A lattice Boltzmann solver for thin film hydrodynamics. Journal of Open Source Software, 7(77), 4312}}
 
 \section{Summary}
 
@@ -83,7 +83,7 @@ Lattice Boltzmann solvers offer another category to approximate the Navier-Stoke
 Starting point of this method is not the Navier-Stokes equation but the Boltzmann equation.
 Using the Chapman-Enskog expansion~\cite{Chapman, Enskog}, it can be shown that the resulting system of equations recovers to the Navier-Stokes equation.
 The method is straightforward to implement and several small to large projects can be found with OSI-approved license. 
-To name just a few examples: \href{https://walberla.net/doxygen/index.html}{\textbf{waLBerla}}, \href{https://www.openlb.net/}{\textbf{openLB}} or some smaller project \href{https://gitlab.com/unigehpfs/stlbm}{\textbf{STLBM}}. 
+To name just a few examples: \href{https://walberla.net/doxygen/index.html}{\textbf{waLBerla}}, \href{https://www.openlb.net/}{\textbf{openLB}} or some smaller project \href{https://gitlab.com/unigehpfs/stlbm}{\textbf{STLBM}}, \href{https://github.com/FrancescaPelusi/TLBfind}{\textbf{TLBfind}} (explicitly written for GPU use).
 
 Proprietary software, e.g. \href{https://www.comsol.com/}{\textbf{COMSOL}} can as well be used to simulate thin film dynamics.
 Wedershoven et al. used COMSOL to study the rupture of a thin film due to laser irradiation~\cite{doi:10.1063/1.4863318}.
@@ -137,6 +137,12 @@ end
     \caption{Coalescence of sessile droplets on a partially wetting substrate. The upper panel shows the time evolution for a single experiment (lowest surface tension). In the lower left panel we plot the evolution of the bridge height for the four different surface tensions. To the right we normalize the data with characteristic quantities and show that the bridge height grows as $\propto t^{2/3}$.}
     \label{fig:coalesence}
 \end{figure}
+
+\section{Author Contribution Statement}
+
+The authors confirm contribution to the paper as follows: S. Z. wrote the code, performed the simulations and set up the package. 
+M. Z. contributed to the  integration as well as the documentation. 
+A. S. derived the mathematical approximations on which the packages is based on and J. H. served in an advisory role in the design and the execution of the research.
 
 \section{Acknowledgements}
 
