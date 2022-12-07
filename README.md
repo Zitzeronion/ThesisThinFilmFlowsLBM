@@ -1,9 +1,8 @@
 # Dyamics of thin liquid film flows studied with the lattice Boltzmann method
 
-
-![https://www.researchgate.net/profile/Stefan-Zitz](https://img.shields.io/badge/ResearchGate-00CCBB?style=for-the-badge&logo=ResearchGate&logoColor=white)
-![https://github.com/Zitzeronion](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
-| ![https://julialang.social/@Zitzero](https://img.shields.io/badge/-MASTODON-%232B90D9?style=for-the-badge&logo=mastodon&logoColor=white)
+[![ResearchGate](https://img.shields.io/badge/ResearchGate-00CCBB?style=for-the-badge&logo=ResearchGate&logoColor=white)](https://www.researchgate.net/profile/Stefan-Zitz)
+[![Github](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Zitzeronion)
+[![Mastodon](https://img.shields.io/badge/-MASTODON-%232B90D9?style=for-the-badge&logo=mastodon&logoColor=white)](https://julialang.social/@Zitzero)
 
 Hello everybody :wave:
 
