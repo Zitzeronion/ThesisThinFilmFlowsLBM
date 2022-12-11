@@ -4,9 +4,12 @@
 
 \section{Thin Liquid Films}
 Thin liquid films appear in multiple forms. 
-Many of these forms are not even recognized by us.
+We find them in ordinary situations such as washing our hands, where a thin water layer adheres to our skin. 
+Another example can be found inside fully automatic coffee machines.
+In the inner tubs of these machines coffee grounds are mixed with hot water to brew coffee. 
+Small amounts of this mixture stays inside the tubes leading to the growth of a so called biofilm, making it necessary to clean them regularly.
 Of course, some thin film phenomena will be explained in a more detailed manner throughout this thesis. 
-A visual representation of thin film flows can be found in Fig.~\ref{fig:examples_intro}.
+A visual representation of some thin film flows can be found in Fig.~\ref{fig:examples_intro}.
 \begin{figure}
     \centering
     \includegraphics[width=0.95\textwidth]{graphics/Three_tile_intro_smaller.png}
@@ -14,22 +17,26 @@ A visual representation of thin film flows can be found in Fig.~\ref{fig:example
     \label{fig:examples_intro}
 \end{figure}
 
-To describe thin film problems however one has to start somewhere.
+To describe thin film problems, however, one has to start somewhere.
 And the starting point for me and this thesis was to learn about the governing equations of fluid dynamics. 
-Those equations are called the Navier-Stokes equations\footnote{strictly speaking the Navier-Stokes equation is a momentum equation, however it is often accompanied with an continuity equation}, and they resemble the dynamics of a fluid constraint due to several symmetries~\cite{Navier, Stokes}, e.g. conservation of mass and momentum.
+Those equations are called the Navier-Stokes equations and they resemble the dynamics of a fluid constraint due to several symmetries~\cite{Navier, Stokes}, e.g. conservation of mass and momentum.
 Solving these equations in a strict mathematical manner, therefore showing existence and smoothness of a solution is an elusive quest. 
-Although being around for roughly two centuries this equation is among seven other problems which are considered to be worth a million dollars when solved. 
+Although being around for roughly two centuries this equation\footnote{Strictly speaking the Navier-Stokes equation is a momentum equation, however it is often accompanied with an continuity equation} is one of the seven problems which are considered to be worth a million dollars when solved. 
 The collection of these problems is called ``Millenium problems'' and the Navier-Stokes equation poses one of the six unsolved problems.
-Nevertheless with the constant innovation in computing techniques and, more so, computing hardware it became more often than not possible to \textit{brute force} an approximate solution for a large class of fluid dynamic problems.
+A quality that differentiates physics from mathematics is the understanding of an approximation.
+While it is true that we can not strictly solve the Navier-Stokes equation, we still have a rather good understanding due to well working approximations.
+Helping this statement is the constant innovation in computing techniques and, more so, computing hardware. 
+Todays algorithms are able to \textit{brute force} an approximate solution to a wide class of problems.  
 Some examples to be named are the air flow around an airfoil or the catamaran boat structure to reduce drag. 
-The main topic of my work however is the dynamics of thin liquids film which admits a crucial simplification to the Navier-Stokes equation. 
-Nevertheless it should be noted that theoretical and numerical fluid dynamics (CFD) is by all means a complex but also a vibrant and constantly evolving field.
+The main topic of my work, however, is the dynamics of thin liquids film which admits a crucial simplification to the Navier-Stokes equation. 
+Nevertheless it should be noted that theoretical and computational fluid dynamics (CFD) is by all means a complex but also a vibrant and constantly evolving field.
 
 Generally there are three paths to study the dynamics of thin liquid films.
 One can work with the partial differential equations and derive the dynamics from them. 
-This is the theoretical approach which uses analytical ansätze and calculus to derive solutions.
-On the other hand it is possible to perform experiments with well defined protocols.
-Experiments can be set up relatively easy for thin films, one does not need a particle accelerator but often good optics with cameras for high frame rates. 
+This is the theoretical approach which uses analytical calculus to derive solutions.
+On the other hand it is possible to study fluid dynamics with experiments.
+% I am here!
+Experiments can be set up relatively easily for thin films, one does not need a particle accelerator but often good optics with cameras for high frame rates. 
 The time series of images or other control parameters allow, then to derive results from observations.
 Both, however theory as well as the experiment have shortcomings. 
 Theoretical assumptions can be wrong or the resulting system of equations can be to complex too be solved. 
