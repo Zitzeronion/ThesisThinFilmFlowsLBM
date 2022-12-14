@@ -2,29 +2,33 @@
 \label{chapter:conclusion}
 \epigraph{\textit{Wenn du dann am Boden bist, weißt du wo du hingehörst\\ Wenn du ganz alleine bist, weißt du dass du es noch so lange sein wirst.}}{Faber}
 
-Thin liquid film flows are an prominent phenomenon that we encounter in our daily life, e.g. the rinsing of a paper filter to brew a delicious cup of coffee~\cite{gagné2021physics}.
-Interestingly most of the time we do not recognise them as such, although they are used in a lot of industrial process and application as motivated in Chap.~\ref{chapter:intro}.
+Thin liquid film flows are a prominent phenomenon that we encounter in our daily life, e.g. the rain droplets on the windows or the water soap film when we wash our hands.
+Interestingly most of the time we do not recognise them as such, although they are used in a lot of industrial process and applications as motivated in Chap.~\ref{chapter:intro}.
 Vivid examples of thin film flows have been shown in Fig.~\ref{fig:examples_intro}. 
 Both the life time and shape of a soap bubble can in fact be explained with the theoretical framework derived in Chap.~\ref{chapter:theory}.
 
-That said the greater goal of this project is to understand the dynamics needed for mass production of cheap organic/perovskit photovoltaic cell (OPV/PSC).
+That said the greater goal of this project is to understand the dynamics needed for mass production of cheap organic/perovskite photovoltaic cells (OPV/PSC).
 While these cells are still lacking in efficiency as compared to silica based ones they offer great usability features.
 The underlying structure does not need to be stiff and as such they can be printed on plastic foil.
 Printing on soft and elastic substrates with blends of complex liquids is however a hideous problem, more so from a theoretical point of view.
-Instead of searching from the very first step for a solution to the full problem, this thesis addresses one issue of the process, which is the film formation that happen after the coating, be it with a slot die or another method.
+Instead of searching from the very first step for a solution to the full problem, this thesis addresses one issue of this complex process, which is the film formation.
+A step of crucial importance that happens after the coating, be it with a slot die or another method.
 Numerical simulations based on the thin film equation may help to understand at least this part of the process.
 In the long run the found results should help to improve both the process itself as well as the efficiency of the final product.
 
 To this end a novel approach for modelling the dynamics of thin liquid films has been developed, see Chap.~\ref{chapter:theory}-\ref{chapter:second_paper}.
-That said thin film flows have been studied with other models but all of them have short comings (the same is of course true for the model presented here).
-The key question that has not been asked in Chaps.~\ref{chapter:intro}-\ref{chapter:third_paper} is: Is there a need for another solver, or issue that can not be overcome with present ones? 
-The only way to answer this question is: ``It depends''.
-There is a long list of problems that have been studied using numerical models to solve the thin film equation which will not benefit from the here developed approach.
-Critically asking: ``What is the net gain of this project?''
-Clearly one strength is the transparent nature of the software. 
-The code base is available under an open source licence and thus is freely available to everyone interested.
-While it is possible to clone the repository, see Chap.~\ref{chapter:fourth_paper}, the package \textit{Swalbe.jl} can also be added through Julia's internal package manager.
-Making it therefore even simpler to share and collaborate  with colleagues on numerical experiments. 
+That said thin film flows have been studied with other models but all of them have shortcomings (the same is of course true for the model presented here).
+The key question that has not been asked in Chaps.~\ref{chapter:intro}-\ref{chapter:third_paper} is: Is there a need for another method, or are there issues that can not be overcome with present solvers? 
+The second part of this question can be answered with a cautions \textit{no}.
+Many reseachers invested a lot of effort in the development of methods and solvers, problems such as dewetting on patterned substrates can be studied with several other solvers.
+The first part of the question is a subjective one, because what do we actually need to numerical approximate the thin film equation?
+A well posed finite difference scheme is often enough for simple problems.
+However when the problems get complex due to couplings such as fluid structure interactions or phase changes (evaporation) we would prefer to use a method that we understand which is trustworthy and has been thoroughly tested. 
+I think this one of the strengths of this method, the transparent nature of the software. 
+The code base is available under an open source license and thus is freely available to everyone interested.
+The package approach, similar to e.g. Python, Matlab or R, makes it simple to share and collaborate with colleagues on numerical experiments.
+Of course there is a long list of thin film problems that have been studied with numerical models which will not benefit from our approach.
+Spin coating is one of these problems that are outside the capabilities of our method.  
 
 Apart from the these quality of life/usability features there are few things that make the derived model special and scientifically interesting.
 In contrast to various numerical methods used in the literature of thin film dynamics, \textit{Swalbe.jl} is build upon the lattice Boltzmann method as described in Chap~\ref{chapter:method}.
