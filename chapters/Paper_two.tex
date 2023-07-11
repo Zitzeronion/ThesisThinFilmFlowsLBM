@@ -18,19 +18,19 @@ and its dependence on the form of the wettability gradients.
 
 \section{Introduction}\label{sec:intro}
 A liquid wetting a solid surface is a process that appears in many everyday life situations, like, e.g., when a rain drop hits the leaf of a plant or when coffee is spilt on a table.
-Wetting phenomena have an impact on areas as diverse as surface coatings, printing, plant treatment with pesticides, or even pandemics~\cite{RevModPhys.69.931, doi:10.1146/annurev-fluid-011212-140734, cassie1944wettability, Lenormand_1990,DERYCK1998278, doi:10.1146/annurev.fluid.31.1.347,BergeronNature,BhardwajPoF2020}.
+Wetting phenomena have an impact on areas as diverse as surface coatings, printing, plant treatment with pesticides, or even pandemics~\cite{oronLongscaleEvolutionThin1997, doi:10.1146/annurev-fluid-011212-140734, cassieWettabilityPorousSurfaces1944, Lenormand_1990,DERYCK1998278, doi:10.1146/annurev.fluid.31.1.347,BergeronNature,BhardwajPoF2020}.
 Coating processes heavily rely on the affinity between a fluid and a substrate~\cite{RevModPhys.81.739}.
 If this affinity is not sufficiently strong or the substrate is rather heterogeneous the liquid layer may eventually become unstable,
-leading to film rupture~\cite{RevModPhys.69.931, RevModPhys.81.1131} or wrinkling~\cite{DASILVASOBRINHO19991204}. 
+leading to film rupture~\cite{oronLongscaleEvolutionThin1997, RevModPhys.81.1131} or wrinkling~\cite{dasilvasobrinhoStudyDefectsUltrathin1999}. 
 These instabilities are, of course, harmful to a uniform coating.\\ 
-A successful mathematical modelling of the dynamics of thin liquid films is based on the thin-film equation~\cite{Reynolds, RevModPhys.69.931}
+A successful mathematical modelling of the dynamics of thin liquid films is based on the thin-film equation~\cite{Reynolds, oronLongscaleEvolutionThin1997}
 \begin{equation}\label{eq:thin_film}
     \partial_t h(\mathbf{x},t) = \nabla\cdot\left(M(h)\nabla p(\mathbf{x},t)\right),
 \end{equation}
 where $h(\mathbf{x},t)$ is the height of the free surface at position $\mathbf{x} = (x,y)$ and time $t$, while $p(\mathbf{x},t)$ is the pressure at the free surface.
 The function $M(h)$ denotes the mobility, whose
 functional form is determined by the fluid velocity boundary condition at 
-the solid surface: for a no-slip condition~\cite{RevModPhys.69.931}, in particular, $M(h)=\frac{h^3}{3\mu}$, where $\mu$ is the fluid dynamic viscosity.
+the solid surface: for a no-slip condition~\cite{oronLongscaleEvolutionThin1997}, in particular, $M(h)=\frac{h^3}{3\mu}$, where $\mu$ is the fluid dynamic viscosity.
 The film pressure $p$ consists of the capillary pressure and the disjoining pressure, i.e.,
 \begin{equation}\label{eq:pressure}
     p = - \gamma\nabla^2 h + \Pi(h),
@@ -222,7 +222,7 @@ and appears in the lattice Boltzmann equation (\ref{eq:LBE_two}).
 
 \subsection{Fluid-substrate interactions: the contact angle}\label{subsec:fluid_substrate}
 For the disjoining pressure $\Pi(h)$ we use the following 
-expression\textcolor{black}{\cite{RevModPhys.81.1131, Peschka9275, PhysRevE.92.061002, RevModPhys.69.931}}:
+expression\textcolor{black}{\cite{RevModPhys.81.1131, Peschka9275, PhysRevE.92.061002, oronLongscaleEvolutionThin1997}}:
 \begin{equation}\label{eq:disjoin_p}
     \Pi(h) = \kappa(\theta) \left[\left(\frac{h_{\ast}}{h+h_c}\right)^n - \left(\frac{h_{\ast}}{h+h_c}\right)^m\right],
 \end{equation}

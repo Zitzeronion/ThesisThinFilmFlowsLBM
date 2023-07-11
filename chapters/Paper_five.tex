@@ -26,7 +26,7 @@ The coalescence of liquid droplets or the lack of it is one of these problems.
 Both scenarios can be observed in many instances of our everyday life and in various industrial processes.
 Coalescence of sessile droplets happens, for example, when vapor condenses.
 During this process, small droplets nucleate randomly and quickly assemble in larger drops, either naturally~\cite{PhysRevA.43.1906} or due to artificial factors such as surface structure or patterning~\cite{C1SM06219K}. 
-This effect can effectively be used in so-called fog harvesting devices, where ambient water vapor is condensed and collected in structures which promote droplet coarsening~\cite{zhang2015inkjet, shi2018fog}.
+This effect can effectively be used in so-called fog harvesting devices, where ambient water vapor is condensed and collected in structures which promote droplet coarsening~\cite{zhangInkjetPrintingDirect2015, shiFogHarvestingHarps2018}.
 Apart from fog harvesting, coalescence or rather the control of it plays an important part in inkjet printing and printable electronics~\cite{jo2009evaluation, singh2010inkjet, Kim_2005, Luechinger_2008}, but also in various microfluidic devices for mixing purposes at low Reynolds numbers ($Re < 1$)~\cite{https://doi.org/10.1002/pen.760352206, doi:10.1063/1.858199}. 
 
 On the other hand, there are many applications that require droplets not to coalesce.
@@ -69,8 +69,8 @@ Revealing that for small scales, the disjoining pressure can not be neglected.
 Finally, we supply a brief summary with conclusion and future research in Sec.~\ref{sec:sum_conclu_five}. 
 
 \section{Theory}\label{sec:theory_five}
-The theoretical approach we use to study this system is the lubrication approximation~\cite{Reynolds, RevModPhys.69.931, PhysRevE.63.011208}.
-Applying this approximation to the Navier-Stokes equation yields the thin film equation, which for a singular horizontal dimension reads~\cite{RevModPhys.81.739, RevModPhys.81.1131, THIELE2014399}
+The theoretical approach we use to study this system is the lubrication approximation~\cite{Reynolds, oronLongscaleEvolutionThin1997, PhysRevE.63.011208}.
+Applying this approximation to the Navier-Stokes equation yields the thin film equation, which for a singular horizontal dimension reads~\cite{RevModPhys.81.739, RevModPhys.81.1131, thielePatternedDepositionMoving2014}
 \begin{equation}\label{eq:thin_film_simple}
     \partial_t h = \partial_x \left(\frac{h^3}{3\mu}\partial_x p\right),
 \end{equation}
@@ -80,7 +80,7 @@ We therefore write the pressure as
 \begin{equation}\label{eq:pressure_five}
     p = \gamma \partial_x^2 h + \Pi(h),
 \end{equation}
-where the first term is the (1D) Laplacian of the liquid-vapor interface and $\Pi(h)$ is the disjoining pressure~\cite{RevModPhys.69.931, RevModPhys.81.739, Peschka9275, PhysRevE.63.011208},
+where the first term is the (1D) Laplacian of the liquid-vapor interface and $\Pi(h)$ is the disjoining pressure~\cite{oronLongscaleEvolutionThin1997, RevModPhys.81.739, Peschka9275, PhysRevE.63.011208},
 \begin{equation}\label{eq:disjoin}
     \Pi(h) = K(\gamma,\theta)\left[\left(\frac{h_{\ast}}{h}\right)^n - \left(\frac{h_{\ast}}{h}\right)^m\right].
 \end{equation}
@@ -149,7 +149,7 @@ The starting point is Eq.~(\ref{eq:thin_with_marangoni}) in the quasistatic limi
 \begin{equation}\label{eq:pressure_noncoal}
     \partial_x\left(\frac{h^3}{3\mu}\partial_x p + \frac{h^2}{2\mu}\partial_x\gamma\right) = 0.
 \end{equation}
-Integrating the above equation and isolating the pressure gradient $\partial_x p = \gamma\partial_x^3 h$ yields~\cite{RevModPhys.69.931, PhysRevLett.109.066103}
+Integrating the above equation and isolating the pressure gradient $\partial_x p = \gamma\partial_x^3 h$ yields~\cite{oronLongscaleEvolutionThin1997, PhysRevLett.109.066103}
 \begin{equation}\label{eq:karpitschka_h3}
     \partial_x^3 h = \frac{3}{h^2}Ca - \frac{3}{2h\gamma}\partial_x\gamma.
 \end{equation}
@@ -161,7 +161,7 @@ Our model in addition to the above derivation uses a pressure given by Eq.~(\ref
     \partial_x^3 h \approx \frac{3}{h^2}Ca - \frac{3}{2h\gamma}\partial_x\gamma - \partial_x\Pi(h).
 \end{equation}
 where the derivative of the disjoining pressure appears. 
-The velocity field inside the droplets (film) can be computed using $\partial_x^3 h$~\cite{RevModPhys.69.931},
+The velocity field inside the droplets (film) can be computed using $\partial_x^3 h$~\cite{oronLongscaleEvolutionThin1997},
 \begin{equation}\label{eq:Oron_correct}
     u(z) = \frac{z}{\mu}\left[\partial_x\gamma - \left(\frac{z}{2} - h\right)\gamma\partial_x^3 h\right].
 \end{equation}

@@ -24,7 +24,7 @@ Thin layers of liquids on solid surfaces are frequently encountered in a host
 of natural and technological settings \cite{de2003capillarity,Focke}. Therefore,
 understanding and controlling their stability and dynamics is a central problem
 for fundamental physics, as well as for applied research in process engineering
-and nanotechnology~\cite{RevModPhys.69.931,Utada}. Coating processes, for instance,
+and nanotechnology~\cite{oronLongscaleEvolutionThin1997,Utada}. Coating processes, for instance,
 rely crucially on the mutual affinity of liquid and surface (i.e. on
 wettability properties). When the liquid film is sufficiently thin, in fact, it
 can become unstable, leading to the dewetting of the coated
@@ -40,7 +40,7 @@ explored. It clearly appears that some degree of model order reduction is requir
 lubrication theory, simplify the complexity of the full 3D Navier-Stokes
 equations \cite{Navier,Stokes}
 to one scalar transport equation (the lubrication equation) for the film thickness field
-$h(x,t)$~\cite{ReynoldsLubr,RevModPhys.69.931,RevModPhys.81.1131,Mitlin}:
+$h(x,t)$~\cite{ReynoldsLubr,oronLongscaleEvolutionThin1997,RevModPhys.81.1131,Mitlin}:
 \begin{equation}\label{eq:lubr}
     \partial_t h = \nabla \cdot \left(Q(h)\nabla p_{\mbox{\tiny{film}}}\right)
 \end{equation}
@@ -211,18 +211,18 @@ and $\rho_0$ is the (constant) liquid density
 The first term in Eq.~(\ref{eq:pfilm}) represents the capillary Laplace pressure (with $\gamma$
 being the surface tension) while the second term is the disjoining pressure,
 Various forms have been proposed for $\Pi(h)$ in the
-literature~\cite{RevModPhys.69.931,THIELE2014399}, where here we use the expression
+literature~\cite{oronLongscaleEvolutionThin1997,thielePatternedDepositionMoving2014}, where here we use the expression
 \begin{eqnarray}\label{eq:disjoiningP}
 \Pi(h) = \kappa f(h) = \underbrace{(1 - \cos(\theta))\frac{(n-1)(m-1)}{(n-m)h_*}}_{\kappa}\underbrace{\left[\left(\frac{h_*}{h}\right)^n -\left(\frac{h_*}{h}\right)^m\right]}_{f(h)}.
 \end{eqnarray}
 In Eq.~(\ref{eq:disjoiningP}), $\theta$ is the contact angle and $h_*$
 corresponds to the precursor film
 thickness. The integers $n$ and $m$ are set to be $3$ and $9$, respectively. These 
-are commonly chosen values in the literature~\cite{moulton_lega_2013,RevModPhys.69.931}
+are commonly chosen values in the literature~\cite{moulton_lega_2013,oronLongscaleEvolutionThin1997}
 that correspond to a standard $6-12$ Lennard-Jones
 intermolecular potential~\cite{fischer2018existence}, though other pairs
 $(n,m)$ can be used (e.g.~$(2,3), (3,6), (4,10)$~\cite{1742-6596-166-1-012009,
-PhysRevLett.119.204501, wedershoven2014infrared}). 
+wilczekSlidingDropsEnsemble2017, wedershoven2014infrared}). 
 By adjusting $\kappa$ we are thus able to address the wetting properties of the substrate. 
 The film pressure is specific to model thin film dynamics, in general however one can make use of other force terms e.g. to couple fluid layers which has been shown in \cite{doi:10.1002/fld.2742}. The second term on the right hand side in Eq.~(\ref{eq:force}) introduces
 a friction with the substrate of the form

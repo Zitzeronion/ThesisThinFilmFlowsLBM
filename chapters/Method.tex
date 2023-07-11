@@ -40,7 +40,7 @@ The M1 Max is for this perspective a very interesting device, although it is not
 Coming up in this chapter is a short overview of numerical methods to simulate the thin film equation.
 Starting with the straightforward finite differences approach and an introduction of the CFL criteria.
 But also introducing the bottom up approach where Newtons equation of motion is solved for every molecule.
-Followed by an short introduction to the main method of this work, the lattice Boltzmann method~\cite{PhysRevLett.56.1505, krueger2017, succi}. 
+Followed by an short introduction to the main method of this work, the lattice Boltzmann method~\cite{PhysRevLett.56.1505, krugerLatticeBoltzmannMethod2017, succi}. 
 The mathematical framework as well as it's link to kinetic theory will be discussed and the idea of the Chapmann-Enskog expansion will be outlined~\cite{Chapman, Enskog}. 
 Based on the mathematical model it is possible to define a numerical approach.
 Using assumptions, mainly concerning the collision operator, the resulting algorithm is fairly easy to implement and shows good scalability.
@@ -175,7 +175,7 @@ Of course, similar to other parts of computational physics, all results need to 
     The finer the system is resolved the more computing resources are needed.}
     \label{fig:scales_dummy}
 \end{figure}
-The lattice Boltzmann method is as the name suggests a discretization approach to the Boltzmann equation~\cite{krueger2017, succi, wolf-gladrow}.
+The lattice Boltzmann method is as the name suggests a discretization approach to the Boltzmann equation~\cite{krugerLatticeBoltzmannMethod2017, succi, wolf-gladrow}.
 Boltzmann more then a hundred years ago introduced a model that was build on the assumptions that atoms and molecules move classically.
 This was actually just a small portion of his groundbreaking work which forms a whole subsection of physics called statistical mechanics. 
 He as well knew that there are a lot of oxygen, nitrogen and other atoms that make up the content of air we inhale with a single breath.
@@ -199,7 +199,7 @@ The dynamics of this distributions $f$ can be formalized and put into an evoluti
 \begin{equation}\label{eq:boltzmann_eq}
     \partial_t f + {\boldsymbol\xi}\cdot\nabla f + \frac{1}{\rho}\mathbf{F}\cdot\partial_{{\boldsymbol\xi}}f = \Omega(f), 
 \end{equation}
-where ${\boldsymbol\xi}$ is the momentum and the first two terms describe the advection of the distribution due to the atoms and the third term measures the effect of a force $\mathbf{F}$ on the momentum~\cite{krueger2017}.
+where ${\boldsymbol\xi}$ is the momentum and the first two terms describe the advection of the distribution due to the atoms and the third term measures the effect of a force $\mathbf{F}$ on the momentum~\cite{krugerLatticeBoltzmannMethod2017}.
 On the right side of the equation is an arbitrary complex term, the collision operator.
 This operator accounts for all collisions the atoms or particles perform at any given instance of time.
 In principle this operator can not be computed analytically, because one need to integrate out the whole phase space $(\int \diff^3\mathbf{x}, \int \diff^3\xi)$ for all possible collision terms, therefore for the two up to n-point interactions. 
@@ -228,7 +228,7 @@ Eqs.~(\ref{eq:BGK_3}, \ref{eq:BGK_4}) tell us that both that the total energy as
 Taking this four constraints into consideration as well as the points 1. and 2. one finds that the BGK operator is the simplest one to satisfy them all.
 With one side note however, the full collision operator from Boltzmann does predict a different Prandtl number ($Pr$) than the BGK yields.
 The Prandtl number $Pr = \nu/\alpha$ measures viscosity against thermal diffusivity ($\alpha$). 
-Using BGK one gets $Pr=1$ while monoatomic gases or Boltzmann's operator showing $Pr\simeq 2/3$~\cite{cercignani1988boltzmann, krueger2017}.
+Using BGK one gets $Pr=1$ while monoatomic gases or Boltzmann's operator showing $Pr\simeq 2/3$~\cite{cercignani1988boltzmann, krugerLatticeBoltzmannMethod2017}.
 
 \subsection{Lattice Boltzmann and Chapman Enskog}
 Since the method got first developed in the 1986 it has gained more and more popularity~\cite{PhysRevLett.56.1505}.
@@ -271,7 +271,7 @@ In fact for every order of expansion Eq.~(\ref{eq:expansion_f}) one gets
     \sum_{\alpha} \mathbf{c}_{\alpha}f_{\alpha}^{(n)} = 0. 
 \end{align}
 
-Performing a Taylor expansion of Eq.~(\ref{eq:boltzmann_eq}) with a discrete set of velocities assuming no force is present yields~\cite{krueger2017}
+Performing a Taylor expansion of Eq.~(\ref{eq:boltzmann_eq}) with a discrete set of velocities assuming no force is present yields~\cite{krugerLatticeBoltzmannMethod2017}
 \begin{equation}\label{eq:Taylor_discret_boltzmann}
     \Delta t (\partial_t + c_{\alpha i}\partial_i)f_{\alpha} + \frac{\Delta t^2}{2}(\partial_t + c_{\alpha i}\partial_i)^2 f_{\alpha} + O(\Delta t^3) = -\frac{\Delta t}{\tau} f_{\alpha}^{neq}.
 \end{equation}
@@ -341,7 +341,7 @@ then the tensor is given as
 \end{equation}
 which concludes the expansion part.
 So far however no assumptions on the lattice distributions are made and the equilibrium distribution function has not been specified.
-Paving work by He and Luo as well as group theoretical arguments derived by Rubinstein and Luo showed that based on dimensionallity just a few (discrete) velocities are sufficient~\cite{PhysRevE.56.6811, rubinstein2008theory}.
+Paving work by He and Luo as well as group theoretical arguments derived by Rubinstein and Luo showed that based on dimensionallity just a few (discrete) velocities are sufficient~\cite{heTheoryLatticeBoltzmann1997, rubinstein2008theory}.
 In fact in Chap.~\ref{chapter:first_paper} all numerical experiments were performed on a D2Q9 lattice therefore $\mathbf{c}_{\alpha}$ is
 \begin{equation}\label{eq:speeds_method}
 \mathbf{c}_{\alpha}  =
@@ -358,7 +358,7 @@ Using the set of equations~(\ref{eq:moments_equilibria_1}-\ref{eq:moments_equili
 \begin{equation}
     a = 1,\quad b = \frac{1}{c_s^2},\quad d = \frac{1}{2c_s^4},\quad e = \frac{1}{2c_s^2},
 \end{equation}
-however with the addition of lattice weights to ensure the H-theorem~\cite{krueger2017}
+however with the addition of lattice weights to ensure the H-theorem~\cite{krugerLatticeBoltzmannMethod2017}
 \begin{equation}\label{eq:weightsD2Q9_meth}
 w_{\alpha} = \begin{cases}
 4/9 &\text{$\alpha = 0$}\\

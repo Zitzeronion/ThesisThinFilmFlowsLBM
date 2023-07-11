@@ -11,7 +11,7 @@ Finally, we show and explain theoretically how the film rupture times, droplet s
 \\
 \newcommand{\ts}{\textsuperscript}
 
-\section{Introduction} Wet surfaces and droplets are part of our every-day experience and of numerous industrial processes including coating, tribology, painting and printing, to name but a few~\cite{gross1980fluid,szeri2010fluid,DERYCK1998278,doi:10.1146/annurev.fluid.31.1.347,DASILVASOBRINHO19991204,singh2010inkjet,jo2009evaluation,Wijshoff2010}. 
+\section{Introduction} Wet surfaces and droplets are part of our every-day experience and of numerous industrial processes including coating, tribology, painting and printing, to name but a few~\cite{gross1980fluid,szeri2010fluid,DERYCK1998278,doi:10.1146/annurev.fluid.31.1.347,dasilvasobrinhoStudyDefectsUltrathin1999,singh2010inkjet,jo2009evaluation,Wijshoff2010}. 
 Moreover, the continuously growing technological interest for lab-on-a-chip devices~\cite{C6LC00387G,Focke} as well as for printable electronics~\cite{Kim_2005, Luechinger_2008} and printable photovoltaics~\cite{Brabec2001,RH20}, whose efficiency relies crucially on a precise control of material deposition upon (de-)wetting of liquid films, drew the attention to applications where the substrate is adaptive or switchable, i.e. it is not inert but responds dynamically to external stimuli or to the evolution of the coating liquid film itself~\cite{ButtEtAl_Langmuir2018,GuoGuo_RSCAdv2016}. 
 Several realizations of switchable and adaptive substrates have been proposed~\cite{LiuChem2005, XiCSR2010}, involving smart materials such as polymer brushes~\cite{CohenStuartEtAl_NatMat2010,ayres2007stimuli,YongEtAl_Mat2018}, thermal-responsive hydrogels~\cite{ChenEtAl_SM2010}, light-responsive molecules and microstructures~\cite{IchimuraEtAl_Science2000,DelormeEtAl_Langmuir2005,OscuratoEtAl_AAMI2017} or processes such as electrowetting~\cite{MugeleEtAl_JPCM2005}.
 Probably the simplest, yet non-trivial, modelling of a switchable substrate can be realized by a space and time dependent wettability pattern~\cite{D0SM02082F}. 
@@ -23,7 +23,7 @@ We show that, by tuning the rate of change (the ``speed'') of the underlying pat
 We introduce a control parameter that discriminates whether rivulets or just droplets (as in the static situation)
 can be observed and we propose a phenomenological argument that justifies the logarithmic dependence of the rivulets life time on the pattern speed.
 
-\section{Method} In order to simulate the dewetting dynamics on patterned, ``switchable'', substrates, we integrate numerically the thin-film equation~\cite{ReynoldsLubr,RevModPhys.69.931,RevModPhys.81.1131} 
+\section{Method} In order to simulate the dewetting dynamics on patterned, ``switchable'', substrates, we integrate numerically the thin-film equation~\cite{ReynoldsLubr,oronLongscaleEvolutionThin1997,RevModPhys.81.1131} 
 \begin{equation}\label{eq:thinfilm}
     \partial_t h(\mathbf{x},t) = \nabla\cdot\left(M_{\delta}(h)\nabla p(\mathbf{x},t)\right),
 \end{equation}
@@ -136,7 +136,7 @@ The latter is related to the time the liquid takes to flow out of regions of hig
 \begin{equation}\label{eq:taur_l1}
  \tau_r \sim \tau_R \propto \frac{1}{U_{\Theta}}\lambda,
 \end{equation}
-where $U_{\Theta}$ is the retraction speed $U_{\Theta} = \frac{\gamma \Theta^3}{9\mu}$~\cite{Edwardse1600183}, with $\Theta = \max_{\mathbf{x}}\theta(\mathbf{x})$.
+where $U_{\Theta}$ is the retraction speed $U_{\Theta} = \frac{\gamma \Theta^3}{9\mu}$~\cite{edwardsNotSpreadingReverse2016}, with $\Theta = \max_{\mathbf{x}}\theta(\mathbf{x})$.
 \begin{figure}
     \centering
     \includegraphics[width=0.75\textwidth]{graphics/Figure_2.pdf}

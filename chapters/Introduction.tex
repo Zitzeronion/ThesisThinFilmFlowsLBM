@@ -35,63 +35,71 @@ Generally there are three paths to study the dynamics of thin liquid films.
 One can work with the partial differential equations and derive the dynamics from them. 
 This is the theoretical approach which uses analytical calculus to derive solutions.
 On the other hand it is possible to study fluid dynamics with experiments.
-% I am here!
-Experiments can be set up relatively easily for thin films, one does not need a particle accelerator but often good optics with cameras for high frame rates. 
-The time series of images or other control parameters allow, then to derive results from observations.
-Both, however theory as well as the experiment have shortcomings. 
-Theoretical assumptions can be wrong or the resulting system of equations can be to complex too be solved. 
+Studying thin film flows by experiment can be a tedious task.
+Although the experimental system is quite approachable, a thin liquid layer on a substrate, the devil lies in the details.
+Preparation of films with uniform thickness of only a few nanometers is not a trivial task.
+Measurements are often a series of images with frame rates that allow to document dynamics in the region of $\approx 10^{-5}$ seconds.
+This series of images or other control parameters allow then to derive results from observations.
+Both however, theory as well as the experiment, have shortcomings. 
+Theoretical assumptions can be wrong or the resulting system of equations can be too complex to be solved. 
 Experiments often do not allow for the very fine grained control and independent change of different parameters.
-The third approach, which is used throughout this thesis lies in between the experiment and a pure theoretical one.
-Numerical modelling or computational fluid dynamics allows to approximate the complex partial differential equations while also allowing for fine grained parameter studies.
+The third approach, which is used throughout this thesis lies in between the experiment and a purely theoretical one.
+Numerical modelling or computational fluid dynamics allows to approximate the complicated partial differential equations while also allowing for fine grained para  meter studies.
 
-To study thin films I needed to broaden my understanding of (numerical) modelling. 
-What simplifications can I use and are used in common research and how can I introduce these simplifications into my models? 
-More so I learned about algorithms and numerical techniques to e.g. test simplifications, especially the Lattice Boltzmann method(LBM)~\cite{doi:10.1146/annurev.fluid.30.1.329, PhysRevE.56.6811, PhysRevE.65.046308, krueger2017}.
-The picture of me sitting in front of a monitor, constantly reading research articles and writing code does have little to do with how tangible the field of thin liquid film hydrodynamics can be.
-Whenever some liquid advances on a yet dry surface or the distribution of paint on a fresh canvas both can also be looked at from a thin film perspective~\cite{THIELE2014399, RevModPhys.69.931, Edwardse1600183}. 
-At some point in our life most of us watched rain drops run down a transparent window~\cite{PhysRevLett.119.204501}, as shown in Fig.~\ref{fig:examples_intro}a. 
-The question of why a drop chooses his very own path has a lot to do with the windows surface topology and the three phase contact line (TPC) of the drop~\cite{cassie1944wettability, suzuki2008sliding, doi:10.1021/acs.langmuir.5b02335}. 
-Why droplets form at all, e.g.  after a foggy morning can be studied in the framework of the thin film equation as well~\cite{zhang2015inkjet,shi2018fog}.
+To study thin films and in the end to write this thesis I had to broaden my understanding of (numerical) modelling. 
+Which solver, algorithms and simplifications are used in common fluid dynamic research?
+How do they compare with each other and which of those are relevant for the model I used and developed? 
+I had to learn about algorithms and numerical techniques and among them I focused on the lattice Boltzmann method(LBM)~\cite{chenLatticeBoltzmannMethod1998, heTheoryLatticeBoltzmann1997, guoDiscreteLatticeEffects2002, krugerLatticeBoltzmannMethod2017}.
+But I also learned how approachable the thin film research can be. 
+Whenever some liquid is pushed onto a dry surface, for example watercolor on a white canvas, thin film theory can help to shine light on the distribution of paint~\cite{thielePatternedDepositionMoving2014, oronLongscaleEvolutionThin1997, edwardsNotSpreadingReverse2016}. 
+At some point in our life most of us watched rain drops run down a transparent window~\cite{wilczekSlidingDropsEnsemble2017}, as shown in Fig.~\ref{fig:examples_intro}a. 
+The question of why a drop chooses its very own path has a lot to do with the window's surface topology and the three phase contact line (TPC) of the droplet~\cite{cassieWettabilityPorousSurfaces1944, suzukiSlidingBehaviorWater2008, liuActuatingWaterDroplets2015}. 
+Why droplets form at all, e.g.  after a foggy morning can be studied in the framework of the thin film equation as well~\cite{zhangInkjetPrintingDirect2015, shiFogHarvestingHarps2018}.
 Although these phenomena happen in many situations their theoretical understanding is far from being complete.
-Just to highlight one of the above mentioned situations, the wetting of a dry surface is a highly sophisticated problem.
+Just to highlight one of the above-mentioned situations, the wetting of a dry surface is a highly sophisticated problem.
 Using the thin film equation as a mathematical model comes short in explaining the wet-dry transition.
 Even worse, to move the liquid on top of a dry surface one would need an infinite amount of energy.
-This has to do with boundary conditions and is called the \textit{Huh-Scriven paradox}, which states: ``Not even Herakles could sink a solid if the physical model were entirely valid''~\cite{HUH197185}.
-In fact the quote has to be understood in two ways. 
-First and foremost, the thin film equation is rather a powerful tool in modelling for a lot of fluid dynamic problems.
+This has to do with boundary conditions and is called the \textit{Huh-Scriven paradox}, which states: ``Not even Herakles could sink a solid if the physical model were entirely valid''~\cite{huhHydrodynamicModelSteady1971}.
+In fact, the quote has to be understood in two ways. 
+First and foremost, the thin film equation is rather a powerful tool in modelling a lot of fluid dynamics problems.
 Second is the criticism on the rough approximations, i.e. about the \textit{no-slip} boundary condition, which requires a vanishing flow velocity at the substrate.
-Of course nature finds a way around and does not use infinite amounts of energy to make a droplet slide. 
+Of course, nature finds a way around and does not use infinite amounts of energy to make a droplet slide. 
 In the end the \textit{no-slip} boundary condition is just a model.
-Definitely one of the better models, but one that comes short explaining wetting sufficiently well.
+Definitely one of the better models, but one that comes short of explaining wetting sufficiently well.
 
-I hope that this manuscript will help to understand what kind of problems can be modelled with approaches similar to the thin film equation.
-In that sense I want to show how broad the use cases are and where possible extension can lead to.
-Having these use cases, both academic as well as industrial, I hope to create an understandable and tangible image of thin film flows. 
+In the following chapters of this thesis I discuss what kind of problems can be modelled with approaches similar to the thin film equation.
+Showing how broad the use cases are and where possible extensions can lead to.
+Having these use cases, both academic and industrial, is of utmost importance to justify the further development of thin film models. 
 Following this short illustrative part will be, of course, the introduction of the mathematical models with their partial differential equations (PDE). 
-However this is nothing more than an efficient way of describing the problem.
+However, this is nothing more than an efficient way of describing the problem.
 Strictly speaking mathematics as well as algorithms serve as tools not as the goal of this thesis. 
-Therefore I try my best to keep it as simple as possible with analogies and hopefully self explaining figures.
+%Therefore, I try my best to keep it as simple as possible with analogies and hopefully self explaining figures.
+Therefore, the \textbf{KISS} concept, keep it simple stupid, is one core concept that is used throughout.
+Most mathematical models are accompanied with explenatory figures.        
 
-\section{Coating a thin film application}
+\section{Thin film application}
 \label{section:applications}
 \begin{figure}
     \centering
     \includegraphics[width=0.75\textwidth]{graphics/41563_2003_Article_BFnmat788_Fig1_HTML.png}
     \caption{Film dewetting of a surface in the spinodial regime.
-    Series (a) are experimental measurements with an AFM, while series (b) is generated using a numerical approach with the same parameters taken from~\cite{becker2003complex}.}
+    Series (a) are experimental measurements with an AFM, while series (b) is generated using a numerical approach with the same parameters taken from~\cite{beckerComplexDewettingScenarios2003}.}
     \label{fig:becker_dewetting}
 \end{figure}
-Applications of the thin film equation are fairly broad as outlined above.
-One of the more interesting problems from a scientific point of view is the coating of surfaces.
+Applications of the thin film equation cover a wide range of use cases. 
+There is for example the problem of pesticide distribution in agriculture, a problem that requires that the pesticide sticks to the plant.
+From a medical perspective, our lung and in particular the alveoli need to be covered with a thin film of biological surfactants.
+Certain disease inhibit the surfactant production and therefore threaten partial or full collapse of the lung~\cite{doi:10.1146/annurev.fl.26.010194.002525}.
+Coatings of surfaces is one of the problems that has been scientifically investigated for the last few decades.
 There are various ways to coat a surface with arbitrary kinds of liquids.
-What is common to all of them is the fact that the process heavily relies on the affinity between the to be coated surface and the coating agent~\cite{RevModPhys.81.739}.
-If this affinity is too small the coating is unstable and therefore making the film prone to wrinkling~\cite{DASILVASOBRINHO19991204} or eventually even rupture~\cite{RevModPhys.69.931, RevModPhys.81.1131, becker2003complex}, as shown in Fig~\ref{fig:becker_dewetting}.
+What is common to all of them is the fact that the process heavily relies on the affinity between the to be coated surface and the coating agent~\cite{bonnWettingSpreading2009}.
+If this affinity is too small the coating is unstable and therefore making the film prone to wrinkling~\cite{dasilvasobrinhoStudyDefectsUltrathin1999} or eventually even rupture~\cite{oronLongscaleEvolutionThin1997, crasterDynamicsStabilityThin2009, beckerComplexDewettingScenarios2003}, as shown in Fig~\ref{fig:becker_dewetting}.
 
 \begin{figure}
     \centering
     \includegraphics[width=0.75\textwidth]{graphics/Coating_intro.pdf}
     \caption{(a) Schematics of the dip coating process. 
-    A substrate is withdrawn from a fluid bath, due capillarity and wetting some liquid adheres to the substrate.
+    A substrate is withdrawn from a fluid bath and due to capillarity and solid-liquid interactions some liquid adheres to the substrate.
     Most of the liquid however is due to viscous drag not drawn with the substrate.
     A small portion depending on the surface tension and atmospheric pressure is evaporating.
     (b) Schematics of a slot die coating process.
@@ -153,12 +161,12 @@ Variations along the liquid interface are smooth thus the gradient $|\partial h/
 This clean and novel deduction dates back already to the year 1886 and will be further discussed in Chap.~\ref{chapter:theory}.
 
 Since the 19$^{\text{th}}$ century the theory of lubrication had gain much attention and got extended to account for more complex problems.
-Over time it became it clear that problems such as wetting and capillarity can be studied within this framework~\cite{RevModPhys.57.827, RevModPhys.69.931, RevModPhys.81.1131}.
+Over time it became it clear that problems such as wetting and capillarity can be studied within this framework~\cite{RevModPhys.57.827, oronLongscaleEvolutionThin1997, crasterDynamicsStabilityThin2009}.
 To this end the term thin film equation was introduced, which is nothing more than the functional form that the lubrication approximation yields. 
 Wetting for example does strongly depend on the intermolecular forces. 
 The DLVO potential made it possible to account for these forces~\cite{derjaguin1941acta, verwey1947theory}. 
 DLVO is an acronym from the name of the four scientists Derjaguin, Landau, Verwey and Overbeek who developed this theory. 
-Initially this potential was used to understand the stability of colloidal suspensions, however for thin film theory it offers a quantification for the disjoining pressure~\cite{RevModPhys.69.931, Peschka9275, moulton_lega_2013, PhysRevE.63.011208}.
+Initially this potential was used to understand the stability of colloidal suspensions, however for thin film theory it offers a quantification for the disjoining pressure~\cite{oronLongscaleEvolutionThin1997, Peschka9275, moulton_lega_2013, PhysRevE.63.011208}.
 Pierre-Gilles de Gennes, who was awarded with the Nobel Prize in physics in 1991 for his work on soft matter physics and his students were ones of the first who understood that ``\textit{dirty}'' soft matter physics can help in understanding thin film problems~\cite{RevModPhys.57.827,doi:10.1021/la0116342,de2003capillarity}.
 
 Of course, by end of the 20$^{\text{th}}$ century there were already some yet unexplained experimental findings associated to the thin film equation, e.g. the spectrum of capillary waves~\cite{doi:10.1021/ja01014a015}.
@@ -171,7 +179,7 @@ Grün and coworkers found an elegant way to circumvent the problem with a single
 Around the same time Davidovitch et al. came up with a similar form for the stochastic thin film equation, studying the spreading of a droplet~\cite{PhysRevLett.95.244505}.
 The addition of a gaussian noise term made it therefore possible to reproduce the observed capillary wave spectrum and explain the difference in spreading behaviour.
 A further impact of this term was the reduction of rupture times for spinodal dewetting thin films~\cite{Grun2006, PhysRevLett.99.114503}.
-Becker et al. pointed out that the classical thin film equation comes short in prediction of the experimentally measured rupture times~\cite{becker2003complex}.
+Becker et al. pointed out that the classical thin film equation comes short in prediction of the experimentally measured rupture times~\cite{beckerComplexDewettingScenarios2003}.
 In fact the rupture time is overestimated by the classical thin film equation, adding however thermal fluctuations do decrease the rupture times~\cite{Duran_Olivencia2019, shah_van_steijn_kleijn_kreutzer_2019}.
 
 Additions of complex dynamics on top of the partial differential equation that defines the thin film problems is not limited to thermal fluctuations.
@@ -180,7 +188,7 @@ For example one can study the effect of non-Newtonian shear behaviour~\cite{zhan
 Or inclusion of arbitrary concentration fields to induce Marangoni-like flows~\cite{sultan_boudaoud_amar_2005, C5SM01603G, PhysRevLett.93.247803}.
 Even the previous example of thermal fluctuations~\cite{Grun2006, Mecke_2005, PhysRevLett.95.244505, PhysRevE.104.034801}
 On the other hand the substrate can be e.g. chemically or topographically patterned.
-A modified substrate can lead to a very different understanding of wetting behaviour as shown in refs.~\cite{cassie1944wettability, WHYMAN2008355}.
+A modified substrate can lead to a very different understanding of wetting behaviour as shown in refs.~\cite{cassieWettabilityPorousSurfaces1944, WHYMAN2008355}.
 In 2019 the Deutsche Forschungsgemeinschaft (DFG) funded the priority program 2171: ``\textit{Dynamic wetting of flexible, adaptive and switchable surfaces}''.
 The goal of this program is to enlarge the understanding concerning the dynamics of thin liquid film on complex substrates.
 Therefore substrates with internal degrees of freedom.
@@ -260,7 +268,7 @@ Thus the starting point will be the equations of motion of a fluid, the Navier-S
 Using real world observations and strong assumptions the Navier-Stokes equations can be reduced to the Saint-Venant or shallow water equations~\cite{saint1871theorie, williamson1992standard}.
 Astonishingly similar arguments play a critical role in the derivation of the thin film equation.
 However these two kinds of systems describe different physical phenomena.
-Still, as will be shown, this a direct consequence of \textit{long-scale}, \textit{long-wave}  phenomena~\cite{RevModPhys.69.931}.
+Still, as will be shown, this a direct consequence of \textit{long-scale}, \textit{long-wave}  phenomena~\cite{oronLongscaleEvolutionThin1997}.
 Chapter~\ref{chapter:theory} will then end with a short section of differences and intersections between these two theories.
 
 In Chapter~\ref{chapter:method} numerical frameworks for solving differential equations are presented.
@@ -269,7 +277,7 @@ Therefore introducing the concept of discrete differentiation, spectral methods 
 Showing that different length and time scales can be a pitfall for either of these methods.
 In between the macro (classical Navier-Stokes solvers) and micro (molecular dynamics and density functional theory) scale is the lattice Boltzmann method, a so-called meso-scale approach.
 The underlying differential equation that is solved is the Boltzmann equation and not the Navier-Stokes or the equation of motion for each molecule.
-However as will be shown the Navier-Stokes equation can be approximated using the lattice Boltzmann method~\cite{Enskog, Chapman, doi:10.1146/annurev.fluid.30.1.329, krueger2017}.  
+However as will be shown the Navier-Stokes equation can be approximated using the lattice Boltzmann method~\cite{Enskog, Chapman, chenLatticeBoltzmannMethod1998, krugerLatticeBoltzmannMethod2017}.  
 Not only is it possible to approximate the Navier-Stokes but also the shallow water equations, of course with a different set of constraints~\cite{Salmon:1999:0022-2402:503, zhou2004lattice, van2010study, PhysRevE.65.036309}.
 
 Following that argumentation is the submitted manuscript for the \textit{Journal of Open Source Software}. 

@@ -55,7 +55,7 @@ Actually one finds this equation not only in fluid dynamics for mass conservatio
 
 For the momentum equation the same line of argument is applied, however momentum can change for different reasons.
 First being that momentum is advected from or into the volume $V_0$.
-Pressure on the other hand can be a source of momentum and of course forces that are applied to the fluid are as well sources~\cite{krueger2017}.
+Pressure on the other hand can be a source of momentum and of course forces that are applied to the fluid are as well sources~\cite{krugerLatticeBoltzmannMethod2017}.
 Collecting these terms and writing down an equation for the momentum one gets,
 \begin{equation}\label{eq:navier_stokes_1}
     \partial_t \int_{V_0}\rho\mathbf{u}\diff V = -\oint_{\partial V_0}(\rho\mathbf{u}\mathbf{u})\cdot\diff\textbf{A} - \oint_{\partial V_0} p\diff\textbf{A} + \int_{V_0} \textbf{F}\diff V, 
@@ -219,7 +219,7 @@ For an incompressible fluid with vanishing density gradient Eq.~(\ref{eq:cont_3}
 \end{equation}
 To satisfy that all terms of this equation are the same order in $\varepsilon$ the coordinates need to be rescaled as well. 
 This choice however is not unique and offers two possibilities~\cite{james2019towards}.
-There is on the one hand the long wave approximation~\cite{RevModPhys.69.931},
+There is on the one hand the long wave approximation~\cite{oronLongscaleEvolutionThin1997},
 \begin{equation}\label{eq:long_wave_scaling}
     x = \frac{\tilde{x}}{\varepsilon},\quad y = \frac{\tilde{y}}{\varepsilon},\quad z = \tilde{z},\quad t = \frac{\tilde{t}}{\varepsilon},
 \end{equation}
@@ -428,7 +428,7 @@ The Poiseuille flow is one amongst those few problems that can be solved analyti
 To have an idea about the flow, one can think about a circular pipe.
 The pipe is fully filled with a (Newtonian) liquid, see Fig.~\ref{fig:pois_vel_profile} for an oversimplified illustration.
 By an external pressure gradient, for example a pump, a continuous flow is generated.
-The velocity profile of this flow can be explained with the equation~\cite{batchelor2000introduction, krueger2017}
+The velocity profile of this flow can be explained with the equation~\cite{batchelor2000introduction, krugerLatticeBoltzmannMethod2017}
 \begin{equation}\label{eq:pois_vel_profile}
     u_x(y) = -\frac{\partial_x p}{2\mu}y(y-d),
 \end{equation}
@@ -478,7 +478,7 @@ Complexity is generated due to the shape of the equation that describes the thin
 When the thickness of a film becomes small, e.g. only a few tens of nanometers the complexity can even be enhanced. 
 Complex behaviour can arise due to thermal fluctuations or strictly speaking the mathematical unsolvable problem of moving contact lines e.g. when a wet to dry transition happens.
 Similar to the above section's scaling argument and the long wave theory, the Navier-Stokes equation can be reduced to the thin film equation. 
-Although with the difference to the shallow water system, see Eqs.~(\ref{eq:shallow_water}), that the thin film equation does only admit a continuity like equation and no accompanying momentum equation~\cite{RevModPhys.69.931, RevModPhys.57.827, RevModPhys.81.1131}.
+Although with the difference to the shallow water system, see Eqs.~(\ref{eq:shallow_water}), that the thin film equation does only admit a continuity like equation and no accompanying momentum equation~\cite{oronLongscaleEvolutionThin1997, RevModPhys.57.827, RevModPhys.81.1131}.
 
 \begin{figure}
     \centering
@@ -488,7 +488,7 @@ Although with the difference to the shallow water system, see Eqs.~(\ref{eq:shal
     \label{fig:contact_line_drop}
 \end{figure}
 Similar to the shallow water system, the thin film equation only considers the dynamics of a thin liquid \textit{layer} placed on top of a yet undefined surface or substrate.
-The defining equation that describes the dynamics of a thin liquid film can be written as~\cite{THIELE2014399, RevModPhys.69.931, RevModPhys.81.1131, RevModPhys.81.739} 
+The defining equation that describes the dynamics of a thin liquid film can be written as~\cite{thielePatternedDepositionMoving2014, oronLongscaleEvolutionThin1997, RevModPhys.81.1131, RevModPhys.81.739} 
 \begin{equation}\label{eq:simple_thin_film}
     \partial_t h = \vec{\nabla}\cdot\left(M(h)\vec{\nabla} p\right).
 \end{equation}
@@ -607,7 +607,7 @@ Upon inserting them into the Navier-Stokes equation we get for the x-component o
 \begin{align}
      \rho L \partial_{\tilde{t}}\tilde{u}_x &+ \rho\left[\frac{U^2}{L}\left(\tilde{u}_x\partial_{\tilde{x}}\tilde{u}_x + \tilde{u}_y\partial_{\tilde{y}}\tilde{u}_x\right) + \frac{U V}{H}\tilde{u}_z\partial_{\tilde{z}}\tilde{u}_x\right] = \nonumber \\ &-\frac{\mu U}{H^2} \partial_{\tilde{x}} \tilde{p} + \mu\left[\frac{U}{L^2}(\partial^2_{\tilde{x}}\tilde{u}_x + \partial^2_{\tilde{y}}\tilde{u}_x) + \frac{U}{H^2}\partial^2_{\tilde{z}}\tilde{u}_x\right].
 \end{align}
-For the $y$ and $z$ component we refer to the review by Oron et al.~\cite{RevModPhys.69.931}.
+For the $y$ and $z$ component we refer to the review by Oron et al.~\cite{oronLongscaleEvolutionThin1997}.
 Although the equation is now non-dimensional it is instructive to multiply both sides with $H^2/\mu U$ and collect the characteristic quantities in dimensional less numbers, here the Reynolds number, see Eq.~(\ref{eq:Re_and_Fr}), with $L = H, v_0 = U$ and $\varepsilon$  
 \begin{equation}
     \varepsilon Re \left(\partial_{\tilde{t}}\tilde{u}_x + \tilde{u}_x\partial_{\tilde{x}}\tilde{u}_x + \tilde{u}_y\partial_{\tilde{y}}\tilde{u}_x + \tilde{u}_z\partial_{\tilde{z}}\tilde{u}_x \right) = -\partial_{\tilde{x}}\tilde{p} + \varepsilon^2\left(\partial^2_{\tilde{x}}\tilde{u}_x + \partial^2_{\tilde{y}}\tilde{u}_x\right) + \partial^2_{\tilde{z}}\tilde{u}_x. 
