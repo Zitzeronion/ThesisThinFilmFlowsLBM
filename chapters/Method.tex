@@ -8,7 +8,7 @@ This is mainly because of two statements.
 On the one hand we can not find an analytical solution to any given flow problem, that has to do with the shape and the structure of the Navier-Stokes equations.
 In fact there are only a few flows that admit an analytical solution. 
 They are often referred to as benchmark problems.
-One of those is the famous ''Hagen–Poiseuille law'', see  Sec.~\ref{sec:theory_shallow_water}, which is an analytical solution for a flow field in a canal and was first derived by Poiseuille and Haagen in the 18th century~\cite{sutera1993history}.
+One of those is the famous ''Hagen–Poiseuille law'', see  Sec.~\ref{sec:theory_shallow_water}, which is an analytical solution for a flow field in a canal and was first derived by Poiseuille and Haagen in the 18th century~\cite{suteraHistoryPoiseuilleLaw}.
 There are a few other benchmark problems, especially in the low Reynolds number regime with a small or vanishing Stokes number.
 The so called Stokes flows admit time reversal symmetry and many have theoretical solutions.
 But going from laminar to turbulent flows with high Reynolds numbers poses still a problem, or as R. Feynman once said: ''... the most important unsolved problem of classical physics.''
@@ -41,7 +41,7 @@ Coming up in this chapter is a short overview of numerical methods to simulate t
 Starting with the straightforward finite differences approach and an introduction of the CFL criteria.
 But also introducing the bottom up approach where Newtons equation of motion is solved for every molecule.
 Followed by an short introduction to the main method of this work, the lattice Boltzmann method~\cite{PhysRevLett.56.1505, krugerLatticeBoltzmannMethod2017, succi}. 
-The mathematical framework as well as it's link to kinetic theory will be discussed and the idea of the Chapmann-Enskog expansion will be outlined~\cite{Chapman, Enskog}. 
+The mathematical framework as well as it's link to kinetic theory will be discussed and the idea of the Chapman-Enskog expansion will be outlined~\cite{chapmanMathematicalTheoryNonuniform1990, enskogKinetischeTheorieVorgange1917}. 
 Based on the mathematical model it is possible to define a numerical approach.
 Using assumptions, mainly concerning the collision operator, the resulting algorithm is fairly easy to implement and shows good scalability.
 Which closes the loop with the above statement that the resulting source code is a perfect candidate for GPU programming.
@@ -58,7 +58,7 @@ Which closes the loop with the above statement that the resulting source code is
     \label{fig:finite_difference}
 \end{figure}
 The lattice Boltzmann method is one among many to simulate the behaviour of a fluid.
-Especially when it comes to numerical simulations of the thin film equation, see Eq.~(\ref{eq:simple_thin_film}), other numerical approaches are more established and have been successfully applied for more then thirty years~\cite{becker2003complex, Peschka9275, PhysRevLett.95.244505, Mecke_2005, PhysRevE.63.011208, SCHWARTZ1998173}.
+Especially when it comes to numerical simulations of the thin film equation, see Eq.~(\ref{eq:simple_thin_film}), other numerical approaches are more established and have been successfully applied for more then thirty years~\cite{beckerComplexDewettingScenarios2003, peschkaSignaturesSlipDewetting2019, davidovitchSpreadingViscousFluid2005, meckeThermalFluctuationsThin2005, diezGlobalModelsMoving2000, schwartzSimulationDropletMotion1998}.
 Since the thin film equation is a fourth order partial differential equation (PDE) one has to be careful in choosing an appropriate scheme.
 Careful in the sense that not every numerical scheme will be able to provide first stability and second a correct approximation of the solution.
 Problems for example appear when a simple Euler approach is used to solve the thin film equation.
@@ -117,7 +117,7 @@ $C_{max} = 1$ for an explicit solver to which for example the lattice Boltzmann 
 But can be relaxed to be larger than one for implicit methods.
 In Fig.~\ref{fig:finite_difference} there is a single lattice constant $h$ that sets the spatial resolution of the system as such $\Delta x = h$.
 Time stepping thus the step from $u(x_i,t_0)$ to $u(x_i,t_1)$ can ensure that forces and therefore acceleration are well within the stability condition.
-Concerning the thin film equation a rather well working scheme is the Crank-Nicolson approach~\cite{crank_nicolson_1947, PhysRevE.63.011208, 10.5555/1403886}.
+Concerning the thin film equation a rather well working scheme is the Crank-Nicolson approach~\cite{crank_nicolson_1947, diezGlobalModelsMoving2000, 10.5555/1403886}.
 
 \subsection{Spectral methods}
 Of course it is as well possible to perform a transformation and solve the differential equation in Fourier space, or in other words perform a Fourier Transformation (FT), which was used to find the dispersion relation in Sec.~\ref{sec:thin_films}.
@@ -140,7 +140,7 @@ For the shallow water theory, see Sec.~\ref{sec:theory_shallow_water} one class 
 To the best of my knowledge this approach has not extensively been used on the thin film equation.
 
 \subsection{Molecular dynamics}
-Yet another approach that is the molecular dynamics method~\cite{haile1992molecular, PhysRevE.100.023108, doi:10.1063/1.1290698}.
+Yet another approach that is the molecular dynamics method~\cite{haile1992molecular, zhangMolecularSimulationThin2019, doi:10.1063/1.1290698}.
 Although when thinking of the motion molecules one does not think of the flow a \textbf{thin} film, molecular dynamics can be very insightful when dealing with thin film problems such as slip~\cite{jabbarzadeh1999wall, sega2013regularization}. 
 Instead of working with macroscopic fields, such as density $\rho$ or velocity $\mathbf{u}$, the method uses a bottom up approach.
 The main idea is to compute the trajectory of every particle using Newtons equation of motion, therefore assume particles are classical objects.
@@ -151,7 +151,7 @@ A common interaction potential is the Lennard-Jones potential
 \end{equation}
 where $ij$ denotes the particle pair, $\varepsilon$ and $\sigma$ are the model dependent energy and length parameters respectively.
 Clearly this approach is rather elegant.
-Knowing the correct values for $\sigma$ and $\varepsilon$, the simulations show good agreement with experiments~\cite{PhysRevE.100.023108}.
+Knowing the correct values for $\sigma$ and $\varepsilon$, the simulations show good agreement with experiments~\cite{zhangMolecularSimulationThin2019}.
 However there is no free lunch. 
 Because of the microscopic nature of this method it is compute intensive.
 Per definition the method needs to know the position of every particle as well as its velocity.
@@ -244,7 +244,7 @@ A first guess of this discretization on Eq.~(\ref{eq:boltzmann_eq}) could be
     f_{\alpha}(\mathbf{x}+\mathbf{c}_{\alpha}\Delta t, t+ \Delta t) - f_{\alpha}(\mathbf{x}, t) = -\frac{\Delta t}{\tau}(f_{\alpha}(\mathbf{x}, t) - f^{eq}_{\alpha}(\mathbf{x}, t)),
 \end{equation}
 where the $\mathbf{c}_{\alpha}$ form a discrete set of $\alpha$ velocities.
-Although this guess may seem different (\textit{simpler}) than Eq.~(\ref{eq:boltzmann_eq}) Chapmann and Enskog have shown that this does not only resembles the Boltzmann equation but also is an approximation to the Navier-Stokes equation~\cite{Chapman, Enskog}. 
+Although this guess may seem different (\textit{simpler}) than Eq.~(\ref{eq:boltzmann_eq}) Chapman and Enskog have shown that this does not only resembles the Boltzmann equation but also is an approximation to the Navier-Stokes equation~\cite{chapmanMathematicalTheoryNonuniform1990, enskogKinetischeTheorieVorgange1917}. 
 The idea is to derive a perturbation expansion of the distribution functions around their equilibrium as such
 \begin{equation}\label{eq:expansion_f}
     f_{\alpha} = f_{\alpha}^{eq} + \epsilon f_{\alpha}^{(1)} + \epsilon^2 f_{\alpha}^{(2)} + O(\epsilon^3), 
@@ -376,7 +376,7 @@ Together with the evolution equation Eq.~(\ref{eq:LBM_discret_noforces}) it is t
 The idea however of this thesis is not to approximate the Navier-Stokes equation but have a numerical solver for the thin film equation.
 Luckily for me and as outlined in Chap.~\ref{chapter:theory} there is a system which has some similarities with the thin film equation.
 That system is the shallow water equation. 
-In fact it is possible to derive with an similar ansatz, e.g. a slow mode expansion, the shallow water equation from the Boltzmann equation~\cite{Salmon:1999:0022-2402:503, zhou2004lattice, PhysRevE.65.036309}.
+In fact it is possible to derive with an similar ansatz, e.g. a slow mode expansion, the shallow water equation from the Boltzmann equation~\cite{salmonLatticeBoltzmannMethod1999, zhouLatticeBoltzmannMethods2004, dellarNonhydrodynamicModesPriori2002}.
 While Eq.~(\ref{eq:LBM_discret_noforces}) does not need to be modified the shallow water equations require a different equilibrium distribution.
 Instead of an isothermal equation of state $p = \rho c_s^2$, the shallow water system uses the hydrostatic pressure Eq.~(\ref{eq:hydro_static_int}) as closure.
 

@@ -69,8 +69,8 @@ Revealing that for small scales, the disjoining pressure can not be neglected.
 Finally, we supply a brief summary with conclusion and future research in Sec.~\ref{sec:sum_conclu_five}. 
 
 \section{Theory}\label{sec:theory_five}
-The theoretical approach we use to study this system is the lubrication approximation~\cite{Reynolds, oronLongscaleEvolutionThin1997, PhysRevE.63.011208}.
-Applying this approximation to the Navier-Stokes equation yields the thin film equation, which for a singular horizontal dimension reads~\cite{RevModPhys.81.739, RevModPhys.81.1131, thielePatternedDepositionMoving2014}
+The theoretical approach we use to study this system is the lubrication approximation~\cite{Reynolds, oronLongscaleEvolutionThin1997, diezGlobalModelsMoving2000}.
+Applying this approximation to the Navier-Stokes equation yields the thin film equation, which for a singular horizontal dimension reads~\cite{bonnWettingSpreading2009, crasterDynamicsStabilityThin2009, thielePatternedDepositionMoving2014}
 \begin{equation}\label{eq:thin_film_simple}
     \partial_t h = \partial_x \left(\frac{h^3}{3\mu}\partial_x p\right),
 \end{equation}
@@ -80,18 +80,18 @@ We therefore write the pressure as
 \begin{equation}\label{eq:pressure_five}
     p = \gamma \partial_x^2 h + \Pi(h),
 \end{equation}
-where the first term is the (1D) Laplacian of the liquid-vapor interface and $\Pi(h)$ is the disjoining pressure~\cite{oronLongscaleEvolutionThin1997, RevModPhys.81.739, Peschka9275, PhysRevE.63.011208},
+where the first term is the (1D) Laplacian of the liquid-vapor interface and $\Pi(h)$ is the disjoining pressure~\cite{oronLongscaleEvolutionThin1997, bonnWettingSpreading2009, peschkaSignaturesSlipDewetting2019, diezGlobalModelsMoving2000},
 \begin{equation}\label{eq:disjoin}
     \Pi(h) = K(\gamma,\theta)\left[\left(\frac{h_{\ast}}{h}\right)^n - \left(\frac{h_{\ast}}{h}\right)^m\right].
 \end{equation}
 The prefactor $K(\gamma,\theta)\propto \gamma(1-\cos(\theta))$ encodes the wettability and as such the equilibrium contact angle $\theta_{\text{eq.}}$.
-This prefactor can be understood as a linking factor to the Hamaker constant ($\mathcal{A}$) with~~\cite{PhysRevE.93.013120, bestehorn20033d, van1988interfacial}
+This prefactor can be understood as a linking factor to the Hamaker constant ($\mathcal{A}$) with~~\cite{diezMetallicthinfilmInstabilitySpatially2016, bestehorn20033d, van1988interfacial}
 \begin{equation}
     \mathcal{A} = 6\pi h_{\ast}^3 K(\theta).    
 \end{equation}
 Additionally, $h_{\ast}$ defines the thickness of the precursor layer, therefore the thickness where $\Pi(h_{\ast}) = 0$.
 The pair of powers $(n,m)$ need to satisfy $n > m$ and $m > 1$.
-For an in deep presentation of the derivation we refer to the work by Schwartz and Eley and Bonn et al.~\cite{SCHWARTZ1998173, RevModPhys.81.739}.
+For an in deep presentation of the derivation we refer to the work by Schwartz and Eley and Bonn et al.~\cite{schwartzSimulationDropletMotion1998, bonnWettingSpreading2009}.
 
 \begin{figure}
     \centering
@@ -178,10 +178,10 @@ We therefore assume that the derivative of the disjoining pressure has an effect
     \label{fig:gammas}
 \end{figure}
 We use a computational method, namely the lattice Boltzmann method (LBM), to iteratively solves Eq.~(\ref{eq:thin_with_marangoni}).
-The details of the method can be found in the App.~\ref{app:two} and in the references~\cite{PhysRevE.100.033313, PhysRevE.104.034801}.
+The details of the method can be found in the App.~\ref{app:two} and in the references~\cite{PhysRevE.100.033313, zitzLatticeBoltzmannSimulations2021}.
 
 In addition to the basic lattice Boltzmann algorithm, we require and another force term $F_{\gamma}$ to account for the Marangoni contribution.
-Similarly to earlier work on thermal fluctuations~\cite{PhysRevE.104.034801} we construct a force term and match it to the last term in Eq.~\ref{eq:thin_with_marangoni}, 
+Similarly to earlier work on thermal fluctuations~\cite{zitzLatticeBoltzmannSimulations2021} we construct a force term and match it to the last term in Eq.~\ref{eq:thin_with_marangoni}, 
 \begin{equation}\label{eq:force_gamma_grad}
     F_{\gamma} = \frac{3}{2}\partial_x\gamma(x),
 \end{equation}
@@ -196,7 +196,7 @@ With the addition of this force term, our LBM is a numerical algorithm for the s
 \end{cases}
 \end{equation}
 
-Performing the limits discussed in ref.~\cite{PhysRevE.100.033313, PhysRevE.104.034801}, this system becomes an effective solver for Eq~(\ref{eq:thin_with_marangoni}).
+Performing the limits discussed in ref.~\cite{PhysRevE.100.033313, zitzLatticeBoltzmannSimulations2021}, this system becomes an effective solver for Eq~(\ref{eq:thin_with_marangoni}).
 Due to the inclusion of $\Pi(h)$, this method allows us to test the non-coalescence criteria for smaller scales, well below $1mm$ droplet diameter~\cite{doi:10.1021/la500459v, karpitschka2014sharp}.
 
 For the spatially resolved surface tension, $\gamma(x)$ we use three different functions, as shown in Fig.~\ref{fig:gammas}.
@@ -412,7 +412,7 @@ where the lattice speeds $c=\frac{\Delta x}{\Delta t}$, with weights
 w_0 = \frac{2}{3},\quad w_{1,2} = \frac{1}{6},
 \end{equation}
 and the upper bound for information transport, the speed of sound $c_s^2=\frac{c^2}{3}$.
-The equilibrium distribution functions $f_i^{(eq)}$ read~\cite{van2010study}:
+The equilibrium distribution functions $f_i^{(eq)}$ read~\cite{vanthangStudy1DLattice2010}:
 \begin{gather}
     f_{0}^{eq} = h\left(1-\frac{1}{2c^2}gh - \frac{1}{c^2}u^2\right),\nonumber\\
     f_{1}^{eq} = h\left(\frac{1}{4c^2}gh + \frac{1}{2c}u + \frac{1}{2c^2}u^2\right)\label{eq:equilibria_five},\\
@@ -421,7 +421,7 @@ The equilibrium distribution functions $f_i^{(eq)}$ read~\cite{van2010study}:
 where $g$ is the gravitational acceleration that enforces the hydrostatic pressure condition. 
 Given the size of the droplet we are interested in, we neglect gravity and set $g=0$ for the remainder of this work.
 
-The film thickness $h$ and the velocity at the free surface $u$ are moments of the distribution functions $f_i$~\cite{Salmon:1999:0022-2402:503, PhysRevE.65.036309, PhysRevE.104.034801}:
+The film thickness $h$ and the velocity at the free surface $u$ are moments of the distribution functions $f_i$~\cite{salmonLatticeBoltzmannMethod1999, dellarNonhydrodynamicModesPriori2002, zitzLatticeBoltzmannSimulations2021}:
 \begin{equation}\label{eq:hydrofields_five}
     h= \sum_{i=0}^2 f_i \qquad hu = \sum_{i=0}^2 c^{(i)} f_i.
 \end{equation}

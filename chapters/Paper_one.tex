@@ -21,14 +21,14 @@ controlled dewetting of a thin film on a chemically structured substrate.
 
 \section{Introduction}
 Thin layers of liquids on solid surfaces are frequently encountered in a host
-of natural and technological settings \cite{de2003capillarity,Focke}. Therefore,
+of natural and technological settings \cite{degennesCapillarityWettingPhenomena2004,Focke}. Therefore,
 understanding and controlling their stability and dynamics is a central problem
 for fundamental physics, as well as for applied research in process engineering
 and nanotechnology~\cite{oronLongscaleEvolutionThin1997,Utada}. Coating processes, for instance,
 rely crucially on the mutual affinity of liquid and surface (i.e. on
 wettability properties). When the liquid film is sufficiently thin, in fact, it
 can become unstable, leading to the dewetting of the coated
-area~\cite{RevModPhys.81.739}. From the modelling point of view, the challenge
+area~\cite{bonnWettingSpreading2009}. From the modelling point of view, the challenge
 consists in the fact that the physics of thin films is intrinsically
 multiscale, for it involves phenomena ranging from the molecular scale 
 at the three phase contact line, to the micro-/nano-metric size of the 
@@ -40,7 +40,7 @@ explored. It clearly appears that some degree of model order reduction is requir
 lubrication theory, simplify the complexity of the full 3D Navier-Stokes
 equations \cite{Navier,Stokes}
 to one scalar transport equation (the lubrication equation) for the film thickness field
-$h(x,t)$~\cite{ReynoldsLubr,oronLongscaleEvolutionThin1997,RevModPhys.81.1131,Mitlin}:
+$h(x,t)$~\cite{reynoldsTheoryLubricationIts1886,oronLongscaleEvolutionThin1997,crasterDynamicsStabilityThin2009,Mitlin}:
 \begin{equation}\label{eq:lubr}
     \partial_t h = \nabla \cdot \left(Q(h)\nabla p_{\mbox{\tiny{film}}}\right)
 \end{equation}
@@ -48,7 +48,7 @@ Here, $Q(h)$ is the mobility function, whose explicit form depends on the
 boundary condition for the velocity at the surface (for a no-slip boundary, $Q(h) = h^3/(3 \mu)$, with
 $\mu$ being the dynamic viscosity), and $p_{\mbox{\tiny{film}}}$ is the film
 pressure at the free liquid surface.
-Stable and reliable direct numerical simulations of Eq.~(\ref{eq:lubr}) require sophisticated numerical methods, whose execution is often computationally expensive~\cite{becker2003complex}.
+Stable and reliable direct numerical simulations of Eq.~(\ref{eq:lubr}) require sophisticated numerical methods, whose execution is often computationally expensive~\cite{beckerComplexDewettingScenarios2003}.
 Moreover, an ever-growing number of microfluidic problems requires to cope with
 complex fluids rather than simple liquids, i.e. fluids with non-trivial
 internal microstructure and/or complex non-Newtonian rheological
@@ -95,7 +95,7 @@ the lubrication approximation tells that the dynamics is governed by equation (\
 Instead of directly solving Eq.~(\ref{eq:lubr}) numerically, we follow an alternative strategy.
 We build our numerical model on a class of LBMs originally proposed as solvers for
 the shallow water
-equations~\cite{Salmon:1999:0022-2402:503,PhysRevE.65.036309,zhou2004lattice,van2010study}.
+equations~\cite{salmonLatticeBoltzmannMethod1999,dellarNonhydrodynamicModesPriori2002,zhouLatticeBoltzmannMethods2004,vanthangStudy1DLattice2010}.
 The lattice Boltzmann equation for the discrete probability density functions of a fluid system
 subject to a total force (that can include both internal and external forces)
 $\mathbf{F}_{\mbox{\tiny{tot}}}$,
@@ -159,7 +159,7 @@ and momentum flux tensor field
 \end{equation}
 where the left hand side coincides with the momentum flux of the shallow water equation, with the term 
 $gh^2/2$ being the hydrostatic pressure in a thin fluid 
-layer at rest~\cite{PhysRevE.65.036309}.
+layer at rest~\cite{dellarNonhydrodynamicModesPriori2002}.
 With the usual \textit{ansatz}
 of a quadratic polynomial in the velocity field $\mathbf{u}$,
 the equilibrium distribution functions read
@@ -174,11 +174,11 @@ h - \frac{5gh^2}{6c_s^2} - \frac{2hu^2}{3c_s^2}& l = 0 \\
 \right.,
 \end{equation}
 where $u^2 = |\mathbf{u}|^2$ is the magnitude of the velocity.
-The multiscale Chapman-Enskog expansion \cite{Chapman,Enskog} of such a
+The multiscale Chapman-Enskog expansion \cite{chapmanMathematicalTheoryNonuniform1990,enskogKinetischeTheorieVorgange1917} of such a
 LBM yields (for small ratios $Ma/Fr$
 of the Mach, $Ma=u/c_s$, and Froude, $Fr = u/\sqrt{gH}$, numbers,
 corresponding also to $\sqrt{g H}/c_s \ll 1$) the following equations
-for the height and velocity fields~\cite{PhysRevE.65.036309,van2010study,Salmon:1999:0022-2402:503}
+for the height and velocity fields~\cite{dellarNonhydrodynamicModesPriori2002,vanthangStudy1DLattice2010,salmonLatticeBoltzmannMethod1999}
 \begin{equation}\label{eq:hydro}
 \begin{cases}
 \begin{array}{ll}
@@ -218,7 +218,7 @@ literature~\cite{oronLongscaleEvolutionThin1997,thielePatternedDepositionMoving2
 In Eq.~(\ref{eq:disjoiningP}), $\theta$ is the contact angle and $h_*$
 corresponds to the precursor film
 thickness. The integers $n$ and $m$ are set to be $3$ and $9$, respectively. These 
-are commonly chosen values in the literature~\cite{moulton_lega_2013,oronLongscaleEvolutionThin1997}
+are commonly chosen values in the literature~\cite{moultonEffectDisjoiningPressure2013,oronLongscaleEvolutionThin1997}
 that correspond to a standard $6-12$ Lennard-Jones
 intermolecular potential~\cite{fischer2018existence}, though other pairs
 $(n,m)$ can be used (e.g.~$(2,3), (3,6), (4,10)$~\cite{1742-6596-166-1-012009,
@@ -301,7 +301,7 @@ forcing term since it contains higher order derivatives (the gradient $p_{\mbox{
 which in turn includes the Laplace
  pressure $\gamma \nabla^2 h$, see Eq.(~\ref{eq:pfilm}) and, hence,
  spurious lattice effects may arise.  
-We noticed, for example, that a centered scheme to calculate gradients \cite{zhou2004lattice}
+We noticed, for example, that a centered scheme to calculate gradients \cite{zhouLatticeBoltzmannMethods2004}
 does not guarantee the sufficient degree of isotropy on the lattice as, e.g., for the relaxation of
 a droplet (discussed in section~\ref{sec:results}), where it led to unphysical droplet shapes.
 Therefore, we use the following expressions to compute the gradients
@@ -313,7 +313,7 @@ and the Laplacian
     \nabla^2 \phi(\mathbf{x}) =& \frac{1}{6}\bigg[4\sum_{l = \text{odd}} w_l \phi(\mathbf{x}+\mathbf{c}^{(l)})\nonumber\\ 
     &+ 1\sum_{l = \text{even}} w_l \phi(\mathbf{x}+\mathbf{c}^{(l)}) - 20\phi(\mathbf{x}) \bigg] + O(\nabla^4),
 \end{align}
-respectively \cite{doi:10.1137/S1064827599357188,THAMPI20131}, for a generic scalar field $\phi$ 
+respectively \cite{junkDiscretizationsIncompressibleNavier2000,thampiIsotropicDiscreteLaplacian2013}, for a generic scalar field $\phi$ 
 (be it the height field $h$, the pressure $p_{\mbox{\tiny{film}}}$ or a position dependent surface tension field).
 Besides the higher degree of the isotropy, the scheme 
 (\ref{eq:derivative}-\ref{eq:n_laplace}) has the advantage of employing directly the set of lattice Boltzmann speeds. 
@@ -399,7 +399,7 @@ Let us consider the problem of a droplet, deposited on a smooth substrate
 with an apparent contact angle $\theta > \theta_{eq}$, which spreads to relax
 to a shape dictated by the equilibrium contact angle $\theta_{eq}$.
 The equilibrium contact angle quantifies the wettability of a given substrate by a 
-certain liquid and can be calculated using Young's equation \cite{RevModPhys.57.827}
+certain liquid and can be calculated using Young's equation \cite{degennesWettingStaticsDynamics1985}
 \begin{equation}\label{eq:Young}
     \gamma \cos\theta_{eq} = \gamma_{SL} - \gamma_{SG} ,
 \end{equation}
@@ -435,8 +435,8 @@ and can solve Eq.(\ref{eq:spherical_cap_vol}) again for the contact angle $\thet
 
 Let us stress that the shape is indeed very close to a spherical cap. As mentioned in 
 Section \ref{sec:method}, in fact, a sufficiently accurate finite difference scheme
-is required, as the one in Eqs. (\ref{eq:derivative}-\ref{eq:n_laplace})~\cite{THAMPI20131}. 
-In particular, we note that the isotropy of the pressure gradient is of utmost importance: a simple scheme with two-point centered derivatives~\cite{zhou2004lattice} yields squared equilibrium droplet shapes.
+is required, as the one in Eqs. (\ref{eq:derivative}-\ref{eq:n_laplace})~\cite{thampiIsotropicDiscreteLaplacian2013}. 
+In particular, we note that the isotropy of the pressure gradient is of utmost importance: a simple scheme with two-point centered derivatives~\cite{zhouLatticeBoltzmannMethods2004} yields squared equilibrium droplet shapes.
  
 \begin{figure}
     \centering 

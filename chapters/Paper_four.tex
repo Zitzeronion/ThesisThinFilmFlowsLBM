@@ -13,15 +13,15 @@ An efficient way to deal with this problem is via the thin-film equation:
     \partial_t h = \nabla\cdot(M(h)\nabla p),
 \end{equation}
 where $h$ is the film thickness, $M(h)$ is a thickness dependent mobility and $p$ is the pressure inside the film.
-Solving the thin film equation directly is however a difficult task as it is a fourth order degenerate PDE~\cite{becker2003complex}.
+Solving the thin film equation directly is however a difficult task as it is a fourth order degenerate PDE~\cite{beckerComplexDewettingScenarios2003}.
 \textit{Swalbe.jl} approaches the problem from a different angle.
-Instead of directly solving the thin film equation we use a novel method based on a class lattice Boltzmann models~\cite{krugerLatticeBoltzmannMethod2017}, originally developed to simulate shallow water flows~\cite{Salmon:1999:0022-2402:503}.
+Instead of directly solving the thin film equation we use a novel method based on a class lattice Boltzmann models~\cite{krugerLatticeBoltzmannMethod2017}, originally developed to simulate shallow water flows~\cite{salmonLatticeBoltzmannMethod1999}.
 This allows us to benefit from the simplicity of the lattice Boltzmann algorithm which makes it straightforward to parallelize the code and run it on accelerator devices.
 Choosing appropriate forces it is possible to simulate complex problems.
 Among them is the dewetting of a patterned substrates as shown in Fig.~\ref{fig:logo}.
-It is as well possible to simulate low contact angle droplets out of equilibrium to probe relaxation experiments, e.g. the Cox-Voinov or Tanner's law~\cite{RevModPhys.81.739}.
+It is as well possible to simulate low contact angle droplets out of equilibrium to probe relaxation experiments, e.g. the Cox-Voinov or Tanner's law~\cite{bonnWettingSpreading2009}.
 Due to a disjoining pressure model for the three phase contact line droplets can not only relax towards their equilibrium they can slide as well~\cite{PhysRevE.100.033313}.
-All of this can be coupled with thermal fluctuations to study the stochastic thin film equation~\cite{shah_van_steijn_kleijn_kreutzer_2019}.
+All of this can be coupled with thermal fluctuations to study the stochastic thin film equation~\cite{shahThermalFluctuationsCapillary2019}.
 
 \begin{figure}
     \centering
@@ -49,7 +49,7 @@ Keeping the simulation time low is archived by using a Nvidia GPU.
 Most functions are written in a generic style and can be executed both on a CPU or GPU.
 For the GPU usage the high-level API of CUDA.jl~\cite{besard2018juliagpu, besard2019prototyping} is used, mostly CuArrays.
 
-An older version of the numerical model (written in C++) has been tested and used for thin film simulations in previous publications~\cite{PhysRevE.100.033313, PhysRevE.104.034801}.
+An older version of the numerical model (written in C++) has been tested and used for thin film simulations in previous publications~\cite{PhysRevE.100.033313, zitzLatticeBoltzmannSimulations2021}.
 While there is a small performance decrease when moving from C++ with OpenACC to Julia, the benefits of usability, straightforward documentation and automated testing outweighs this issue.
 There are many thin film problems the authors will investigate in the future with \textit{Swalbe.jl}.
 Among those are switchable substrate and their influence on a dewetting thin film, or the influence of thermal fluctuations on the coalescence of droplets.
@@ -63,7 +63,7 @@ The core components are written in \textit{Fortran} and at least the later packa
 Documentation however is only available through code comments and a short readme, leaving the user little guidance.
 
 That said, the thin film equation is a fourth-order parabolic equation and can of course be solved with appropriate numerical schemes.
-Some of these schemes can be found in the refs.~\cite{PhysRevFluids.1.073901, PhysRevE.63.011208, becker2003complex, Peschka9275}.
+Some of these schemes can be found in the refs.~\cite{PhysRevFluids.1.073901, diezGlobalModelsMoving2000, beckerComplexDewettingScenarios2003, peschkaSignaturesSlipDewetting2019}.
 Upon contacting the authors it should be possible to have access to a working version of the described approach.
 
 Wilczek et al. used \href{https://www.dune-project.org/}{\textbf{DUNE}} to study the dynamics of an ensemble of sliding drops in ref.~\cite{wilczekSlidingDropsEnsemble2017}.
@@ -81,7 +81,7 @@ Another example utilizing a Navier-Stokes solver would be the \href{http://basil
 
 Lattice Boltzmann solvers offer another category to approximate the Navier-Stokes equation.
 Starting point of this method is not the Navier-Stokes equation but the Boltzmann equation.
-Using the Chapman-Enskog expansion~\cite{Chapman, Enskog}, it can be shown that the resulting system of equations recovers to the Navier-Stokes equation.
+Using the Chapman-Enskog expansion~\cite{chapmanMathematicalTheoryNonuniform1990, enskogKinetischeTheorieVorgange1917}, it can be shown that the resulting system of equations recovers to the Navier-Stokes equation.
 The method is straightforward to implement and several small to large projects can be found with OSI-approved license. 
 To name just a few examples: \href{https://walberla.net/doxygen/index.html}{\textbf{waLBerla}}, \href{https://www.openlb.net/}{\textbf{openLB}} or some smaller project \href{https://gitlab.com/unigehpfs/stlbm}{\textbf{STLBM}}, \href{https://github.com/FrancescaPelusi/TLBfind}{\textbf{TLBfind}} (explicitly written for GPU use).
 
@@ -104,7 +104,7 @@ The goal will be to observe a growth of the bridge height as
 \begin{equation}\label{eq:powerlaw}
     h_0(t) = k t^{\alpha},
 \end{equation}
-where the exponent $\alpha$ should be $2/3$~\cite{doi:10.1063/1.5119014, doi:10.1063/1.4824108}.
+where the exponent $\alpha$ should be $2/3$~\cite{pawarSymmetricAsymmetricCoalescence2019, doi:10.1063/1.4824108}.
 This experiment has been performed using the \textit{Pluto notebook} \href{https://jugit.fz-juelich.de/compflu/swalbe.jl/-/blob/JOSS/scripts/Drop_coal.jl}{Drop\_coal.jl}.
 
 Just to outline the most important steps towards the simulation:

@@ -19,9 +19,9 @@ and its dependence on the form of the wettability gradients.
 \section{Introduction}\label{sec:intro}
 A liquid wetting a solid surface is a process that appears in many everyday life situations, like, e.g., when a rain drop hits the leaf of a plant or when coffee is spilt on a table.
 Wetting phenomena have an impact on areas as diverse as surface coatings, printing, plant treatment with pesticides, or even pandemics~\cite{oronLongscaleEvolutionThin1997, doi:10.1146/annurev-fluid-011212-140734, cassieWettabilityPorousSurfaces1944, Lenormand_1990,DERYCK1998278, doi:10.1146/annurev.fluid.31.1.347,BergeronNature,BhardwajPoF2020}.
-Coating processes heavily rely on the affinity between a fluid and a substrate~\cite{RevModPhys.81.739}.
+Coating processes heavily rely on the affinity between a fluid and a substrate~\cite{bonnWettingSpreading2009}.
 If this affinity is not sufficiently strong or the substrate is rather heterogeneous the liquid layer may eventually become unstable,
-leading to film rupture~\cite{oronLongscaleEvolutionThin1997, RevModPhys.81.1131} or wrinkling~\cite{dasilvasobrinhoStudyDefectsUltrathin1999}. 
+leading to film rupture~\cite{oronLongscaleEvolutionThin1997, crasterDynamicsStabilityThin2009} or wrinkling~\cite{dasilvasobrinhoStudyDefectsUltrathin1999}. 
 These instabilities are, of course, harmful to a uniform coating.\\ 
 A successful mathematical modelling of the dynamics of thin liquid films is based on the thin-film equation~\cite{Reynolds, oronLongscaleEvolutionThin1997}
 \begin{equation}\label{eq:thin_film}
@@ -38,18 +38,18 @@ The film pressure $p$ consists of the capillary pressure and the disjoining pres
 where $\gamma$ is the surface tension. The disjoining pressure
 $\Pi(h)$ is the derivative, with respect to the height $h$, of the interfacial potential,
 which incorporates the interactions between liquid and substrate (i.e. wetting properties).
-The advantage of such approach in comparison with molecule-resolved methods such as Molecular Dynamics~\cite{haile1992molecular, PhysRevE.100.023108, doi:10.1063/1.1290698, grabow1988thin}
+The advantage of such approach in comparison with molecule-resolved methods such as Molecular Dynamics~\cite{haile1992molecular, zhangMolecularSimulationThin2019, doi:10.1063/1.1290698, grabow1988thin}
 and Density Functional Theory~\cite{PhysRevA.40.2567, tarazona1984simple, meister1985density, hughes2014introduction} is that these 
 may quickly become computationally prohibitive, as the size of the film is increased above few nanometres in thickness and to the micrometric scale in the horizontal extension.
 However, when dealing with films of nanometric thickness, a hydrodynamic description may fall short due to thermal fluctuations. 
-For instance, in the context of dewetting, rupture times measured in experiments are shorter than predicted by simulations of the thin-film equation~\cite{herminghaus1996dewetting,herminghaus1998dewetting,becker2003complex}.
-More in general, thermal fluctuations can accelerate the appearance of film instabilities~\cite{Rauscher2008,tsekov1993effect, PhysRevLett.99.114503, PhysRevE.100.023108}.
-The first theoretical and experimental studies, by means of light scattering techniques, on film rupture influenced by thermal fluctuations date back to the 60s~\cite{doi:10.1021/ja01014a015}.
-Almost half a century later, a stochastic version of Eq.~(\ref{eq:thin_film}) was derived~\cite{Grun2006, Mecke_2005, PhysRevLett.95.244505}, through a lubrication approximation of the Navier-Stokes-Landau-Lifshitz 
-equations of fluctuating hydrodynamics~\cite{Landau1987Fluid}.
-A strong agreement between experiments and the stochastic thin-film equation was found in showing that the variance of the interfacial roughness cannot be explained without adding a fluctuating term~\cite{PhysRevLett.99.114503}.
-The influence of thermal fluctuations on the short and long time morphology of a film has been studied with simulations of the one and two dimensional stochastic thin-film equations~\cite{PhysRevE.92.061002, alizadeh_pahlavan_cueto-felgueroso_hosoi_mckinley_juanes_2018}. 
-Recently, new theoretical insights have been gained explaining film rupture as a consequence of the combined action of thermal fluctuations and drainage, both numerically~\cite{shah_van_steijn_kleijn_kreutzer_2019} and experimentally~\cite{PhysRevLett.125.158001}.
+For instance, in the context of dewetting, rupture times measured in experiments are shorter than predicted by simulations of the thin-film equation~\cite{herminghaus1996dewetting,herminghaus1998dewetting,beckerComplexDewettingScenarios2003}.
+More in general, thermal fluctuations can accelerate the appearance of film instabilities~\cite{Rauscher2008,tsekov1993effect, fetzerThermalNoiseInfluences2007, zhangMolecularSimulationThin2019}.
+The first theoretical and experimental studies, by means of light scattering techniques, on film rupture influenced by thermal fluctuations date back to the 60s~\cite{vrijRuptureThinLiquid1968}.
+Almost half a century later, a stochastic version of Eq.~(\ref{eq:thin_film}) was derived~\cite{grunThinFilmFlowInfluenced2006, meckeThermalFluctuationsThin2005, davidovitchSpreadingViscousFluid2005}, through a lubrication approximation of the Navier-Stokes-Landau-Lifshitz 
+equations of fluctuating hydrodynamics~\cite{landauFluidMechanicsLandau2013}.
+A strong agreement between experiments and the stochastic thin-film equation was found in showing that the variance of the interfacial roughness cannot be explained without adding a fluctuating term~\cite{fetzerThermalNoiseInfluences2007}.
+The influence of thermal fluctuations on the short and long time morphology of a film has been studied with simulations of the one and two dimensional stochastic thin-film equations~\cite{nesicFullyNonlinearDynamics2015, alizadeh_pahlavan_cueto-felgueroso_hosoi_mckinley_juanes_2018}. 
+Recently, new theoretical insights have been gained explaining film rupture as a consequence of the combined action of thermal fluctuations and drainage, both numerically~\cite{shahThermalFluctuationsCapillary2019} and experimentally~\cite{PhysRevLett.125.158001}.
 
 To the best of our knowledge, the impact of thermal fluctuations on thin film dewetting
 of chemically patterned substrates has so far been overlooked.
@@ -64,7 +64,7 @@ The results are presented and discussed in Sec.~\ref{sec:results_two}.
 Finally, conclusions and summary are provided in Sec.~\ref{sec:sum_conclu}. 
 
 \section{Linear Stability Analysis of the Stochastic Thin-Film Equation}\label{sec:stoch_thin_film}
-The one-dimensional stochastic thin-film equation reads~\cite{Grun2006, Mecke_2005}:
+The one-dimensional stochastic thin-film equation reads~\cite{grunThinFilmFlowInfluenced2006, meckeThermalFluctuationsThin2005}:
 \begin{equation}\label{eq:stoch_thin_film_simple}
     \partial_t h = \partial_x \left[\frac{h^3}{3\mu}\partial_x p + \sqrt{\frac{2k_BTh^3}{3\mu}}\mathcal{N}\right],
 \end{equation}
@@ -74,7 +74,7 @@ where $k_B$ is Boltzmann's constant, $T$ is the temperature and $\mathcal{N}$ is
     \quad \langle\mathcal{N}(x,t)\mathcal{N}(x',t')\rangle =&~\delta(x-x')\delta(t-t').
 \end{align}
 In order to understand the influence of thermal fluctuations on the temporal evolution of the film height, we cursory recall the linear stability analysis of Eq.~(\ref{eq:stoch_thin_film_simple}) 
-\cite{PhysRevE.100.023108, PhysRevE.93.013120}.
+\cite{zhangMolecularSimulationThin2019, diezMetallicthinfilmInstabilitySpatially2016}.
 Introducing the deviation $\delta h$ from the mean height $h_0$, such that $h = h_0 + \delta h$ and $\delta h \ll h_0$, 
 the linearised stochastic thin-film equation is obtained
 \begin{equation}\label{eq:linearstability_realspace}
@@ -101,7 +101,7 @@ with dispersion relation $\omega(q)$ given by
 \begin{equation}\label{eq:dispersion}
     \omega(q) = \frac{1}{t_0}\left[2\left(\frac{q}{q_0}\right)^2 - \left(\frac{q}{q_0}\right)^4\right].
 \end{equation}
-The maximum, $q_0$, of $\omega(q)$ and the characteristic time, $t_0$, are specific to the substrate the film is deposited on and their expressions are~\cite{PhysRevLett.99.114503}
+The maximum, $q_0$, of $\omega(q)$ and the characteristic time, $t_0$, are specific to the substrate the film is deposited on and their expressions are~\cite{fetzerThermalNoiseInfluences2007}
 \begin{equation}\label{eq:q0}
     q_0^2 = \frac{1}{2\gamma}\frac{\partial \Pi(h)}{\partial h}\bigg\rvert_{h=h_0},
 \end{equation}
@@ -109,13 +109,13 @@ and
 \begin{equation}\label{eq:t0}
     t_0 = \frac{3\mu}{\gamma h_0^3 q_0^4}.
 \end{equation}
-Solving Eq.~(\ref{eq:stability_fourier}) leads to the following expression for the spectrum~\cite{PhysRevE.100.023108,Mecke_2005},
+Solving Eq.~(\ref{eq:stability_fourier}) leads to the following expression for the spectrum~\cite{zhangMolecularSimulationThin2019,meckeThermalFluctuationsThin2005},
 $S(q,t) = \langle |\tilde{\delta h}(q,t)|^2\rangle$ (where the brackets stand for the average over the noise):
 \begin{equation}\label{eq:structure_factor}
     S(q,t) = S_0(q)e^{2\omega(q)t} + \frac{k_BTh_0^3}{3\mu}\frac{q^2}{\omega(q)}(e^{2\omega(q)t} - 1).
 \end{equation}
 For $q>\sqrt{2}q_0$, $S(q,t)$ tends to the capillary wave spectrum, 
-$S \sim S_{\text{cw}} \propto \frac{k_BT}{\gamma q^2}$, as $t \rightarrow \infty$ (whereas it would decay exponentially to zero in the deterministic case) ~\cite{PhysRevLett.99.114503,Mecke_2005}.
+$S \sim S_{\text{cw}} \propto \frac{k_BT}{\gamma q^2}$, as $t \rightarrow \infty$ (whereas it would decay exponentially to zero in the deterministic case) ~\cite{fetzerThermalNoiseInfluences2007,meckeThermalFluctuationsThin2005}.
 Moreover, while the maximum $q_0$ is independent of time in the deterministic case, the maximum $q_m$ of 
 (\ref{eq:structure_factor}) approaches $q_0$ from the right as the time increases.
 It follows that the most unstable wavelength, $\lambda_{\text{max}} = 2\pi/q_m$, grows with time.
@@ -125,11 +125,11 @@ We will come back to this fact in Sec.~\ref{sec:results_two} and show that indee
 Performing numerical simulations of the thin-film equation is challenging, even in the deterministic case;
 including stochastic terms adds a further level of complexity.
 To this aim, several sophisticated numerical methods have been developed, based on, e.g.,   
-finite differences~\cite{PhysRevE.63.011208}, finite elements~\cite{Grun2006} and spectral schemes~\cite{Duran_Olivencia2019} . 
+finite differences~\cite{diezGlobalModelsMoving2000}, finite elements~\cite{grunThinFilmFlowInfluenced2006} and spectral schemes~\cite{duran-olivenciaInstabilityRuptureFluctuations2019} . 
 
 \subsection{Lattice Boltzmann Method}\label{subsec:LBM}
 To simulate the dynamics of thin liquid films described by Eq.~(\ref{eq:thin_film}), we employ a recently developed~\cite{PhysRevE.100.033313} lattice Boltzmann method (LBM), built on 
-a class of models originally devised for the shallow water equations~\cite{Salmon:1999:0022-2402:503,PhysRevE.65.036309,zhou2004lattice,van2010study}.
+a class of models originally devised for the shallow water equations~\cite{salmonLatticeBoltzmannMethod1999,dellarNonhydrodynamicModesPriori2002,zhouLatticeBoltzmannMethods2004,vanthangStudy1DLattice2010}.
 The one-dimensional lattice Boltzmann equation for the discrete particle distribution functions $f_i$ reads
 \begin{equation}\label{eq:LBE_two}
     \begin{split}
@@ -152,7 +152,7 @@ where $c=\frac{\Delta x}{\Delta t}$, with weights
 w_0 = \frac{2}{3},\quad w_{1,2} = \frac{1}{6},
 \end{equation}
 and speed of sound $c_s^2=\frac{c^2}{3}$.
-The equilibrium distribution functions $f_i^{(eq)}$ read~\cite{van2010study}:
+The equilibrium distribution functions $f_i^{(eq)}$ read~\cite{vanthangStudy1DLattice2010}:
 \begin{gather}
     f_{0}^{eq} = h\left(1-\frac{1}{2c^2}gh - \frac{1}{c^2}u^2\right),\nonumber\\
     f_{1}^{eq} = h\left(\frac{1}{4c^2}gh + \frac{1}{2c}u + \frac{1}{2c^2}u^2\right)\label{eq:equilibria_two},\\
@@ -222,7 +222,7 @@ and appears in the lattice Boltzmann equation (\ref{eq:LBE_two}).
 
 \subsection{Fluid-substrate interactions: the contact angle}\label{subsec:fluid_substrate}
 For the disjoining pressure $\Pi(h)$ we use the following 
-expression\textcolor{black}{\cite{RevModPhys.81.1131, Peschka9275, PhysRevE.92.061002, oronLongscaleEvolutionThin1997}}:
+expression\textcolor{black}{\cite{crasterDynamicsStabilityThin2009, peschkaSignaturesSlipDewetting2019, nesicFullyNonlinearDynamics2015, oronLongscaleEvolutionThin1997}}:
 \begin{equation}\label{eq:disjoin_p}
     \Pi(h) = \kappa(\theta) \left[\left(\frac{h_{\ast}}{h+h_c}\right)^n - \left(\frac{h_{\ast}}{h+h_c}\right)^m\right],
 \end{equation}
@@ -283,7 +283,7 @@ the stochastic term entails a computational overhead of, roughly, $20\%$ of a ty
 The numerical data will be indicated, hereafter, in terms of the dimensionless temperature $\sigma = \sqrt{\frac{k_B T}{\gamma h_0^2}}$, which is set either to $\sigma=0$ (for the athermal dewetting) or to $\sigma = 3.16 \cdot 10^{-3} \equiv \sigma_0$, 
 corresponding to a thermal energy
 of $k_B T = 10^{-7}$ lbu (for the fluctuating dewetting). For the sake of comparison, we remark 
-that such a value lies well within the window $\sigma \in [10^{-3}, 10^{-2}]$, measured in experiments with polymeric and metallic thin films~\cite{PhysRevLett.99.114503,doi:10.1021/la4009784}}.
+that such a value lies well within the window $\sigma \in [10^{-3}, 10^{-2}]$, measured in experiments with polymeric and metallic thin films~\cite{fetzerThermalNoiseInfluences2007,doi:10.1021/la4009784}}.
 
 \subsection{Testing the stochastic term}\label{subsec:validation}
 \begin{figure}
@@ -302,7 +302,7 @@ convenient for the forthcoming discussion, namely:
 \end{equation}
 where $g(\xi) = \frac{\xi^2}{2\xi^2 - \xi^4}$ and the appearance of the system size $L$ stems from the noise amplitude, $\langle |\tilde{\mathcal{N}}(q,t)|^2 \rangle = L$, 
 resulting from discrete Fourier-transforming 
-over a finite length~\cite{PhysRevE.100.023108,PhysRevE.102.053105}. To arrive at (\ref{eq:structure_factor_2}), use was made of the expression (\ref{eq:t0}) for the characteristic time $t_0$
+over a finite length~\cite{zhangMolecularSimulationThin2019,zhangNanoscaleThinfilmFlows2020}. To arrive at (\ref{eq:structure_factor_2}), use was made of the expression (\ref{eq:t0}) for the characteristic time $t_0$
 and we omitted the dependence on $q$ of $S_0(q)$ because, with our initialization, the latter is just a constant, $S_0(q)\equiv S_0$.}
 We measured, then, the spectra $S(q,t)$, at two instants of time, 
 in the early stages of the growth of the instability, for both athermal and fluctuating dewetting on a susbstrate with $\theta=\pi/9$ (and strict no-slip, $\delta=0$).
@@ -347,9 +347,9 @@ the histogram.
 The data from the stochastic simulations ($\sigma = \sigma_0$), instead, show a broadening of 
 the distribution (orange, dot-patterned, histogram and dashed orange curve).
 Adding thermal energy, then, on the one hand, facilitates the system to explore higher energetic states, whereas
-on the other hand it reduces the coarsening time scales~\cite{Grun2006}: this is reflected in the tails of the distribution for 
+on the other hand it reduces the coarsening time scales~\cite{grunThinFilmFlowInfluenced2006}: this is reflected in the tails of the distribution for 
 both small and large values of $h$, respectively.
-These findings are in agreement with what was reported by Nesic et al.~\cite{PhysRevE.92.061002}.
+These findings are in agreement with what was reported by Nesic et al.~\cite{nesicFullyNonlinearDynamics2015}.
 \begin{figure}
     \centering
     \includegraphics[width = 0.75\textwidth]{graphics/Correct_t0_normed_delta_h_evo_seminar.pdf}
@@ -618,9 +618,9 @@ indeed be detected, there are several higher peaks at $n q_{\theta}$, with a glo
 \textcolor{black}{We have presented a lattice Boltzmann method for the simulation of the stochastic thin-film equation. 
 The method has been tested against exact results on the height fluctuations spectrum of a dewetting film.  
 We observed, in agreement with previous studies, that the inclusion of thermal fluctuations accelerates the dewetting and reduces 
-the rupture times \cite{Grun2006}.
+the rupture times \cite{grunThinFilmFlowInfluenced2006}.
 Furthermore, we have shown that the distribution of droplet sizes measured in the stochastic simulations 
-is more spread out than its deterministic counterpart \cite{PhysRevE.92.061002}. \\
+is more spread out than its deterministic counterpart \cite{nesicFullyNonlinearDynamics2015}. \\
 A central contribution of our work concerned the study of the role of the liquid-substrate interactions, parametrised by the contact angle $\theta$, on the dewetting process, with and without thermal fluctuations.}
 \textcolor{black}{We reported, and justified theoretically, that the ratio of the deterministic and stochastic rupture times
 decreases monotonically with the contact angle, though being always larger than one

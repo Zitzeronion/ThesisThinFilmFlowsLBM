@@ -13,7 +13,7 @@ Finally, we show and explain theoretically how the film rupture times, droplet s
 
 \section{Introduction} Wet surfaces and droplets are part of our every-day experience and of numerous industrial processes including coating, tribology, painting and printing, to name but a few~\cite{gross1980fluid,szeri2010fluid,DERYCK1998278,doi:10.1146/annurev.fluid.31.1.347,dasilvasobrinhoStudyDefectsUltrathin1999,singh2010inkjet,jo2009evaluation,Wijshoff2010}. 
 Moreover, the continuously growing technological interest for lab-on-a-chip devices~\cite{C6LC00387G,Focke} as well as for printable electronics~\cite{Kim_2005, Luechinger_2008} and printable photovoltaics~\cite{Brabec2001,RH20}, whose efficiency relies crucially on a precise control of material deposition upon (de-)wetting of liquid films, drew the attention to applications where the substrate is adaptive or switchable, i.e. it is not inert but responds dynamically to external stimuli or to the evolution of the coating liquid film itself~\cite{ButtEtAl_Langmuir2018,GuoGuo_RSCAdv2016}. 
-Several realizations of switchable and adaptive substrates have been proposed~\cite{LiuChem2005, XiCSR2010}, involving smart materials such as polymer brushes~\cite{CohenStuartEtAl_NatMat2010,ayres2007stimuli,YongEtAl_Mat2018}, thermal-responsive hydrogels~\cite{ChenEtAl_SM2010}, light-responsive molecules and microstructures~\cite{IchimuraEtAl_Science2000,DelormeEtAl_Langmuir2005,OscuratoEtAl_AAMI2017} or processes such as electrowetting~\cite{MugeleEtAl_JPCM2005}.
+Several realizations of switchable and adaptive substrates have been proposed~\cite{LiuChem2005, XiCSR2010}, involving smart materials such as polymer brushes~\cite{CohenStuartEtAl_NatMat2010,ayres2007stimuli,YongEtAl_Mat2018}, thermal-responsive hydrogels~\cite{ChenEtAl_SM2010}, light-responsive molecules and microstructures~\cite{ichimuraLightDrivenMotionLiquids2000,DelormeEtAl_Langmuir2005,OscuratoEtAl_AAMI2017} or processes such as electrowetting~\cite{MugeleEtAl_JPCM2005}.
 Probably the simplest, yet non-trivial, modelling of a switchable substrate can be realized by a space and time dependent wettability pattern~\cite{D0SM02082F}. 
 While a consistent body of theoretical/computational work has been devoted to processes on static heterogeneous substrates, though, the time dependent case is still almost unexplored, with few relevant exceptions focusing on single droplet spreading and sliding~\cite{D0SM02082F,GrawitterStark2,ThieleHartmann} or limited to an analysis of the linear regime~\cite{suman2006dynamics}.
 
@@ -23,11 +23,11 @@ We show that, by tuning the rate of change (the ``speed'') of the underlying pat
 We introduce a control parameter that discriminates whether rivulets or just droplets (as in the static situation)
 can be observed and we propose a phenomenological argument that justifies the logarithmic dependence of the rivulets life time on the pattern speed.
 
-\section{Method} In order to simulate the dewetting dynamics on patterned, ``switchable'', substrates, we integrate numerically the thin-film equation~\cite{ReynoldsLubr,oronLongscaleEvolutionThin1997,RevModPhys.81.1131} 
+\section{Method} In order to simulate the dewetting dynamics on patterned, ``switchable'', substrates, we integrate numerically the thin-film equation~\cite{reynoldsTheoryLubricationIts1886,oronLongscaleEvolutionThin1997,crasterDynamicsStabilityThin2009} 
 \begin{equation}\label{eq:thinfilm}
     \partial_t h(\mathbf{x},t) = \nabla\cdot\left(M_{\delta}(h)\nabla p(\mathbf{x},t)\right),
 \end{equation}
-by means of a recently developed method, based on a lattice Boltzmann (LB) \\scheme~\cite{PhysRevE.100.033313,PhysRevE.104.034801, Zitz2022}.
+by means of a recently developed method, based on a lattice Boltzmann (LB) \\scheme~\cite{PhysRevE.100.033313,zitzLatticeBoltzmannSimulations2021, Zitz2022}.
 Eq.~(\ref{eq:thinfilm}) describes, in a lubrication approximation spirit, the evolution of the height field (film thickness) $h(\mathbf{x},t)$, denoting the location of the liquid/air interface. The mobility function 
 $M_{\delta}(h) = \frac{2h^3 + 6\,\delta\, h^2 + 3\delta^2h}{6\mu}$
 depends on the velocity boundary condition at the substrate, parameterized by an effective slip length $\delta$
@@ -39,7 +39,7 @@ and the pressure reduces to the form involving only the Laplacian of the thickne
 field~\cite{Benet2014,alizadeh_pahlavan_cueto-felgueroso_hosoi_mckinley_juanes_2018}.}, 
 where $\gamma$ is the surface tension.
 The disjoining pressure $\Pi$ can be seen as (minus) the derivative, with respect to the film thickness, of an effective interfacial potential.
-As such, it contains the information on the liquid/solid and solid/gas interactions and, hence, on the wettability, which is parameterized in terms of the contact angle $\theta$~\cite{RevModPhys.81.739, SCHWARTZ1998173}. 
+As such, it contains the information on the liquid/solid and solid/gas interactions and, hence, on the wettability, which is parameterized in terms of the contact angle $\theta$~\cite{bonnWettingSpreading2009, schwartzSimulationDropletMotion1998}. 
 The expression adopted for $\Pi$ is
 \begin{equation}\label{eq:disjoinpressure}
 \Pi(h,\theta) = \frac{2\gamma}{h_{\ast}}(1-\cos(\theta(\mathbf{x},t)))
@@ -48,10 +48,10 @@ The expression adopted for $\Pi$ is
 where $f(\xi)=\xi^{-3} - \xi^{-2}$ and $h_{\ast}$ is the height at which the disjoining pressure vanishes and sets the precursor layer thickness~\footnote{Expressions of 
 the general form $\Pi(h) = \gamma(1-\cos \theta)(n-1)(m-1)/(n-m)((h_{\ast}/h)^n - (h_{\ast}/h)^m)/h_{\ast}$
 are frequently found in the literature, with various combination of exponents $(n,m)$ ($n>m$), depending
-on the type of interactions among fluid molecules and between fluid and substrate~\cite{SCHWARTZ1998173,Mitlin,Teletzke}. A common choice, for instance, is the pair $(9,3)$, which 
+on the type of interactions among fluid molecules and between fluid and substrate~\cite{schwartzSimulationDropletMotion1998,Mitlin,Teletzke}. A common choice, for instance, is the pair $(9,3)$, which 
 can be derived from molecular interactions of Lennard-Jones type. Here, the use of the $(3,2)$ pair is motivated mainly by the computational advantage of keeping the characteristic dewetting time 
 shorter. We have run also a single case ($\lambda=256 h_0$ and $\Gamma=1.5$) with $(9,3)$ and observed that 
-the dynamics remains essentially the same, but for a shift in the time scale (see also~\cite{PhysRevE.104.034801})}.
+the dynamics remains essentially the same, but for a shift in the time scale (see also~\cite{zitzLatticeBoltzmannSimulations2021})}.
 The time variation of the patterned substrate then enters the model precisely through the disjoining pressure, by making the contact angle space and time dependent, i.e. $\theta = \theta(\mathbf{x},t)$.
 We decorate the substrate with a checkerboard pattern, a common choice that generalizes the broken homogeneity of the stripes to two 
 directions~\cite{KarguptaLangmuir2003,Jalali2018,Nagayama2020,Das2020}.
@@ -60,12 +60,12 @@ In particular, we employ the sinusoidal form
    \!\! \theta(\mathbf{x},t) = \theta_0 + \delta\theta\left[\sin\left(q_{\theta} (x+v_{\theta x}t)\right)\sin\left(q_{\theta}(y+v_{\theta y}t)\right)\right],\! 
 \end{equation}
 where $q_{\theta} = 2\pi/\lambda$, i.e.~the pattern evolves in time as a plane wave.
-A possible laboratory experiment for the here mentioned approach consists of a light switchable substrate with a thin film cast on it~\cite{becker2003complex, IchimuraEtAl_Science2000}. 
+A possible laboratory experiment for the here mentioned approach consists of a light switchable substrate with a thin film cast on it~\cite{beckerComplexDewettingScenarios2003, IchimuraEtAl_Science2000}. 
 The external stimulus, our moving pattern, can be realized, e.g., by using a digital multimirror device (DMD)~\cite{doi:10.1021/jp301092y,doi:10.1126/science.aax8760}.
 We fix the velocity direction to one diagonal, namely $\mathbf{v}_{\theta} = (v_{\theta x},v_{\theta y}) = v_{\theta}(1/\sqrt{2},-1/\sqrt{2})$ (we will return later on the importance of this choice), and we set $\theta_0 = 20^{\circ}$ and $\delta\theta=10^{\circ}$~\footnote{Notice that, since a typical velocity is such that $v_{\theta} \Delta t \ll \Delta x$ (in one LB time step $\Delta t$ the wave would travel a distance much smaller than a lattice spacing $\Delta x$),
 the time update needs to be interpreted in an integer part sense, that is the pattern is shifted by one $\Delta x$ every $1/v_{\theta x}$ time steps (and equivalently in the $y$-direction).}.
-Lengths and time scales will be expressed, respectively, in units of the mean film height, $h_0$ (which is constant in time, due to mass conservation), and of $t_0 = \frac{3\mu}{\gamma h_0^3 q_0^4}$, the inverse growth rate of the most unstable mode, whose wavenumber is $q_0$, of a spinodally dewetting film \cite{Mecke_2005}. On a uniform substrate, with constant contact angle $\theta^{(u)}$, the wavenumber reads 
-$(q^{(u)}_0)^2 = h_{\ast}^{-2}(1-\cos \theta^{(u)})f^{\prime}(h_0/h_{\ast})$ \cite{Mecke_2005,PhysRevE.100.023108}. In our patterned case, we define 
+Lengths and time scales will be expressed, respectively, in units of the mean film height, $h_0$ (which is constant in time, due to mass conservation), and of $t_0 = \frac{3\mu}{\gamma h_0^3 q_0^4}$, the inverse growth rate of the most unstable mode, whose wavenumber is $q_0$, of a spinodally dewetting film \cite{meckeThermalFluctuationsThin2005}. On a uniform substrate, with constant contact angle $\theta^{(u)}$, the wavenumber reads 
+$(q^{(u)}_0)^2 = h_{\ast}^{-2}(1-\cos \theta^{(u)})f^{\prime}(h_0/h_{\ast})$ \cite{meckeThermalFluctuationsThin2005,zhangMolecularSimulationThin2019}. In our patterned case, we define 
   $q_0^2=h_{\ast}^{-2}(1-\cos\theta_0)f^{\prime}(h_0/h_{\ast})$. Correspondingly, we choose as a velocity scale $v_0 = \lambda_s/t_0$, where
 $\lambda_s = 2\pi/q_0$.
 \begin{figure}
@@ -80,16 +80,16 @@ $\lambda_s = 2\pi/q_0$.
 To give a flavour of how to compare with actual experimental systems, let us notice
 first that the expression of $t_0$ depends on the disjoining pressure (through its dependence 
  $q_0 = \sqrt{\frac{1}{2\gamma} \Pi^{\prime}(h_0)}$) and contains, therefore, energetic details, namely 
- the Hamaker constant $A_H$. Consider, for instance, the problem studied in \cite{becker2003complex}: the dewetting of a polystyrene film of thickness $h_0 \approx 4 \, \text{nm}$ deposited on a silicon 
+ the Hamaker constant $A_H$. Consider, for instance, the problem studied in \cite{beckerComplexDewettingScenarios2003}: the dewetting of a polystyrene film of thickness $h_0 \approx 4 \, \text{nm}$ deposited on a silicon 
 dioxide substrate, where $A_H  = 2.2 \times 10^{-20} \, \text{J}$ and 
 $\gamma = 0.03 \, \text{N}/\text{m}$. Neglecting the short range part of the interface potential
-(such that $\Pi(h)= - \frac{A_H}{6\pi h^3}$)~\cite{Mecke_2005,becker2003complex}, one gets 
+(such that $\Pi(h)= - \frac{A_H}{6\pi h^3}$)~\cite{meckeThermalFluctuationsThin2005,beckerComplexDewettingScenarios2003}, one gets 
 $q_0^2 \approx \frac{A_H}{4\pi \gamma h_0^4} \approx 2.5 \times 10^{-4} \, \text{nm}^{-2}$.
-The characteristic time of the growth of the instability for these experiments, then, reads \cite{PhysRevLett.99.114503} (the dynamic viscosity of polystyrene is 
+The characteristic time of the growth of the instability for these experiments, then, reads \cite{fetzerThermalNoiseInfluences2007} (the dynamic viscosity of polystyrene is 
 $\mu = 1.2 \times 10^4 \, \text{Pa} \cdot \text{s}$) $t_0 = \frac{3\mu}{\gamma h_0^3 q_0^4} \approx 300 \, \text{s}$ and it can be seen that indeed film rupture occurs within time 
-scales of the order of $t_0$ ($\approx 2 t_0$) \cite{becker2003complex}, as in our 
+scales of the order of $t_0$ ($\approx 2 t_0$) \cite{beckerComplexDewettingScenarios2003}, as in our 
 simulation for the largest pattern wavelength, $\lambda = L$ (see also our previous work
-with homogeneous substrates~\cite{PhysRevE.104.034801}).
+with homogeneous substrates~\cite{zitzLatticeBoltzmannSimulations2021}).
 %%%%
 All our simulations are run on a bi-periodic square domain of size $L \times L$ with 
 $L/h_0 = 512 $. The numerical values in lattice Boltzmann units of the 
@@ -97,7 +97,7 @@ mean film thickness, dynamics viscosity and surface tension are, respectively, $
 and $\gamma=0.01$.
 To regularize the contact line divergence~\cite{huh1971hydrodynamic} we use a precursor layer thickness $h_{\ast}/h_0=0.07$ and a slip length $\delta/h_0 = 1$, 
 a value which lies
-within the weak/intermediate slip regime~\cite{Peschka9275,fetzer2007quantifying, munch2005lubrication} (we have tried also a value four times smaller, without observing 
+within the weak/intermediate slip regime~\cite{peschkaSignaturesSlipDewetting2019,fetzer2007quantifying, munchLubricationModelsSmall2005} (we have tried also a value four times smaller, without observing 
 any major qualitative change in the results).
 The liquid film is initialized with a height field slightly perturbed around the mean value $h_0$, i.e. $h(\mathbf{x},0) = h_0 \left[1 + 0.1 \left(\sin\left(\frac{2\pi x}{L}\right)\sin\left(\frac{2\pi y}{L}\right)\right)\right]$.
 Various wavelengths, in the range $\lambda/h_0 \in [64, 512]$, and velocities,
@@ -208,7 +208,7 @@ Moreover, the larger $\Gamma$, the more stable the rivulets are; in other words,
 The rivulet itself is, in fact, prone to dewetting, with the liquid accumulating over patches around contact angle minima. However, as the pattern moves, the instability is tamed due to configurations whereby higher contact angle regions underlie height field maxima, thus tending to revert the fluid flow.
 Heuristically speaking, this means that, if we evaluate $\Delta h(t)$ restricted on the rivulet axis, this should grow exponentially (with a certain growth rate $\alpha \propto t_0$) only when the system is in the unstable configuration. Namely, $\Delta h(t)/\Delta h_0 \propto e^{\alpha t}$ (see inset of Fig.~\ref{fig:stab_ligs_lam2}) with a prefactor proportional to the time spent by the rivulet in such a configuration, which goes as $\sim \lambda/v_{\theta}$, therefore 
 $\Delta h(t)/\Delta h_0 \sim \alpha (\lambda/v_{\theta})e^{\alpha t}$. 
-The rivulet life-time can be seen as the rupture time of the structure along its axis, hence such that $\Delta h (\tau_{\text{riv}}) \sim h_0$ \cite{PhysRevE.104.034801}, which yields
+The rivulet life-time can be seen as the rupture time of the structure along its axis, hence such that $\Delta h (\tau_{\text{riv}}) \sim h_0$ \cite{zitzLatticeBoltzmannSimulations2021}, which yields
 \begin{equation}\label{eq:rivlt}
     \tau_{\text{riv}} \sim \alpha \log(v_{\theta}) \propto t_0 \log(\Gamma). 
 \end{equation}
@@ -220,7 +220,7 @@ external stimuli (a light emitter).
 An ideal candidate could be a digital multimirror device (DMD).
 This technology has effectively been used for thin film experiments and additive manufacturing~\cite{doi:10.1021/jp301092y, doi:10.1126/science.aax8760}, it allows for fast temporal modulations of the optical signal (with frequencies up to $\approx 16 \, \text{kHz}$)
 with spatial resolution of $\approx 10 \times 10 \, \mu \text{m}^2$ (the size of a pixel).
-Considering as a reference, for instance, the system studied in ~\cite{becker2003complex,PhysRevLett.99.114503}, namely a $\sim 4 \, \text{nm}$ thick film 
+Considering as a reference, for instance, the system studied in ~\cite{beckerComplexDewettingScenarios2003,fetzerThermalNoiseInfluences2007}, namely a $\sim 4 \, \text{nm}$ thick film 
 of polystyrene deposited on an oxidized silicon wafer,  
 we evaluate the retraction speed 
 $U_{\Theta} = \frac{\Theta^3 \gamma}{9 \mu}$ to be 
