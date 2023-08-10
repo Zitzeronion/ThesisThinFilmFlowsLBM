@@ -37,7 +37,7 @@ Mayonnaise is an emulsion that is created by vigorously stirring an oil, egg yol
 The stirring breaks up the oil phase in small dispersed droplets.
 Proteins and additives like mustard stabilize this state and keep the oil droplets from coalescing, which has a significant effect on the rheology of this mixture~\cite{harrison1985factors, DEPREE2001157}.
 
-More generally, droplet coalescence has attracted much attention in the past two decades, see refs.~\cite{eggers1999coalescence, duchemin_eggers_josserand_2003, PhysRevLett.95.164503, PhysRevLett.106.114501, doi:10.1063/1.4828721}. 
+More generally, droplet coalescence has attracted much attention in the past two decades, see refs.~\cite{eggersCoalescenceLiquidDrops1999, duchemin_eggers_josserand_2003, aartsHydrodynamicsDropletCoalescence2005, PhysRevLett.106.114501, doi:10.1063/1.4828721}. 
 The driving forces during coalescence are, the minimization of surface area and the minimization of interfacial curvature. 
 These arguments hold true for scenarios beyond simple Newtonian liquids, in fact they are applicable to liquid lens coalescence~\cite{PhysRevLett.124.194502} or coalescence of quasi 2D liquids~\cite{klopp2020self, doi:10.1021/acs.langmuir.0c02139}.
 What is common to the above-mentioned examples is the equilibrium state, which is one where the two droplets have coalesced.
@@ -49,7 +49,7 @@ What has been known for some time, however, is that a surface tension gradient i
 They performed experiments with two drops from different but miscible liquids, therefore having a sharp surface tension gradient from one drop to the other.
 Bocia and Bestehorn showed non-coalescence of droplets with numerical simulations~\cite{PhysRevE.82.036312, borcia2011coalescence}.
 The clean formulation and derivation was later done by Karpitschka et al.~\cite{PhysRevLett.109.066103}, as they identify an effective Marangoni flow that stabilizes the two droplet system.
-We revisit that problem with numerical simulations using a lattice Boltzmann method that is based on the thin film equation~\cite{PhysRevE.100.033313}.
+We revisit that problem with numerical simulations using a lattice Boltzmann method that is based on the thin film equation~\cite{zitzLatticeBoltzmannMethod2019}.
 First, we move to the regime where the droplets become tiny and the disjoining pressure can no longer be neglected.
 Second, we address the impact of the surface tension beyond the reduction to its absolute contrast.
 We ask the straightforward question, if the concrete function of $\gamma(x)$ can turn non-coalescing states into coalescing ones.
@@ -75,7 +75,7 @@ Applying this approximation to the Navier-Stokes equation yields the thin film e
     \partial_t h = \partial_x \left(\frac{h^3}{3\mu}\partial_x p\right),
 \end{equation}
 where $\frac{h^3}{3\mu}$ is the mobility $M(h)$\footnote{$m(h) = h^3/3\mu$ is true only for a no-slip velocity boundary condition.}, $h(x,t)$ is the thickness of the film at time $t$ and position $x$, $\mu$ is the liquid's viscosity, and $p$ it's pressure.
-The pressure accounts for both the surface tension and the correct fluid substrate behavior (wetting)~\cite{PhysRevE.100.033313}.
+The pressure accounts for both the surface tension and the correct fluid substrate behavior (wetting)~\cite{zitzLatticeBoltzmannMethod2019}.
 We therefore write the pressure as
 \begin{equation}\label{eq:pressure_five}
     p = \gamma \partial_x^2 h + \Pi(h),
@@ -116,12 +116,12 @@ They appear as well when two different but miscible liquids come into contact wi
 Eq.~(\ref{eq:thin_with_marangoni}) defines the dynamics of the system we are interested in.
 Before dealing with the full complexity, we take a step back and set $\partial_x\gamma = 0$.
 In this case, we know that the two touching droplets will coalesce.
-Following the argumentation of Riegler, Lazar and Eddie et al.~\cite{doi:10.1021/la800630w, PhysRevLett.111.144502},
+Following the argumentation of Riegler, Lazar and Eddie et al.~\cite{doi:10.1021/la800630w, eddiInfluenceDropletGeometry2013},
 \begin{equation}\label{eq:cap_pressure}
     P_{\text{cap.}} \sim\gamma\kappa \sim \frac{\gamma}{h_0},
 \end{equation}
 where $P_{\text{cap.}}$ is the capillary pressure and $\kappa$ is the curvature of the liquid vapor interface.
-Upon rescaling, Eddi et al. found in their analytical analysis that $h_0$ is the only relevant scale, justifying therefore $\kappa \sim 1/h_0$~\cite{PhysRevLett.111.144502}. 
+Upon rescaling, Eddi et al. found in their analytical analysis that $h_0$ is the only relevant scale, justifying therefore $\kappa \sim 1/h_0$~\cite{eddiInfluenceDropletGeometry2013}. 
 The resulting flow towards the bridge induces an inertial or ``Bernoulli'' pressure
 \begin{equation}\label{eq:P_Bernulli}
     P_{\text{iner.}} \sim \rho\left(\frac{h_0}{t}\right)^2.
@@ -130,7 +130,7 @@ Balancing Eqs.~(\ref{eq:cap_pressure}-\ref{eq:P_Bernulli}) and solving for $h_0$
 \begin{equation}\label{eq:coal_powerlaw}
     h_0(t) \sim t^{2/3},
 \end{equation}
-for contact angles below $\theta < \pi/2$~\cite{PhysRevLett.111.144502, keller2002breaking}.
+for contact angles below $\theta < \pi/2$~\cite{eddiInfluenceDropletGeometry2013, keller2002breaking}.
 Recently, a similar growth law for the coalescence of low viscosity liquid lenses has been experimentally observed and theoretically validated, see Hack et al.~\cite{PhysRevLett.124.194502}.
 
 The addition of a surface tension gradient alters the pressure balance.
@@ -178,7 +178,7 @@ We therefore assume that the derivative of the disjoining pressure has an effect
     \label{fig:gammas}
 \end{figure}
 We use a computational method, namely the lattice Boltzmann method (LBM), to iteratively solves Eq.~(\ref{eq:thin_with_marangoni}).
-The details of the method can be found in the App.~\ref{app:two} and in the references~\cite{PhysRevE.100.033313, zitzLatticeBoltzmannSimulations2021}.
+The details of the method can be found in the App.~\ref{app:two} and in the references~\cite{zitzLatticeBoltzmannMethod2019, zitzLatticeBoltzmannSimulations2021}.
 
 In addition to the basic lattice Boltzmann algorithm, we require and another force term $F_{\gamma}$ to account for the Marangoni contribution.
 Similarly to earlier work on thermal fluctuations~\cite{zitzLatticeBoltzmannSimulations2021} we construct a force term and match it to the last term in Eq.~\ref{eq:thin_with_marangoni}, 
@@ -196,7 +196,7 @@ With the addition of this force term, our LBM is a numerical algorithm for the s
 \end{cases}
 \end{equation}
 
-Performing the limits discussed in ref.~\cite{PhysRevE.100.033313, zitzLatticeBoltzmannSimulations2021}, this system becomes an effective solver for Eq~(\ref{eq:thin_with_marangoni}).
+Performing the limits discussed in ref.~\cite{zitzLatticeBoltzmannMethod2019, zitzLatticeBoltzmannSimulations2021}, this system becomes an effective solver for Eq~(\ref{eq:thin_with_marangoni}).
 Due to the inclusion of $\Pi(h)$, this method allows us to test the non-coalescence criteria for smaller scales, well below $1mm$ droplet diameter~\cite{doi:10.1021/la500459v, karpitschka2014sharp}.
 
 For the spatially resolved surface tension, $\gamma(x)$ we use three different functions, as shown in Fig.~\ref{fig:gammas}.
@@ -241,7 +241,7 @@ The surface tension is evaluated during the pressure calculation Eqs.~(\ref{eq:p
     \label{fig:final_state}
 \end{figure*}
 All numerical experiments start with the same initial condition, two barely overlapping circular segments (equivalent to spherical caps in three dimensions) as illustrated in Fig.~\ref{fig:schematics}.
-We use the radius of the initial droplets $R_0$ to normalize length scales~\cite{PhysRevLett.111.144502, PhysRevLett.95.164503}.
+We use the radius of the initial droplets $R_0$ to normalize length scales~\cite{eddiInfluenceDropletGeometry2013, aartsHydrodynamicsDropletCoalescence2005}.
 As a characteristic time scale we use the inertio-capillary time, 
 \begin{equation}\label{eq:inertio-cap-time}
     \tau = \sqrt{\frac{\rho R_0^3}{\gamma}}.
@@ -323,7 +323,7 @@ The motivation for this relation is as follows
 \begin{equation}\label{eq:velsim1}
     \frac{\gamma}{\mu} \sim \frac{h_0}{2\mu}\partial_x\gamma,
 \end{equation}
-where $\gamma/\mu$ is a fluid specific capillary velocity and the left hand side is due to Marangoni~\cite{PhysRevLett.95.164503, doi:10.1021/la971292t}.
+where $\gamma/\mu$ is a fluid specific capillary velocity and the left hand side is due to Marangoni~\cite{aartsHydrodynamicsDropletCoalescence2005, doi:10.1021/la971292t}.
 Rearranging the above similarity to have the bridge height on the left yields
 \begin{equation}\label{velsim2}
     h_0 \sim \frac{2w\gamma}{\Delta\gamma},

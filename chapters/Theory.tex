@@ -27,9 +27,9 @@ As long as there is no force applied to the tube the toothpaste does not flow.
 Even the acceleration due gravity when pointing the tube towards the ground does not exert enough force to generate a flow.
 In contrast to Newtonian liquids those liquids have a different response function to shear, they can be addressed as \textit{power law} fluids.
 While the phenomenology of these fluids, e.g. shear thinning or thickening, is very interesting and important in many industrial applications it is beyond the scope of this work. 
-That said, in Chapter~\ref{chapter:second_paper} an extension towards more complex flows is presented. 
+That said, in Chap.~\ref{chapter:second_paper} an extension towards more complex flows is presented. 
 Instead of however changing the shear response we model thermal fluctuations to approximate the stochastic thin film equation (STF).
-In fact, the step to derive an extension to our approach are nicely summarized in Chapter~\ref{chapter:second_paper}. 
+In fact, the step to derive an extension to our approach are nicely summarized in Chap.~\ref{chapter:second_paper}. 
 It should serve as a guideline for further features, such as viscoelasticity for non-Newtonian liquids~\cite{bouchutNewModelShallow2013}. 
 
 Knowing what a fluid is and taking into account the conservation of mass and momentum it is possible to derive the Navier-Stokes equation. 
@@ -62,7 +62,7 @@ Collecting these terms and writing down an equation for the momentum we have,
 \end{equation}
 where $\vec{u}\vec{u}$ is used to denote the outer product
 \begin{equation}
-    \mathbf{u}\mathbf{u} = \begin{bmatrix}
+    \vec{u}\vec{u} = \begin{bmatrix}
     u_x u_x & u_x u_y & u_x u_z \\
     u_y u_x & u_y u_y & u_y u_z \\
     u_z u_x & u_z u_y & u_z u_z
@@ -70,13 +70,13 @@ where $\vec{u}\vec{u}$ is used to denote the outer product
 \end{equation}
 Using the divergence theorem again to reformulate everything in terms of volume integrals and dropping the integration the above equation becomes
 \begin{equation}\label{eq:navier_stokes_2}
-    \partial_t(\rho\vec{u}) = -\vec{\nabla}\cdot(\rho\vec{u}\vec{u}) - \nabla p + \vec{F}.
+    \partial_t(\rho\vec{u}) = -\vec{\nabla}\cdot(\rho\vec{u}\vec{u}) - \vec{\nabla} p + \vec{F}.
 \end{equation}
 This however is not yet the Navier-Stokes equation, in fact this is the Euler equation~\cite{batchelorIntroductionFluidDynamics1967}.
 In the derivation there is one term missing, because the momentum of a fluid can also change due to internal friction, or put simply, due to viscosity.
 These viscous contributions are collected in the viscous stress tensor $\hat{\sigma}$ as
 \begin{equation}\label{eq:stress_tens}
-    \hat{\sigma}_{ij} = \mu\left(\frac{\partial u_i}{\partial x_j} + \frac{\partial u_j}{\partial x_i}\right) + \lambda\delta_{ij}\frac{\partial u_k}{\partial x_k},
+    \hat{\sigma}_{\alpha\beta} = \mu\left(\frac{\partial u_{\alpha}}{\partial x_{\beta}} + \frac{\partial u_{\beta}}{\partial x_{\alpha}}\right) + \lambda\delta_{\alpha\beta}\frac{\partial u_{\gamma}}{\partial x_{\gamma}},
 \end{equation}
 This tensor introduces a lot of the complexity of the Navier-Stokes equation as in principle neither $\mu$ nor $\lambda$ need to be constants and in fact they are tensors themselves.
 
@@ -87,7 +87,7 @@ A fluid element can be rotated similar to a solid body, but it can also be stret
 In contrast to a solid body a fluid element is allowed to deform.
 Working out these constraints we find that the pressure has to be a diagonal term and thus
 \begin{equation}\label{eq:total_stress}
-    \tilde{\sigma}_{ij} = - p \delta_{ij} + \mu\left(\frac{\partial u_i}{\partial x_j} + \frac{\partial u_j}{\partial x_i}\right) + \lambda\delta_{ij}\frac{\partial u_k}{\partial x_k}.
+    \tilde{\sigma}_{\alpha\beta} = - p \delta_{\alpha\beta} + \mu\left(\frac{\partial u_{\alpha}}{\partial x_{\beta}} + \frac{\partial u_{\beta}}{\partial x_{\alpha}}\right) + \lambda\delta_{\alpha\beta}\frac{\partial u_{\gamma}}{\partial x_{\gamma}}.
 \end{equation}
 Now to get from the Euler equation (Eq.~(\ref{eq:navier_stokes_2})) to the Navier-Stoke we add the viscous stress tensor and rearrange terms,
 \begin{equation}\label{eq:navier_stokes_3}
@@ -137,11 +137,11 @@ The equation of state for an ideal gas was born from theoretical assumptions, e.
 \end{equation}
 where $R$ is the specific gas constant and $T$ is the temperature.
 Having a well defined state in the thermodynamical sense allows to relate pressure and density and therefore to close the system of equations.
-The equation of state for an ideal gas, see Eq.~(\ref{eq:eq_of_state}), will be revisited in Chapter~\ref{chapter:method} where we discuss the lattice Boltzmann method.
+The equation of state for an ideal gas, see Eq.~(\ref{eq:eq_of_state}), will be revisited in Chap.~\ref{chapter:method} where we discuss the lattice Boltzmann method.
 
 The Navier-Stokes equation, see Eqs.~(\ref{eq:cont_3}, \ref{eq:navier_stokes_4}), offers a general framework to deal with fluid dynamics problems.
 In the case of an incompressible non turbulent flow we have a solid understanding of the velocity field.
-For compressible flows with developed turbulence on the other hand we still miss fundamental knowledge, as mentioned in Chapter~\ref{chapter:intro}.
+For compressible flows with developed turbulence on the other hand we still miss fundamental knowledge, as mentioned in Chap.~\ref{chapter:intro}.
 This missing information is the reason that the automotive as well as aviation industry invests heavily in both real world experiments and CFD. 
 For the concrete example of thin film flows, however, there is no need to ``solve'' the Navier-Stokes equation.
 That is why in the next two sections different theories that build upon the Navier-Stokes are introduced.
@@ -149,7 +149,7 @@ Both of these theories using a scaling argument to severely simplify the resulti
 
 \section{Shallow Water Theory}
 \label{sec:theory_shallow_water}
-Solving the Navier-Stokes equation for the problems discussed in Chapters~\ref{chapter:fourth_paper}-\ref{chapter:third_paper} is not needed.
+Solving the Navier-Stokes equation for the problems discussed in Chaps.~\ref{chapter:fourth_paper}-\ref{chapter:third_paper} is not needed.
 Looking at Figs.~\ref{fig:examples_intro}-\ref{fig:morph_transition} one can identify that the height or thickness of the fluid layer is much smaller than the horizontal extension of the substrate.
 This statement together with some more approximations allows to derive another system from the Navier-Stokes equation and the continuity equation which is called the shallow water or Saint-Venant equations~\cite{bTheorieMouvementNonpermanent1871}.
 
@@ -197,8 +197,8 @@ Of course, the model can be refined with a so called multi layer approach~\cite{
 
 Third, the horizontal velocity of the fluid has to vanish at the ``solid'' ground, or in terms of Fig.~\ref{fig:shallow_water_drawing} looking down from the free surface at $-h(x,y)$.
 Although there is a viscosity associated with the fluid, friction with the bottom topography is the dominating dissipation channel.
-This kind of boundary condition has been introduced in Chapter~\ref{chapter:intro} is called \textbf{no-slip} boundary condition~\cite{richardsonNoslipBoundaryCondition1973, degennesFluidWallSlippage2002, salmonLatticeBoltzmannMethod1999}.
-While this may seem counterintuitive because fluid has no problem to flow over yet dry surfaces, modelling wetting or the wet-dry transition is a complex task, as seen later in this chapter and in Chapter~\ref{chapter:first_paper}.
+This kind of boundary condition has been introduced in Chap.~\ref{chapter:intro} is called \textbf{no-slip} boundary condition~\cite{richardsonNoslipBoundaryCondition1973, degennesFluidWallSlippage2002, salmonLatticeBoltzmannMethod1999}.
+While this may seem counterintuitive because fluid has no problem to flow over yet dry surfaces, modelling wetting or the wet-dry transition is a complex task, as seen later in this chapter and in Chap.~\ref{chapter:first_paper}.
 After all, a theoretical model which is defined as a set of partial differential equations cannot account for the true complexity of nature~\cite{scrivenPhysicsApplicationsDIP1988}.
 We come back to the idea of the no-slip boundary condition in Sec.~\ref{sec:thin_films}.
 
@@ -484,7 +484,7 @@ The generalization of these equations towards a second horizontal dimension is s
 \end{align}
 where $\mathbf{u} = (u_x, u_y)$ and the only unknown $\mathcal{S}$ is a yet undefined source term. 
 The system Eqs.~(\ref{eq:shallow_water_01}-\ref{eq:shallow_water_02}) concludes the shallow water model. 
-In Chapter~\ref{chapter:first_paper} we show how this translates into a numerical solver.
+In Chap.~\ref{chapter:first_paper} we show how this translates into a numerical solver.
 
 Following in this chapter are two more sections.
 The next section and the main point of interest of this work is a short and phenomenological oriented derivation of the thin film model.
@@ -626,7 +626,7 @@ To account for inertial effects the scaling, Eq.~(\ref{eq:thin_film_scaling}), m
 For example the pressure scaling would change to $p = \rho U^2\tilde{p}$~\cite{crasterDynamicsStabilityThin2009}.
 
 In the shallow water section, we quickly reduced the problem to two dimensions (one horizontal and one vertical).
-Here we keep the second horizontal dimension ($\tilde{y}, \tilde{u}_y$), because most numerical experiments in Chapters~\ref{chapter:fourth_paper}-\ref{chapter:third_paper} are computed in a two dimensional domain. 
+Here we keep the second horizontal dimension ($\tilde{y}, \tilde{u}_y$), because most numerical experiments in Chaps.~\ref{chapter:fourth_paper}-\ref{chapter:third_paper} are computed in a two dimensional domain. 
  
 The first step in the derivation is to insert the dimensionless variables into the continuity equation, Eq.~(\ref{eq:incomp})
 \begin{equation}\label{eq:cont_thin_film_1}
@@ -763,9 +763,9 @@ Assuming the interface is not accelerated (e.g. in case of dewetting) the shear 
 \end{equation}
 which completes the task to derive the thin film equation from the Navier-Stokes equation. 
 To sum up the approach in one sentence, we non dimensionalized the variables, collected terms in orders of $\varepsilon$, used our boundary conditions and performed an integration along the vertical dimension to average out the vertical dynamics.
-Of course this derivation comes short if there are additional forces to consider such as thermal fluctuations, that said in Chapter~\ref{chapter:second_paper} we discuss the effect of thermal fluctuations on dewetting and show how the thin film equation has to be modified.
+Of course this derivation comes short if there are additional forces to consider such as thermal fluctuations, that said in Chap.~\ref{chapter:second_paper} we discuss the effect of thermal fluctuations on dewetting and show how the thin film equation has to be modified.
 
-Because the thin film equation is the main theoretical framework for the following Chapters it is instructive to derive some more phenomenology of Eq.~(\ref{eq:thin_final}).
+Because the thin film equation is the main theoretical framework for the following Chaps. it is instructive to derive some more phenomenology of Eq.~(\ref{eq:thin_final}).
 One helpful tool is the so called linear stability analysis. 
 The idea is to slightly perturb the system, Eq.~(\ref{eq:thin_final}), and derive its response to the pertubation.
 
@@ -838,8 +838,8 @@ A characteristic time scale of the problem is given as
     t_0 = \frac{3\mu}{\gamma h_0^3 q_0^4},
 \end{equation}
 with is used to normalize the time in Fig.~\ref{fig:dispertion_1}.
-Because the concept of linear stability is such an important one, we encounter it again in Chapter~\ref{chapter:first_paper} see Fig.~\ref{fig:RTI} as well as in Chapter~\ref{chapter:second_paper} see Figs.~\ref{fig:theory_simulation_structure_factor}, \ref{fig:spectral_analysis_deter_sine8}, \ref{fig:spectral_analysis_stoch_sine8}, \ref{fig:square_wave_both}.
-Chapter~\ref{chapter:second_paper} focuses only on the addition of a fluctuating term and the so called stochastic thin film equation.
+Because the concept of linear stability is such an important one, we encounter it again in Chap.~\ref{chapter:first_paper} see Fig.~\ref{fig:RTI} as well as in Chap.~\ref{chapter:second_paper} see Figs.~\ref{fig:theory_simulation_structure_factor}, \ref{fig:spectral_analysis_deter_sine8}, \ref{fig:spectral_analysis_stoch_sine8}, \ref{fig:square_wave_both}.
+Chap.~\ref{chapter:second_paper} focuses only on the addition of a fluctuating term and the so called stochastic thin film equation.
 The new term due to thermal fluctuations offers some interesting features on both the structure factor as well as the dispersion.
 
 \begin{figure}
@@ -856,12 +856,12 @@ The new term due to thermal fluctuations offers some interesting features on bot
 \section{Differences and Overlap}
 \label{sec:shallow_to_thin}
 
-The theoretical starting point of this Chapter is the Navier-Stokes equation.
+The theoretical starting point of this chapter is the Navier-Stokes equation.
 This equation relates the change of momentum of the fluid to various effect, e.g. viscous contributions. 
 As of today, nobody has solved the Millennium problem and showed that there exist a unique and smooth solution to this equation.
 A well defined solution would have the benefit that even complex flow fields could be computed using analytical methods, such as pen and paper.
 What we can do, is computing approximative results of this equation using numerical techniques.
-This is in fact the idea of the following Chapter.
+This is in fact the idea of the following chapter.
 Mathematically the incompressible Navier-Stokes equation is a second order partial differential vector equation. 
 It can be considered hyperbolic if the flow is advection dominated or parabolic if it is diffusion dominated.
 The Reynolds number is the one dimensionless number that helps to distinguish between these two regimes. 
@@ -885,7 +885,7 @@ The main source of friction and thus dissipation is however the interaction with
 Lastly, in our derivation we did not consider surface tension as a leading order contribution to the shallow water equations.
 The shape of the fluid/vapour interface is driven by the hydrostatic pressure.
 
-The last model we introduce in this Chapter is the thin film equation, Eq.~(\ref{eq:thin_final}). 
+The last model we introduce in this chapter is the thin film equation, Eq.~(\ref{eq:thin_final}). 
 In Sec.~\ref{sec:thin_films} we start with a discussion on the phenomenology of thin film flows and peculiarities of modelling wetting and contact line dynamics.
 If we leave aside the disjoining pressure $\Pi(h)$, see Eq.~(\ref{eq:disj_pressure_one}), and only consider the capillary pressure ($\Delta h$), the thin film equation is a degenerate, fourth order parabolic partial differential equation of the film thickness $h(\mathbf{x},t)$~\cite{peschkaVariationalApproachDynamic2018}.
 In contrast to the shallow water equations and the Navier-Stoke equation, the thin film equation is a single scalar equation.
@@ -898,19 +898,20 @@ Starting with a rescaling of the continuity equation, Eq.~(\ref{eq:incomp}), and
 However, in contrast to shallow water system this scaling ansatz we choose is only suitable for negligible inertial contributions.
 Terms are then collected in orders of $\varepsilon$ similar to the shallow water derivation.
 The boundary condition at $z=0$ is another shared feature between the shallow water equations and the thin film equation, at least for the no-slip mobility Eq.~(\ref{eq:no-slip-mobility}).
-If we relax this boundary condition, which is the case in the following Chapters, then we introduce a so-called slip length which is not accounted for in the shallow water equations.
+If we relax this boundary condition, which is the case in the following chapters, then we introduce a so-called slip length which is not accounted for in the shallow water equations.
 The stress balance at the liquid/vapour interface is another difference between the shallow water equation and the thin film equation, for the normal stress component we have Eq.~(\ref{eq:thin_film_upper_bc}).
 We have another balance equation for the tangential stress with Eq.~(\ref{eq:upper_bc_tangential}).
 Balancing the surface stresses also introduces the surface tension, a contribution that keeps the liquid/vapour interface minimal.  
 To reduce the dimensionality of the problem we perform an integration along the vertical direction, similar to the shallow water derivation.
 In the last step we use the material derivative, Eq.~(\ref{eq:mat_dev}), to compute a relation between the flow velocity at the liquid/vapour interface and the discharge $\mathbf{Q}$.
-Because we know that the discharge is pressure dependent, we end up with Eq.~(\ref{eq:thin_final}).
+Because of Eqs.~(\ref{eq:discharge_thin_x}-\ref{eq:discharge_thin_x}) we know that the discharge is pressure dependent, and thus we end up with Eq.~(\ref{eq:thin_final}).
+The velocities are therefore effectively captured by a pressure gradient and if applicable a shear rate $\tau$.
 
 While there are many similarities between the thin film equation and the shallow water equations, there are also some major difference.
 The most pressing difference between these two models is the fact that the shallow water equation is a vector equation while the the thin film equation is a scalar equation.
 In the shallow water equations the liquid/vapour interface is driven by hydrostatic pressure while in the thin film equation we neglect the hydrostatic pressure and introduce surface tension and capillarity.
 The question that naturally arise here is: can one model be translated into the other one?
-Althought this question seems odd at first it is actually of great significance to show that problems can be solved with different approaches.
+Although this question seems odd at first it is actually of great significance to show that problems can be solved with different approaches.
 There are several numerical methods to iteratively solve the thin film equation.
 There are as well several different numerical methods to approximate the Navier-Stokes equation.
-The important contribution to our understanding of CFD is that methods build to solve the shallow water equations can actually be used to solve the thin film problem, as discussed in Chapter~\ref{chapter:first_paper}
+The important contribution to our understanding of CFD is that methods build to solve the shallow water equations can actually be used to solve the thin film problem, as discussed in Chap.~\ref{chapter:first_paper}
