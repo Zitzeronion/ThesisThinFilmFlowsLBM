@@ -81,7 +81,7 @@ To regularize the contact line divergence~\cite{huhHydrodynamicModelSteady1971} 
 The liquid film is initialized with a height field slightly perturbed around the mean value $h_0$, i.e. $h(\mathbf{x},0) = h_0 \left[1 + 0.1 \left(\sin\left(\frac{2\pi x}{L}\right)\sin\left(\frac{2\pi y}{L}\right)\right)\right]$.
 Various wavelengths, in the range $\lambda/h_0 \in [64, 512]$, and velocities, $v_{\theta}/v_0 \in [0, 200]$, are considered for the wettability pattern, Eq.~(\ref{eq:sinetheta}). 
 A few comments on these ranges are noteworthy at this point. 
-The wavelengths are obviously limited from above by the size of the computational domain. On the other extreme, too short wavelengths are prevented by the energetic cost of accomodating droplets on too small patches, since the local contact angle (that increases with decreasing $\lambda$~\cite{SuppMat}) would possibly exceed the largest substrate contact angle, such that the patterning itself would loose meaning. 
+The wavelengths are obviously limited from above by the size of the computational domain. On the other extreme, too short wavelengths are prevented by the energetic cost of accomodating droplets on too small patches, since the local contact angle (that increases with decreasing $\lambda$~\ref{suppmat}) would possibly exceed the largest substrate contact angle, such that the patterning itself would loose meaning. 
 It has been, in fact, proven, both theoretically and experimentally, that for the confinement to be effective, the pattern characteristic size should not be much smaller than the spinodal length scale on the less wettable substrate~\cite{karguptaMorphologicalSelforganizationDewetting2002,karguptaInstabilityPatternFormation2000,nisatoExcitationSurfaceDeformation1999,karimPhaseSeparationUltrathin1998}.
 We keep, therefore, $\lambda \stackrel{>}{\sim} \lambda_s \approx 70 h_0$.
 The pattern speeds, on the other hand, are limited by the intrinsic LB bound of the lattice speed of sound~\cite{succiLatticeBoltzmannEquation2001}.\\
@@ -129,7 +129,7 @@ We now focus on the long time dynamics and in particular on the characterization
     \label{fig:clusters_v0_sine}
 \end{figure}
 On the stationary substrate, after rupture all the fluid accumulates in droplets centered at contact angle minima.
-Consequently, as we see from the inset of Fig.~\ref{fig:clusters_v0_sine}, where we plot the number of droplets $N(t)$ in time\footnote{A droplet is identified by the set (``cluster'') of points, in the plane, constituting each of the connected components of the set $\{\mathbf{x} \in [0,L]^2 | h(\mathbf{x},t) \geq h_{\ast}$\}; the clusters are determined by means of an algorithm of Hoshen-Kopelman type~\cite{HK}.}, in the steady state ($t \gg t_0$) $N(t)$ attains the value $N_{\infty} = 2(L/\lambda)^2$ (reported as horizontal lines), which equals the minima of Eq.~(\ref{eq:sinetheta}), for $v_{\theta}=0$.
+Consequently, as we see from the inset of Fig.~\ref{fig:clusters_v0_sine}, where we plot the number of droplets $N(t)$ in time\footnote{A droplet is identified by the set (``cluster'') of points, in the plane, constituting each of the connected components of the set $\{\mathbf{x} \in [0,L]^2 | h(\mathbf{x},t) \geq h_{\ast}$\}; the clusters are determined by means of an algorithm of Hoshen-Kopelman type~\cite{hoshenPercolationClusterDistribution1976}.}, in the steady state ($t \gg t_0$) $N(t)$ attains the value $N_{\infty} = 2(L/\lambda)^2$ (reported as horizontal lines), which equals the minima of Eq.~(\ref{eq:sinetheta}), for $v_{\theta}=0$.
 Notice that the number of droplets converges faster for smaller pattern wavelengths, in line with the observation reported and justified in the previous section that the characteristic dewetting time decreases with the wavelength.\\
 In the main panel of the same figure, we see that the height fluctuations $\Delta h(t) = \max_{\mathbf{x}}\{h(\mathbf{x},t)\}-\min_{\mathbf{x}}\{h(\mathbf{x},t)\}$ grow in time until film rupture and then settle to a constant value, which represents a measure of the mean droplet height $h_d$ (since
 droplets are essentially monodisperse), decreasing with the pattern wavelength (as expectable, due to the decrease of the droplet volume, $V_d = \frac{h_0 \lambda^2}{2}$).\\
@@ -165,7 +165,7 @@ Notice, though, that the $q_2$ signal for any $v_{\theta} >0$ always stays above
     \label{fig:stab_ligs_lam2}
 \end{figure}
 The breakup is the result of a varicose mode of the rivulet~\cite{diezBreakupFluidRivulets2009, mechkovStabilityLiquidRidges2008}, whose wavelength is $\approx\lambda$, such that only $N_{\infty}/2$ droplets are counted after breakup. 
-These droplets show a peculiar dynamics, characterized by a periodic sequence of spreading and retraction, driven by the pattern, that we dub "pumping state"~\footnote{see movie file ligament\_formation\_and\_breakup.mp4 in~\cite{SuppMat}.}.
+These droplets show a peculiar dynamics, characterized by a periodic sequence of spreading and retraction, driven by the pattern, that we dub "pumping state"~\footnote{see movie file ligament\_formation\_and\_breakup.mp4 in~\ref{suppmat}.}.
 
 We argue that the emergence of rivulets is controlled by the competition of two characteristic velocities: the pattern wave speed, $v_{\theta}$, and the retraction speed, $U_{\Theta}$, introduced in Eq.~(\ref{eq:taur_l1}). 
 If $U_{\Theta}$ is large as compared to $v_{\theta}$, the film retraction is faster than the transport due to the contact angle field and thus droplets from.
@@ -206,6 +206,7 @@ On a broader perspective, our work suggests that switchable substrates offer a n
 \newpage
 
 \section{Supplemental Material}.
+\label{suppmat}
 \subsection{Minkowski's structure metric \texorpdfstring{$q_2$}{hmm} in an extended parameter space.}
 \begin{figure}
     \centering
