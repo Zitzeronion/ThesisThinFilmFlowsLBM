@@ -2,40 +2,47 @@
 \label{chapter:intro}
 \epigraph{\textit{So kaputt kriegst du mich nie, das schaff ich nur ganz alleine}}{Von Wegen Lisbeth}
 
-\section{Thin Liquid Films}
+\section{Thin liquid films}
 Thin liquid films appear in multiple forms. 
 We find them in ordinary situations such as washing our hands, where a thin water layer adheres to our skin. 
 Another example can be found inside fully automatic coffee machines.
 In the inner tubs of these machines coffee grounds are mixed with hot water to brew coffee. 
-Small amounts of this mixture stays inside the tubes leading to the growth of a so called biofilm, making it necessary to clean them regularly.
+Small amounts of this mixture stays inside the tubes covering them with a thin film.
+This film serves as nutrient rich ``glasshouse'' to bacteria and spores, which inevitably leads to the growth of a so called biofilm, making it necessary to clean them regularly.
+The bacteria in these biofilms actually often produce enzymes which effectively reduce the surface tension, thus a biofilm is often an active thin film. 
 Of course, some thin film phenomena will be explained in a more detailed manner throughout this thesis. 
 A visual representation of some thin film flows can be found in Fig.~\ref{fig:examples_intro}.
 \begin{figure}
     \centering
     \includegraphics[width=0.95\textwidth]{graphics/Three_tile_intro_smaller.png}
-    \caption{Illustrative examples of thin film flows. In (a) rain drops seem to choose random paths running down a window, during their motion they leave behind smaller drops which is called pearling. Tile (b) displays the interaction between water and a plant leaf. Drops are formed quickly and due to the curvature of the leafs surface the coalescence of droplets is enhanced. Soap bubbles are a prime example of a thin film flow, as shown in (c). A small amount of liquid is enclosed between two gas phases. Inside the film fluid is drained to the bottom of the bubble due to gravity.}
+    \caption{Illustrative examples of thin film flows. 
+    In (a) rain drops seem to choose random paths running down a window, during their motion they leave behind smaller drops which is called pearling. 
+    Tile (b) displays the interaction between water and a plant leaf. 
+    Drops are formed quickly and due to the curvature of the leaf's surface the coalescence of droplets is enhanced. 
+    Soap bubbles are a prime example of a thin film flow, as shown in (c). 
+    A small amount of liquid is enclosed between two gas phases. Inside the film fluid is drained to the bottom of the bubble due to gravity.}
     \label{fig:examples_intro}
 \end{figure}
 
 To describe thin film problems, however, one has to start somewhere.
 And the starting point for me and this thesis was to learn about the governing equations of fluid dynamics. 
-Those equations are called the Navier-Stokes equations and they resemble the dynamics of a fluid constraint due to several symmetries~\cite{Navier, Stokes}, e.g. conservation of mass and momentum.
+Those equations are called the Navier-Stokes equations and they resemble the dynamics of a fluid constraint due to several symmetries~\cite{Navier, Stokes}, e.g., conservation of mass and momentum.
 Solving these equations in a strict mathematical manner, therefore showing existence and smoothness of a solution is an elusive quest. 
-Although being around for roughly two centuries this equation\footnote{Strictly speaking the Navier-Stokes equation is a momentum equation, however it is often accompanied with an continuity equation} is one of the seven problems which are considered to be worth a million dollars when solved. 
+Although being around for roughly two centuries this equation\footnote{Strictly speaking the Navier-Stokes equation is a momentum equation, however it is often accompanied with an continuity equation.} is one of the seven problems which are considered to be worth a million dollars when solved. 
 The collection of these problems is called ``Millenium problems'' and the Navier-Stokes equation poses one of the six unsolved problems.
 A quality that differentiates physics from mathematics is the understanding of an approximation.
-While it is true that we can not strictly solve the Navier-Stokes equation, we still have a rather good understanding due to well working approximations.
-Helping this statement is the constant innovation in computing techniques and, more so, computing hardware. 
+While it is true that we cannot strictly solve the Navier-Stokes equation, we still have a rather good understanding due to well working approximations.
+This statement is supported by the constant innovation in computing techniques and, more so, computing hardware. 
 Todays algorithms are able to \textit{brute force} an approximate solution to a wide class of problems.  
 Some examples to be named are the air flow around an airfoil or the catamaran boat structure to reduce drag. 
-The main topic of my work, however, is the dynamics of thin liquids film which admits a crucial simplification to the Navier-Stokes equation. 
+The main topic of my work, however, is the dynamics of thin liquid films which admits a crucial simplification to the Navier-Stokes equation. 
 Nevertheless it should be noted that theoretical and computational fluid dynamics (CFD) is by all means a complex but also a vibrant and constantly evolving field.
 
 Generally there are three paths to study the dynamics of thin liquid films.
 One can work with the partial differential equations and derive the dynamics from them. 
 This is the theoretical approach which uses analytical calculus to derive solutions.
 On the other hand it is possible to study fluid dynamics with experiments.
-Studying thin film flows by experiment can be a tedious task.
+Studying thin film flows by experiments can be a tedious task.
 Although the experimental system is quite approachable, a thin liquid layer on a substrate, the devil lies in the details.
 Preparation of films with uniform thickness of only a few nanometers is not a trivial task.
 Measurements are often a series of images with frame rates that allow to document dynamics in the region of $\approx 10^{-5}$ seconds.
@@ -44,25 +51,25 @@ Both however, theory as well as the experiment, have shortcomings.
 Theoretical assumptions can be wrong or the resulting system of equations can be too complex to be solved. 
 Experiments often do not allow for the very fine grained control and independent change of different parameters.
 The third approach, which is used throughout this thesis lies in between the experiment and a purely theoretical one.
-Numerical modelling or computational fluid dynamics allows to approximate the complicated partial differential equations while also allowing for fine grained para  meter studies.
+Numerical modelling or computational fluid dynamics allows to approximate the complicated partial differential equations while also allowing for fine grained parameter studies.
 
 To study thin films and in the end to write this thesis I had to broaden my understanding of (numerical) modelling. 
-Which solver, algorithms and simplifications are used in common fluid dynamic research?
+Which solver, algorithms and simplifications are used in common fluid dynamics research?
 How do they compare with each other and which of those are relevant for the model I used and developed? 
-I had to learn about algorithms and numerical techniques and among them I focused on the lattice Boltzmann method(LBM)~\cite{chenLatticeBoltzmannMethod1998, heTheoryLatticeBoltzmann1997, guoDiscreteLatticeEffects2002, krugerLatticeBoltzmannMethod2017}.
-But I also learned how approachable the thin film research can be. 
+I had to learn about algorithms and numerical techniques and among them I focused on the lattice Boltzmann method(LBM)~\cite{benziLatticeBoltzmannEquation1992a, chenLatticeBoltzmannMethod1998, heTheoryLatticeBoltzmann1997, guoDiscreteLatticeEffects2002, krugerLatticeBoltzmannMethod2017}.
+I also learned how approachable the thin film research can be. 
 Whenever some liquid is pushed onto a dry surface, for example watercolor on a white canvas, thin film theory can help to shine light on the distribution of paint~\cite{thielePatternedDepositionMoving2014, oronLongscaleEvolutionThin1997, edwardsNotSpreadingReverse2016}. 
 At some point in our life most of us watched rain drops run down a transparent window~\cite{wilczekSlidingDropsEnsemble2017}, as shown in Fig.~\ref{fig:examples_intro}a. 
 The question of why a drop chooses its very own path has a lot to do with the window's surface topology and the three phase contact line (TPC) of the droplet~\cite{cassieWettabilityPorousSurfaces1944, suzukiSlidingBehaviorWater2008, liuActuatingWaterDroplets2015}. 
-Why droplets form at all, e.g.  after a foggy morning can be studied in the framework of the thin film equation as well~\cite{zhangInkjetPrintingDirect2015, shiFogHarvestingHarps2018}.
+Why do droplets form at all, e.g.,  after a foggy morning, can be studied in the framework of the thin film equation as well~\cite{zhangInkjetPrintingDirect2015, shiFogHarvestingHarps2018}.
 Although these phenomena happen in many situations their theoretical understanding is far from being complete.
 Just to highlight one of the above-mentioned situations, the wetting of a dry surface is a highly sophisticated problem.
 Using the thin film equation as a mathematical model comes short in explaining the wet-dry transition.
 Even worse, to move the liquid on top of a dry surface one would need an infinite amount of energy.
 This has to do with boundary conditions and is called the \textit{Huh-Scriven paradox}, which states: ``Not even Herakles could sink a solid if the physical model were entirely valid''~\cite{huhHydrodynamicModelSteady1971}.
 In fact, the quote has to be understood in two ways. 
-First and foremost, the thin film equation is rather a powerful tool in modelling a lot of fluid dynamics problems.
-Second is the criticism on the rough approximations, i.e. about the \textit{no-slip} boundary condition, which requires a vanishing flow velocity at the substrate.
+First and foremost, the thin film equation is a powerful tool in modelling a lot of fluid dynamics problems.
+Second is the criticism on the rough approximations, i.e., about the \textit{no-slip} boundary condition, which requires a vanishing flow velocity at the substrate.
 Of course, nature finds a way around and does not use infinite amounts of energy to make a droplet slide. 
 In the end the \textit{no-slip} boundary condition is just a model.
 Definitely one of the better models, but one that comes short of explaining wetting sufficiently well.
@@ -77,7 +84,7 @@ Strictly speaking mathematics as well as algorithms serve as tools not as the go
 Therefore, the \textbf{KISS} concept, keep it simple stupid, is one core concept that is used throughout.
 Most mathematical models are accompanied with explenatory figures.        
 
-\section{Thin film application}
+\section{Selected applications of the thin film equation}
 \label{section:applications}
 \begin{figure}
     \centering
@@ -89,9 +96,9 @@ Most mathematical models are accompanied with explenatory figures.
 Applications of the thin film equation cover a wide range of use cases. 
 There is for example the problem of pesticide distribution in agriculture, a problem that requires that the pesticide sticks to the plant.
 From a medical perspective, our lung and in particular the alveoli need to be covered with a thin film with a well defined concentration of biological surfactants~\cite{hermansLungSurfactantsDifferent2015}.
-Certain disease inhibit the surfactant production and therefore threaten partial or full collapse of the lung~\cite{doi:10.1146/annurev.fl.26.010194.002525}.
+Certain diseases inhibit the surfactant production and therefore threaten partial or full collapse of the lung~\cite{doi:10.1146/annurev.fl.26.010194.002525}.
 
-Coatings of surfaces is one of the problems that has been scientifically investigated for the last few decades.
+Coatings of surfaces are one of the problems that has been scientifically investigated for the last few decades.
 There are various ways to coat a surface with arbitrary kinds of liquids.
 What is common to all of them is the fact that the process heavily relies on the affinity between the to be coated surface and the coating agent~\cite{bonnWettingSpreading2009}.
 If this affinity is too small the coating is unstable and therefore making the film prone to wrinkling~\cite{dasilvasobrinhoStudyDefectsUltrathin1999} or eventually even rupture~\cite{oronLongscaleEvolutionThin1997, crasterDynamicsStabilityThin2009, beckerComplexDewettingScenarios2003}, as shown in Fig~\ref{fig:becker_dewetting}.
@@ -108,9 +115,9 @@ If this affinity is too small the coating is unstable and therefore making the f
     Through that die a liquid is pumped onto the moving foil.}
     \label{fig:dip_coating}
 \end{figure}
-For different length scales (m, cm, mm) and for different materials (metals, glasses, polymer compounds) there exists different coating approaches.
+For different length scales (m, cm, mm) and for different materials (metals, glasses, polymer compounds) there exist different coating approaches.
 The industrial coating process of a five by five meter aluminium plate differs significantly from the process to coat a millimetric biological sensor.
-Among the various coating approaches one is the so called dip coating, as displayed in Fig.~\ref{fig:dip_coating}(a). 
+Among the various coating approaches one is the so-called dip coating process, as displayed in Fig.~\ref{fig:dip_coating}(a). 
 Much like the name suggests the to be coated object is dipped into a reservoir of coating liquid~\cite{scrivenPhysicsApplicationsDIP1988, darhuberSelectiveDipcoatingChemically2000, grossoHowExploitFull2011}.
 While the process itself is straightforward the \textit{art} of dip coating is far from being trivial, meaning that this process requires tight tolerances on extraction velocity, material parameters and if possible a vibration free extraction.
 
@@ -138,13 +145,13 @@ The thickness of the resulting film however does not depend on gravity in this c
 Ruschak showed that similar to the low extrusion velocity limit of the dip coating problem the film thickness after die coating can be approximated using $h_{\infty} = d~Ca^{2/3}$~\cite{ruschakLimitingFlowPremetered1976}.
 
 These two examples highlight an important behaviour.
-The solution consists of some variable, here the capillary number, that scales with a well defined exponent, e.g. $2/3$ in the low and $1/2$ in the high extrusion velocity scenario.
+The solution consists of some variable, here the capillary number, that scales with a well defined exponent, e.g., $2/3$ in the low and $1/2$ in the high extrusion velocity scenario.
 These results can be addressed as dimensional analysis, a rather fancy word for matching dimensions on both sides of the equation.
 In the end the height or thickness needs to be of the dimension of a length.
-They often support so-called self similar behaviour, meaning under change of one or more parameters it is possible to collapse data in a master curve. 
-Another dynamic problem that exhibits self similar behaviour is droplet coalescence, which is shortly discussed in Chapter~\ref{chapter:fourth_paper} and liquid lens coalescence~\cite{hackSelfSimilarLiquidLens2020}. 
+They often support so-called self similar behaviour, meaning under change of one or more parameters it is possible to collapse data on a master curve. 
+Another dynamic problem that exhibits self similar behaviour is droplet coalescence, which is shortly discussed in Chapter~\ref{chapter:fourth_paper} and liquid lens coalescence~\cite{hackSelfSimilarLiquidLens2020, scheelViscousInertialCoalescence2023}. 
 % I am here
-\section{Literature Overview}
+\section{Literature overview}
 \label{section:literature}
 \begin{figure}
     \centering
@@ -152,8 +159,8 @@ Another dynamic problem that exhibits self similar behaviour is droplet coalesce
     \caption{A drawing from Osborn Reynolds on slipper bearing lubrication.
     The four figures are taken from Ref.~\cite{reynoldsTheoryLubricationIts1886} and cropped together in a single image.
     In (a) surface CD is fixed while surface AB moves to the left with velocity U. 
-    The fluid between the surfaces feels the force $F = \mu \frac{U}{h}$, with h being the separation distance.
-    The velocity profile changes uniformly from U at AB to zero at CD. 
+    The fluid between the surfaces feels the force $F = \mu \frac{U}{h}$, with $h$ being the separation distance.
+    The velocity profile changes uniformly from $U$ at AB to zero at CD. 
     Panel (b) displays the case when two parallel surfaces approach each other.
     The pressure acting on surface CD is shown on top of the surface.
     Each line between the surfaces shows the tangential forces and thus indicates the fluid velocity profile.
@@ -164,16 +171,16 @@ Another dynamic problem that exhibits self similar behaviour is droplet coalesce
     The curve on top displays the pressure the fluid exerts on surface CD.}
     \label{fig:reynolds_work}
 \end{figure}
-% Theory concerning lubrication is a little bit younger than the Navier-Stokes equation~\cite{Navier, Stokes}. 
 Fluid dynamics in general is mathematically described by the Navier-Stokes equation~\cite{Navier, Stokes}.
 Interestingly, this equation was not the starting point for the lubrication approximation.
 Only in 1886, more than half a century after Navier's derivation, Osborn Reynolds started looking into a mechanical problem. 
 He was the first to work on the dynamics of a slipper bearing, as shown in Fig.~\ref{fig:reynolds_work}.
-The idea of the slipper bearing is to reduce the wear of moving mechanical components due to a lubricating fluid in Reynolds' case this fluid was olive oil~\cite{reynoldsTheoryLubricationIts1886}.
+The idea of the slipper bearing is to reduce the wear of moving mechanical components due to a lubricating fluid. 
+In Reynolds' case this fluid was olive oil~\cite{reynoldsTheoryLubricationIts1886}.
 Within this work Reynolds developed what is called today the lubrication approximation.
 Instead of solving the problem in all its glory, Reynolds derived that due to constraints the problem can be simplified. 
 The first constraint is the fact that the film's thickness $H$ is much smaller than its lateral extension $L$ and therefore $\varepsilon = H/L \ll 1$. 
-Besides this ratio the liquids inertia can be neglected as the acceleration of the fluid is slow.
+Besides this ratio the liquids inertia can be neglected as the acceleration of the fluid is small.
 Variations along the liquid interface are smooth and thus the gradient $|\partial h/\partial x_i| \ll 1$ for both lateral dimensions.
 This clean and novel deduction dates back already to the year 1886 and will be further discussed in Chapter~\ref{chapter:theory}.
 
@@ -186,15 +193,15 @@ It is possible to derive one more model based on the lubrication approximation w
 By now it should be clear that contact line motion and thus wetting strongly depends on the affinity between liquid and solid. 
 The DLVO potential is one potential which allows to account for these interaction forces~\cite{vActaPhysicochim1941, verweyTheoryStabilityLyophobic}. 
 DLVO is an acronym from the names of the four scientists Derjaguin, Landau, Verwey and Overbeek who developed this theory. 
-Based on the theory one can derive an interaction potential which than was used to understand the stability of colloidal suspensions, however for thin film theory it offers a quantification of the disjoining pressure~\cite{oronLongscaleEvolutionThin1997, peschkaSignaturesSlipDewetting2019, moultonEffectDisjoiningPressure2013, diezGlobalModelsMoving2000}.
-Pierre-Gilles de Gennes, who was awarded with the Nobel Prize in physics in 1991 for his seminal work on soft matter physics and his students were ones of the first who understood that ``\textit{dirty}'' soft matter physics can be useful in understanding thin film problems~\cite{degennesWettingStaticsDynamics1985,degennesFluidWallSlippage2002,degennesCapillarityWettingPhenomena2004}.
-The term dirty in the above sentence is an expression that de Genne used to distinguish soft matter systems from pure gas, liquid or solids. 
-He and his students developed the theoretical tools to derive forces and potential and created the term ``soft interface''.
-A soft interface is for example the surface of a thin film, because it is deformable and feels interaction with both the gas phase above and solid phase below~\cite{degennesCapillarityWettingPhenomena2004}.
-De Genne not only found the soft matter field, but also made large contributions to our understanding of wetting, interface dynamics and among other things liquid crystals.
+Based on the theory one can derive an interaction potential which then can be used to understand the stability of colloidal suspensions, however for thin film theory it offers a quantification of the disjoining pressure~\cite{oronLongscaleEvolutionThin1997, peschkaSignaturesSlipDewetting2019, moultonEffectDisjoiningPressure2013, diezGlobalModelsMoving2000}.
+Pierre-Gilles de Gennes, who was awarded with the Nobel Prize in physics in 1991 for his seminal work on soft matter physics and his students were among the first who understood that ``\textit{dirty}'' soft matter physics can be useful in understanding thin film problems~\cite{degennesWettingStaticsDynamics1985,degennesFluidWallSlippage2002,degennesCapillarityWettingPhenomena2004}.
+The term dirty in the above sentence is an expression that de Gennes used to distinguish soft matter systems from pure gas, liquid or solids. 
+He and his students developed the theoretical tools to derive forces and potentials and created the term ``soft interface''.
+A soft interface is for example the surface of a liquid thin film, because it is deformable and feels interaction with both the gas phase above and solid phase below~\cite{degennesCapillarityWettingPhenomena2004}.
+De Gennes not only invented the field of soft matter, but also made large contributions to our understanding of wetting, interface dynamics and among other things liquid crystals.
 
-Of course, by the end of the 20$^{\text{th}}$ century there were already some yet unexplained experimental findings associated to the thin film equation, e.g. the spectrum of capillary waves~\cite{vrijRuptureThinLiquid1968}.
-While the spectrum was quickly connected with thermal fluctuations it wasn't an easy challenge to find a consistent theoretical description.
+Of course, by the end of the 20$^{\text{th}}$ century there were already some yet unexplained experimental findings associated to the thin film equation, e.g., the spectrum of capillary waves~\cite{vrijRuptureThinLiquid1968}.
+While the spectrum was quickly connected with thermal fluctuations it turned out to be a hard challenge to find a consistent theoretical description.
 From a theoretical point of view one has to account for the stochastic nature of thermal fluctuations.
 The entry point for this problem is not the Navier-Stokes equation but the Landau-Lifshitz Navier-Stokes (LLNS) equation~\cite{landauFluidMechanicsLandau2013}.
 While the mass flux is conserved at all times, heat transfer can violate Fouriers law at molecular scales~\cite{bellNumericalMethodsStochastic2007}.
@@ -205,56 +212,57 @@ This step however poses a hard problem, because the stochastic stress tensor in 
 Grün and coworkers found an elegant way to circumvent the problem with a single multiplicative Gaussian term~\cite{grunThinFilmFlowInfluenced2006, meckeThermalFluctuationsThin2005, fetzerThermalNoiseInfluences2007, zhangNanoscaleThinfilmFlows2020, zhangMolecularSimulationThin2019, nesicFullyNonlinearDynamics2015}. 
 This idea will be revisited in Chap.~\ref{chapter:second_paper}.
 Around the same time Davidovitch et al., came up with a similar form for the stochastic thin film equation, studying the spreading of a droplet~\cite{davidovitchSpreadingViscousFluid2005}.
-The addition of a Gaussian noise term made it therefore possible to reproduce the observed capillary wave spectrum and explain the difference in spreading behaviour.
+The addition of a Gaussian noise term made it therefore possible to reproduce the observed capillary wave spectrum and to explain the difference in spreading behaviour.
 A further impact of this term was the reduction of rupture times for spinodal dewetting thin films~\cite{grunThinFilmFlowInfluenced2006, fetzerThermalNoiseInfluences2007}.
-Becker et al. pointed out that the classical thin film equation comes short in the prediction of the experimentally measured rupture times~\cite{beckerComplexDewettingScenarios2003}.
-In fact the rupture time is overestimated by the classical thin film equation, adding however thermal fluctuations do lead to decreased rupture times~\cite{duran-olivenciaInstabilityRuptureFluctuations2019, shahThermalFluctuationsCapillary2019}.
+Becker et al. pointed out that the classical thin film equation falls short in the prediction of the experimentally measured rupture times~\cite{beckerComplexDewettingScenarios2003}.
+In fact the rupture time is overestimated by the classical thin film equation, adding however thermal fluctuations does lead to decreased rupture times~\cite{duran-olivenciaInstabilityRuptureFluctuations2019, shahThermalFluctuationsCapillary2019}.
 
 Additions of complex dynamics on top of the partial differential equation that defines the thin film problems is not limited to thermal fluctuations.
 On the one hand it is possible to add degrees of freedom to the fluid. 
 For example one can study the effect of non-Newtonian shear behaviour~\cite{zhangNonNewtonianEffectsLubricant2005, myersApplicationNonNewtonianModels2005}. 
-Non-Newtonian liquids have a different response to stress than e.g. water. 
+Non-Newtonian liquids have a different response to stress than e.g.,~water. 
 A short discussion about shear thickening, thinning liquids, such as toothpaste, follows in Chap.~\ref{chapter:theory}.
 Other than the liquids' rheology it is possible to include arbitrary concentration fields and introduce Marangoni-like flows~\cite{sultanEvaporationThinFilm2005, hermansLungSurfactantsDifferent2015, surSteadyProfileFingeringFlows2004}.
 Thermal fluctuations pose another addition of complexity as shown above~\cite{grunThinFilmFlowInfluenced2006, meckeThermalFluctuationsThin2005, davidovitchSpreadingViscousFluid2005, zitzLatticeBoltzmannSimulations2021}.
 
-On the other hand the substrate can be e.g. chemically or topographically patterned.
+On the other hand the substrate can be e.g., chemically or topographically patterned.
 A modified substrate can lead to a very different understanding of wetting behaviour as shown in Refs.~\cite{cassieWettabilityPorousSurfaces1944, whymanRigorousDerivationYoung2008}.
 Several research programs revolved around wetting, capillarity and the thin film equation. 
-Within Europa the German Research Foundation (DFG) funded the priority program 1052: ``Wetting and Structure Formation'' from 1998 to 2004.
-Karin Jacobs as project leader, one particularly interesting outcome was the fundamental work about dewetting morphology which was carried out by Becker et al.~\cite{beckerComplexDewettingScenarios2003}. 
+Within Europe the German Research Foundation (DFG) funded the priority program 1052: ``Wetting and Structure Formation'' from 1998 to 2004.
+One particularly interesting outcome was the fundamental work about dewetting morphology which was carried out by Becker et al.~\cite{beckerComplexDewettingScenarios2003}. 
 Recently, in 2019, the DFG funded another priority program on wetting, called priority program 2171: ``\textit{Dynamic wetting of flexible, adaptive and switchable surfaces}''. 
 The goal of this program is to enlarge the understanding concerning the dynamics of thin liquid films on complex substrates.
 Complex substrates can for example be substrates with grafted polymer brushes~\cite{thieleGradientDynamicsModel2020}.
 These brushes can swell somewhat similar to a sponge, allowing for special wetting and dewetting behaviour on such substrates. 
-One treatment the substrate to generate a self-cleaning superhydrophobic surface similar to the lotus leaf~\cite{liAdaptationStyreneAcrylic2021, wongMicrodropletContaminantsWhen2020}.
+Another possibility is to chemically treat a substrate to generate a superhydrophobic surface similar to the lotus leaf~\cite{liAdaptationStyreneAcrylic2021, wongMicrodropletContaminantsWhen2020}.
+One advantage of this treatment is that surfaces become self-cleaning, dirt is effectively dragged along with liquid drops. 
 Picking up the example of the lotus leaf, it is not necessary that the substrate is stiff.
 In fact most organic structures are not as stiff as a silica substrate (or the glass of a window), therefore wetting of soft materials is as well considered in this priority program~\cite{andreottiStaticsDynamicsSoft2020, alandUnifiedNumericalModel2021, chenShortTimeWetting2011}.
 More so with special surface treatment it is possible to control the substrates surface chemistry~\cite{xinReversiblySwitchableWettability2010, wangPhotoresponsiveSurfacesControllable2007}.
 These stimuli responsive substrates are collected under the umbrella of the term \textit{switchable substrates}.
-Allowing for the dynamic control of the substrates wettability with e.g. light sources~\cite{ichimuraLightDrivenMotionLiquids2000, sekiWideArrayPhotoinduced2018}.
+Allowing for the dynamic control of the substrates wettability with e.g.,~light sources~\cite{ichimuraLightDrivenMotionLiquids2000, sekiWideArrayPhotoinduced2018}.
 \begin{figure}
     \centering
     \includegraphics[width=0.88\textwidth]{graphics/no_v_lig.pdf}
-    \caption{(a) Equilibrium state of a dewetting thin film on a patterned substrate, i.e. droplets inside of the contact angle minima. 
+    \caption{(a) Equilibrium state of a dewetting thin film on a patterned substrate, i.e., droplets inside of the contact angle minima. 
     The color corresponds to the contact angle. 
     Yellow shows a high and blue a low contact angle, ranging from 10$^{\circ}$ to 30$^{\circ}$. 
     (b) Similar to the left panel a dewetting thin film on a ``switchable'' substrate. 
-    Due to the function that controls the contact angle field liquid rivulets are formed.}
+    Due to the function that controls the contact angle field liquid rivulets are formed, see Ref.~\cite{zitzControllingDewettingMorphologies2023}.}
     \label{fig:morph_transition}
 \end{figure}
 This opens up a new avenue for microfluidic devices.
 In Chap.~\ref{chapter:third_paper} we discuss the influence a switchable wettability can have on the dewetting of a thin film.
 In fact the switching can induce morphological transitions as depict in Fig.~\ref{fig:morph_transition}. 
 
-\section{Scientific Software}
+\section{Scientific software}
 \label{section:statement_software}
 The way thin liquid films are studied in this thesis is by using analytical models for computer simulations.
 Therefore I build and use software to run numerical experiments.
 Software is a central part of our society.
-The interaction with an operating system, the quick information distribution over emails and the web calls via e.g. Zoom have become standard rituals of our work life (because due to Corona we had to change the way we usually interact with people).
+The interaction with an operating system, the fast information distribution over emails and the web calls via e.g., Zoom have become standard rituals of our work life (because due to COVID-19 pandemic we had to change the way we usually interact with people).
 Most of the time these applications work.
-When they do not work it induces stress\footnote{Just the outage of a computational infrastructure for running simulations lead repeatedly to elevated levels of stress.}, because we rely on them and yet have barely any control.
+When they do not work it induces stress, because we rely on them and yet cannot do much more than restart an application.
 
 While it is easy to say that ``\textit{software should work}'' it is hard to guarantee.
 The complexity of writing good source code and working applications is at least comparable to that of a scientific problem.
@@ -264,11 +272,11 @@ Such style guides could for example define how to add and test new functions.
 
 Scientific software is often seen as a secondary or by-product of research and sadly often threaded that way.
 In contrast to the peer review process for scientific findings and publications, software that generated scientific results is rarely tested by reviewers.  
-While there are high standards to industrial software, e.g. Ansys Fluent~\cite{matssonIntroductionANSYSFluent2022}, these standards are quite low for the average scientifically developed source code.
+While there are high standards to industrial software, e.g., Ansys Fluent~\cite{matssonIntroductionANSYSFluent2022}, these standards are quite low for the average scientifically developed source code.
 This however is fairly troubling for two reasons.
 
-Software or source code is prone to bugs because it is a creative process.
-One approach to overcome the issues of bugs is the so called test driven development (TDD) approach~\cite{beckTestdrivenDevelopmentExample2003}.
+First, software or source code is prone to bugs because it is a creative process.
+One approach to overcome the issues of bugs is the so called test-driven development (TDD) approach~\cite{beckTestdrivenDevelopmentExample2003}.
 The simple idea is that, whenever a function is written it is accompanied with one or more test cases.
 To illustrate this idea, let's discuss an example written in Julia:
 \begin{minted}{julia}
@@ -325,9 +333,10 @@ function BGKandStream!(state::LBM_state_2D, sys::SysConst)
 end
 \end{minted}
 What is going on inside this function is not trivial to understand.
-To quickly summarize it, there is a data structure which called state who's fields represent the fluids state.
-The distribution functions, $ft$ and $fe$ as well as the forces acting on the fluid are used to update the fluids state which is computed from $fout$.
-Assuming periodic boundary conditions, thus what leaves the domain to the right is fluxed in at the left, one distribution function is streamed by a well defined velocity vector.
+To quickly summarize it, there is a data structure called state. 
+The fields of state i.e., state.fout represent distribution functions, forces and hydrodynamic quantities.
+The distribution functions, $ft$ and $fe$ as well as the forces acting on the fluid are used to update the fluid state which is computed from $fout$.
+Assuming periodic boundary conditions we can use \textbf{circshift!} to stream the distribution functions according to a well defined velocity vector.
 Writing tests for this function has two benefits, on the one hand any test is some documentation.
 A test is build on a mathematical expression, therefore it shows inside the source code what happens when certain parameters are used.
 On the other hand tests make it harder to add errors to functions.
@@ -369,10 +378,10 @@ h, A = Swalbe.run_dropletrelax(sys, "CPU", radius=rads, verbos=false)
 \textbf{run\_dropletrelax} performs a CFD simulation of a relaxing droplet.
 The function returns a spatially resolved thickness and an area of the droplet after relaxation.
 The output can be compared against known results, which in fact should ensure that the dynamics of the droplet relaxation are modelled correctly. 
-In this case the test actually provide a guideline of how to set up a simulation for a relaxing droplet, it can therefore be used as a tutorial case.
+In this case the test actually provides a guideline of how to set up a simulation for a relaxing droplet, it can therefore be used as a tutorial case.
 
 Using this principle creates a testing suite that (hopefully) ensures that functionality is not broken if changes to the source code are made.
-For mature software projects, e.g. OpenFOAM~\cite{jasakOpenFOAMLibraryComplex, jasakOpenFOAMOpenSource2009, chenOpenFOAMComputationalFluid2014}, these suits can and should be even integrated into the continuous development/continuous integration (CD/CI) step and therefore be automated.
+For mature software projects, e.g., OpenFOAM~\cite{jasakOpenFOAMLibraryComplex, jasakOpenFOAMOpenSource2009, chenOpenFOAMComputationalFluid2014}, these suits can and should be even integrated into the continuous development/continuous integration (CD/CI) step and therefore be automated.
 Often however when a student starts a new software project, functionality or performance is the main point of interest.
 During the development step tests and even more important documentation are left aside.
 Ultimately this does not only open the gate for various bugs but to some extent it also renders the software useless for other researchers.
@@ -380,13 +389,14 @@ Needless to say, my very own CFD solver, see Chap.~\ref{chapter:fourth_paper}, g
 Defining a test suite from the beginning of the project would have spared me valuable time and effort.
 
 On the other hand, research became more than ever dependent on computational resources.
-Clearly the main topic of this thesis, CFD is a compute heavy subdomain of fluid dynamics. 
+Clearly being the main topic of this thesis, CFD is a compute heavy subdomain of fluid dynamics. 
 However, recent advances in artificial intelligence show a rising trend to their applicability for industrial and scientific problems~\cite{acemogluArtificialIntelligenceAutomation2018, beintemaControllingRayleighBenard2020}.
-These advances comes at a price, leaving aside the discussion if artificial intelligence is of value at all.
+These advances comes at a price, because all models used must be trained.
+The selection of training data introduces by definition a bias to the model and after training no two model are equivalent.
 One of the main pillars that generates trust in scientific results is their reproducibility.
 Independent of the number of trials a stone, when flung up in the air, will fall to the ground following a well defined path\footnote{Given the stone is not flung with earth's escape velocity, $v\approx 11.2$km/s}.
 Generating huge amounts of data without labels and explanation makes it by definition impossible to verify any given finding or result from that experiment.
-Mislabeling data is not something new, it always happened from time to time with e.g. laboratory journals.
+Mislabeling data is not something new, it always happened from time to time with e.g., laboratory journals.
 However, exa-scaling computing pushes this problem to new severity.
 Now or never is the time to install protocols. 
 Guides on how to deal with scientific software such that data can be reproduced or even more important reused.
@@ -428,12 +438,12 @@ It allows for prototyping and testing which is fast and easy to use, but also a 
 Use cases and a derivation of the model can be found in Chap.~\ref{chapter:first_paper}.
 In this chapter the mandatory modelling assumptions are introduced that allow to match the shallow water system with the thin film equation.
 It further highlights which modifications are made to the shallow water lattice Boltzmann algortihm. 
-With some emphasis on the numerical implementation of e.g. the computation of gradients and the Laplacian in agreement with Ref~\cite{junkDiscretizationsIncompressibleNavier2000, thampiIsotropicDiscreteLaplacian2013}. 
+With some emphasis on the numerical implementation of e.g., the computation of gradients and the Laplacian in agreement with Ref~\cite{junkDiscretizationsIncompressibleNavier2000, thampiIsotropicDiscreteLaplacian2013}. 
 After the derivation, numerical experiments are displayed to validate the model. 
-Among those are the Rayleigh-Taylor instability, an instability that occurs when a heavy fluid is on top of light fluid. 
+Among those are the Rayleigh-Taylor instability, an instability that occurs when a heavy fluid is on top of a light fluid. 
 Spreading dynamics is tested against the Cox-Voinov and Tanner's laws. 
 The linear relation between Bond and Capillary number is validated with the sliding of a droplet.
-And for completeness a discussion on the performance of the algorithm and applicability for accelerated computing at the end of the chapter.
+And for completeness a discussion on the performance of the algorithm and applicability for accelerated computing follows at the end of the chapter.
 
 In the next chapter, Chap.~\ref{chapter:second_paper}, a functional extension to the lattice Boltzmann model is shown.
 Instead of approximating the deterministic thin film equation the stochastic thin film equation (STF) is the topic of interest in this chapter.

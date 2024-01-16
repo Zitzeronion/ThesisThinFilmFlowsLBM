@@ -2,15 +2,16 @@
 \label{chapter:conclusion}
 \epigraph{\textit{Wenn du dann am Boden bist, weißt du wo du hingehörst\\ Wenn du ganz alleine bist, weißt du dass du es noch so lange sein wirst.}}{Faber}
 
-Thin liquid film flows are a prominent phenomenon that we encounter in our daily life, e.g. the rain droplets on the windows or the water soap film when we wash our hands.
-Interestingly most of the time we do not recognize them as such, although they are used in a lot of industrial process and applications as motivated in Chap.~\ref{chapter:intro}.
+Liquid thin film flows are a prominent phenomenon that we encounter in our daily life, e.g., the rain droplets on the windows or the water soap film when we wash our hands.
+Interestingly most of the time we do not recognize them as such, although they are used in a lot of industrial processes and applications as motivated in Chap.~\ref{chapter:intro}.
 A few vivid examples of thin film flows have been shown in Fig.~\ref{fig:examples_intro}. 
 Both the life time and shape of a soap bubble can in fact be explained with the theoretical framework derived in Chap.~\ref{chapter:theory}.
+Similarly the theoretical framework can further be used to compute the stability and thickness of a coating.
 
 That said and in the spirit of the Helmholtz Institute Erlangen-Nürnberg for Renewable Energy, the greater goal of this project is to understand the dynamics needed for mass production of cheap organic/perovskite photovoltaic cells (OPV/PSC).
 While these cells are still lacking in efficiency as compared to silica based ones they offer great usability features.
-The underlying structure does not need to be stiff and as such they can be printed on e.g. plastic foil.
-Printing on soft and elastic substrates with blends of complex liquids is however a hideous problem, more so from a theoretical point of view.
+The underlying structure does not need to be stiff and as such they can be printed on e.g., plastic foil.
+Printing on soft and elastic substrates with blends of complex liquids is however a non-trivial problem, more so from a theoretical point of view.
 Instead of searching from the very first step for a solution to the full problem, this thesis addresses one issue of this complex process, which is the film formation.
 A step of crucial importance that happens after the coating, be it with a slot die or other coating methods.
 Numerical simulations based on the thin film equation may help to understand at least this part of the process.
@@ -19,7 +20,7 @@ In the long run the found results should help to improve both the process itself
 To this end a novel approach for modelling the dynamics of thin liquid films has been developed, see Chap.~\ref{chapter:theory}-\ref{chapter:second_paper}.
 It is important to highlight that this model consists of two parts. 
 There is the theoretical work, where we use shallow water theory and find matching conditions that allow us to solve the thin film equation. 
-In Chap.~\ref{chapter:theory} we discuss both theories and some overlap between them, we however like to point out that we are not the first ones to discuss this overlap.  
+In Chap.~\ref{chapter:theory} we introduce both the shallow water theory and the thin film equation and discuss some overlap between them, we however like to point out that we are not the first ones to do so.  
 What makes our approach novel is the step from the continuum to a discrete system. 
 Instead of solving the (stiff) degenerate fourth order partial differential equation for the evolution of the film thickness we solve a modified shallow water system using the lattice Boltzmann method.
 A very thorough referee called this approach hyperbolization of the thin film equation.
@@ -32,24 +33,30 @@ It is not just the finite volume method or the lattice Boltzmann method, but a v
 There are various reasons why there are so many tools doing essentially the same. 
 Some reasons grew historically, others developed with advances in mathematics.
 One thing to mention is that it is of scientific value when a new method can reproduce known results.
-That is because all methods suffer shortcomings and there is no single method that is better suited in all hydrodynamic regimes than another one.
+That is because all methods suffer from shortcomings and there is no single method that is better suited in all hydrodynamic regimes than another one.
 In Chap.~\ref{chapter:method} we introduced the idea behind the Chapman-Enskog expansion and found that the lattice Boltzmann method best works in the low $Kn \& Ma$ number regime.
-Finite volume methods are highly dependent on the quality of the mesh and developing self-consistent boundary conditions can be a tedious task, e.g. contact angle dynamics.
+Finite volume methods are highly dependent on the quality of the mesh and developing self-consistent boundary conditions can be a tedious task, e.g., contact angle dynamics.
 Molecular dynamics simulations are inherently noisy and computationally demanding for large volumes, and yet all of those three methods can be used to simulate thin film problems.
-Each method can address different aspects of a problem and yet all have to satisfy the underlying physical boundary conditions, e.g. mass conservation.
+Each method can address different aspects of a problem and yet all have to satisfy the underlying physical boundary conditions, e.g., mass conservation.
 We briefly addressed why our method fits well into the current landscape of thin film solvers in Sec~\ref{section:statement_software} of Chap.~\ref{chapter:fourth_paper}.
 
 This statement of need covers only the positive sides of our method, but as written above all methods have their shortcomings and so does ours.
-All the numerical experiments conducted in this thesis don't rely on the lattice Boltzmann approach we developed.
-It would have been in fact helpful to use a suited finite difference scheme because the lattice Boltzmann method is certainly not the most beloved CFD tool.
-One reason why the lattice Boltzmann method is less appealing than other methods are the model parameters.
+All the numerical experiments conducted in this thesis do not rely on the lattice Boltzmann approach we developed.
+It would have been in fact helpful to use a suited finite difference scheme or a finite volume approach because the lattice Boltzmann method is certainly not the most beloved CFD tool.
+Comments similar to: ``\textit{I do not see why one should use lattice Boltzmann calculations for this problem ...}'', were nothing out of the ordinary in review reports.
+For once, LBM is build on the Boltzmann equation, it is not a straightforward discretization of the Navier-Stokes equation. 
+And finite volume methods have been the tool of choice for many engineers and more applied CFD researchers in the last thirty years. 
+Within the finite volume community the term CFD is equivalent to FVM~\cite{greenshieldsNotesComputationalFluid2022}, which of course casts doubt upon other methods. 
+ 
+Another reason why the lattice Boltzmann method can be less appealing than other methods are the indirect model parameters.
 For the simulation of a sliding droplet with \textbf{oomph-lib} we would use model parameters which relate to a laboratory experiment.
-Doing the same with the lattice Boltzmann method we likely have a harder time matching parameters.
-We have seen in Chap.~\ref{chapter:method} that e.g. the viscosity is related to the relaxation time $\tau$. 
+When looking at Eq.~(\ref{eq:LBM_discret_noforces}) we cannot find a parameter for e.g., the surface tension or the viscosity. 
+We are still able to define them, but it may be less obvious than with other methods.
+For example, we have seen in Chap.~\ref{chapter:method} that the viscosity is related to the relaxation time $\tau$. 
 This relaxation time $\tau$ has a lower limit which is $\tau = 1/2$ and it should not be too large for stability and convergence reasons (at least for a single relaxation time collision operator, such as the BGK operator).
 The viscosity is therefore not a simple model parameter that can be changed to arbitrary values and the problem associated with it is called under- and over relaxation.
 Another difference to classical solvers is the idea of particle distributions and particle collisions.
-A lattice Boltzmann time step consists of a collision operation and a streaming step, both happen on rather short physical time scales, usually orders smaller than a second.
+A lattice Boltzmann time step consists of a collision operation and a streaming step, both happen on rather short physical time scales, usually orders of magnitude smaller than a second.
 Another flaw of the here developed method is its simplicity.
 Currently, the method allows simulating a single fluid on a flat substrate.
 Additional dynamics such as the coupling with particles or the interaction of multiple fluids are not implemented.
@@ -57,29 +64,34 @@ Evaporation, for example, plays an important role in many film forming processes
 The same is true for problems where inertia is non-negligible, such as spin coating.
 And then there is the novelty of this method.
 Novelty is a double-edged sword, because something novel requires a lot of creativity and novel results should enhance our current understanding.
-Developing a new numerical tool that can solve problems which have been solved is, as said, important but not considered novel.
-Using a new tool to create new results usually comes with a heavy price to pay.
 Any new method must show that it agrees with pervious work, be it theoretical, experimental or other simulations.
-Before we were able to show that we can use the here developed method for novel problems, we had to make sure that relevant known results, e.g. relaxation of a droplet, can be reproduced with the correct physical behaviour.
+Before we were able to show that we can use the here developed method for novel problems, we had to make sure that relevant known results, e.g., relaxation of a droplet, can be reproduced with the correct physical behaviour.
 Therefore, there is a lot of \textit{overhead} which simply would not exist when using an established finite difference scheme.
 
-Picking up the question from above, ``Do we need yet another solver...?'', we found some arguments for the ``No'' answer, let us discuss some arguments for the ``Yes'' answer.
+Picking up the question from above, ``Do we need yet another solver...~?'', we found some arguments for the ``No'' answer, let us discuss some arguments for the ``Yes'' answer.
 One rather unscientific strength of this solver is the transparent nature of the software. 
 The code base is available under an open source licence and everyone interested can fork the repository and use (and develop) our method.
 It is becoming harder and harder to validate numerical simulations and argue about data, we think that transparency of our source code is at least a baby step into the right direction. 
-The package approach, similar to e.g. Python, Matlab or R, makes it simple to share and collaborate with colleagues.
+The package approach, similar to e.g., Python, Matlab or R, makes it simple to share and collaborate with colleagues.
 Apart from these quality of life/usability features there are few things that make the derived model special and scientifically interesting.
-In contrast to various numerical methods used in the literature of thin film dynamics, \textit{Swalbe.jl} is build upon the lattice Boltzmann method as described in Chaps~\ref{chapter:method}-\ref{chapter:first_paper}.
+In contrast to various numerical methods used in the literature of thin film dynamics, the here presented method is build upon the lattice Boltzmann method as described in Chaps~\ref{chapter:method}-\ref{chapter:first_paper}.
 It is therefore not intended as a general tool to approximate differential equations, but only for the hydrodynamics of thin liquid films.
 While the term simplicity was used earlier as weakness, one of the nineteen guiding principles of python reads: ``Simple is better than complex''.
 A small codebase is maintainable, it is possible to write tests for every function and add documentation, all of this would be harder for general purpose solvers with much more lines of code.
 In Chap.~\ref{chapter:first_paper} we show that our simple approach is in fact more than capable to simulate relevant physical problems.
 Multiple tests with analytical results have been used to validate the method, see Tanner's law and Cox-Voinov relation.
 Another benefit of the here presented approach is the dimensional reduction.
-While it is restricting on the one hand, e.g. contact angles smaller than $\pi/2$, it reduces the demand for computational resources quite significant.
+While it is restricting on the one hand, e.g., contact angles smaller than $\pi/2$, it reduces the demand for computational resources quite significant.
 That in fact allows us to introduce various additions to our model and still have reasonable fast running simulations.
 All simulations presented in this thesis can be computed on a laptop with dedicated GPU, there is no real need for HPC resources.
-While the model does not account for e.g. surfactants, we supply a matching condition between our method and thin film like theories in Chaps.~\ref{chapter:first_paper}-\ref{chapter:second_paper}.
+Working on initial conditions and setting up parameters can be a tedious task that can make or break a simulation.
+The here presented method turned out to be fairly robust and numerically stable in many regards.
+To name just two, initial or ``boundary'' conditions with non-differentiable functions did not cause any issues, see e.g., Chap.~\ref{chapter:second_paper} Eq.~(\ref{eq:sharp_contact_angle_spatial}).
+Although the method approximates the thin film equation and as such is only strictly valid for small contact angles, we found that contact angle up to $70^{\circ}$ seemed to be within the validity of the method, at least if we assume that Cox-Voinov is applicable in the regime.
+Another feature that turned out to be of great value is the inclusion of hydrodynamic slip.
+Having a method that can be used in the no-slip regime while also be applicable in the intermediate to large slip regime is outstanding.
+And as shown in Chap.~\ref{chapter:second_paper} slip does in fact play an important role in the dynamics of a dewetting thin film.
+While the model does not account for e.g., surfactants, we supply a matching condition between our method and thin film like theories in Chaps.~\ref{chapter:first_paper}-\ref{chapter:second_paper}.
 The seemingly simple ``Yes'' or ``No'' question could be discussed in even more detail, but it is a subjective open question.
 Therefore we would like to have a look at Chaps.\ref{chapter:second_paper}-\ref{chapter:third_paper} and their findings.
  
@@ -89,14 +101,14 @@ Their amplitude however is usually so small that they can be neglected in experi
 However having a dewetting thin film it can be assumed that the thickness of the film will be comparable to the amplitude of the fluctuations, at least in regions where the film ruptures.
 As shown in Chap.~\ref{chapter:second_paper} these fluctuations can be added to the model using a matching condition for a fluctuating force term. 
 The fluctuating force term is then tested against the theory of capillary waves and does show in fact good agreement with the predicted spectrum.
-In the following it is shown that the stability difference, as measured in rupture times, between fluctuating and deterministic thin film~\footnote{$k_BT > 0$ fluctuating thin film, $k_BT = 0$ deterministic thin film} does inversely depend on the logarithm of the wettability. 
+In the following it is shown that the stability difference, as measured in rupture times, between fluctuating and deterministic thin films~\footnote{$k_BT > 0$ fluctuating thin film, $k_BT = 0$ deterministic thin film.} does inversely depend on the logarithm of the wettability. 
 By the virtue of the model a combination of a spatially varying wettability as well as the addition of thermal fluctuations is studied using a dewetting thin film.
 Depending on the chosen function of the wettability it is possible to create numerical experiments where the deterministic simulation is almost indistinguishable from the fluctuating one.
 At the beginning of this chapter we discuss the underlying theory and the modification to the thin film equation.
-The constructive approach we use to match our model with the stochastic thin film equation should in fact serve as a blueprint for other additions e.g. surfactant dynamics. 
+The constructive approach we use to match our model with the stochastic thin film equation should in fact serve as a blueprint for other additions e.g., surfactant dynamics. 
 
 In Chap.~\ref{chapter:third_paper} a simple toy model is developed to study dewetting dynamics under the influence of ``switchable'' substrates.
-The model is build on the idea that the wettability, e.g. the equilibrium contact angle $\theta_{\text{eq.}}$, can be changed based on external stimuli. 
+The model is build on the idea that the wettability, e.g., the equilibrium contact angle $\theta_{\text{eq.}}$, can be changed based on external stimuli. 
 We assume that the these stimuli can be modelled by an arbitrary function.
 In the here discussed case the arbitrary function is a trigonometric function ($\theta(x,t) \propto \sin(x t)$) that admits not only a spatial gradient but also a time dependent behaviour.
 Due to this wettability gradient fluid is driven into regions of high wettability, or low contact angles.
@@ -109,7 +121,7 @@ In fact, independent of the parameters we vary rupture of these rivulets can be 
 The stationary state after the breakup is again a multi-droplet state, however with fewer droplets than in the static case.
 
 Somewhat unexpected to the author of this thesis the lattice Boltzmann model for thin film hydrodynamics does in fact work very well. 
-Unexpected because this model is build from parts that work well individually, e.g. shallow water theory and the lattice Boltzmann method, but that does not necessarily mean that their combination is appropriate to solve thin film problems.  
+Unexpected because this model is build from parts that work well individually, e.g., shallow water theory and the lattice Boltzmann method, but that does not necessarily mean that their combination is appropriate to solve thin film problems.  
 We did show that the method is capable of performing numerical experiments in the desired fluid dynamic regimes ($Re < 1$, $Ca < 1$) without too much superficial parameter tuning, leaving aside the discussion of hydrodynamic slip. 
 Matching with characteristic quantities such as the most unstable mode of the film ($q_0$) does allow comparing with experiments, theory and even other simulations.
 The here presented work should be understood as a baseline to what the model is currently able to do.
@@ -123,7 +135,7 @@ Again we are able to find relevant research for crystallization be it as theoret
 Further problems that would require minor extensions to \textit{Swalbe.jl} are surfactants, particle-fluid coupling and active colloids to name just a few. 
 Among this short list of topics first steps were taken to study the dynamics of thin liquid films with immersed active colloids.
 While the model does not allow to have a height resolved distribution of colloids inside the film, it in fact allows having a scalar density of colloids.
-Depending on the activity of these colloids the density can be coupled to the film with e.g. a modified film pressure.
+Depending on the activity of these colloids the density can be coupled to the film with e.g., a modified film pressure.
 The colloids on the other hand have internal degrees of freedom allowing for their own system of equations.
 Within the limit of slow change of colloidal density (flowing with the film) the integration of evolution equation can simply be coupled to the lattice Boltzmann time iteration. 
 
