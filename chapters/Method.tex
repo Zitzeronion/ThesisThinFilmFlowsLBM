@@ -11,19 +11,21 @@ They are often referred to as benchmark problems.
 One of those is the famous ''Hagen–Poiseuille flow'', see  Sec.~\ref{sec:theory_shallow_water}, which is an analytical solution for a flow field in a canal and was first derived by Poiseuille and Haagen in the 18th century~\cite{suteraHistoryPoiseuilleLaw}.
 There are a few other benchmark problems, especially in the low Reynolds number regime with a small or vanishing Stokes number\footnote{The Stokes number is a dimensionless number that defines the behaviour of particles suspended in a flow and can be calculated with $St = \frac{t_0u_0}{l_0}$, where $t_0$ is a relaxation time of the particles, $u_0$ is a characteristic velocity and $l_0$ is a characteristic length scale.}.
 The so called Stokes flows admit time reversal symmetry and many have theoretical solutions.
-But going from laminar to turbulent flows with high Reynolds numbers poses still a problem, or as R. Feynman once said: ''... the most important unsolved problem of classical physics.''
+However, not all flows are laminar and in fact most natural flow admit some turbulent behaviour. 
+Understanding flows with high Reynolds numbers still poses a problem, or as R. Feynman once said: ''... the most important unsolved problem of classical physics.''
 
 On the other hand solving differential equations with numerical tools is a story of success.
 Long before any computer was build, iterative methods for approximating a solution to a given differential or integral equation have been developed.
 Leonhard Euler published his findings about what we call today the ''Euler-method'' already in the 18th century~\cite{brezinskiNumericalAnalysisHistorical2012}.
 On the blink to the 20$^{\text{th}}$ century Carl Runge and Martin Kutta developed the method nowadays called ''Runge-Kutta Method'' which is of better accuracy than a plain Euler solver~\cite{wBeitragZurNaherungsweisen1901, rungeUeberNumerischeAufloesung1895}.
 
-Several physics problems are being studied to large extent with numerical tools, quantum field theory~\cite{montvayQuantumFieldsLattice1994}, solid mechanics~\cite{cardiffThirtyYearsFinite2021}, and as outlined in the introduction Chap.~\ref{chapter:intro} computational fluid dynamics (CFD) is one of those fields.
+Several physics problems are being studied to a large extent with numerical tools, e.g., quantum field theory~\cite{montvayQuantumFieldsLattice1994}, solid mechanics~\cite{cardiffThirtyYearsFinite2021}, and as outlined in the introduction Chap.~\ref{chapter:intro}, computational fluid dynamics (CFD) is one of those fields.
 Although chip manufacturers have a hard time to keep up with Moore's law, computing power is still growing rapidly~\cite{schallerMooreLawPresent1997}.
-Of course instead of ever faster processors (measured in clock rate), the trend goes in the direction of parallel and accelerated computing. 
-Several accelerator designs hit the market around 2020, one design that works particularly well as accelerators are graphics processing units (GPUs).
-While a GPU lacks the complexity of a CPU it excels at doing simple task over and over again.
-For example the generation of colorful pixels for a monitor.
+Instead of ever faster processors (measured in clock rate), the trend is shifting in the direction of parallel and accelerated computing. 
+Throughout the years several accelerator designs emerged.  
+One chip design that works particularly well as accelerators are graphics processing units (GPUs).
+While a GPU lacks the complexity of a central processing unit (CPU) it excels at doing simple tasks over and over again.
+As the name suggests they were initially developed to generate a graphic signal that could be read by a screen. 
 It turns out that several algorithms developed for solving differential equations are well suited to be calculated on the GPU. 
 Among them is the lattice Boltzmann method, at least a very basic implementation of the method.
 GPUs however are not the only devices to be used as accelerators.
@@ -33,8 +35,8 @@ The successor of the Xenon Phi project is the very recent \textit{oneAPI} approa
 Shifting the focus towards heterogeneous compute architectures, or as Rick Stevens\footnote{Rick Stevens is Professor at the Department of Computer Science and Associate Laboratory Director, Computing, Environment and Life Sciences at Argonne National Laboratory.} said: ''The future of advanced computing requires heterogeneous hardware to maximize the computing power needed for exascale-class workloads. The oneAPI industry initiative Intel is spearheading will ensure that programming across diverse compute architectures is greatly simplified.''
 Not only is this Intel's idea but a general trend in high performance computing (HPC) moving from CPU only clusters to heterogeneous hardware.
 Apart from Intel more and more companies joined the development of workload optimized hardware.
-Which is possible not only but also due to the technological inventions from arm (Advanced RISC Machines) and other system on a chip (SoC) design companies.
-SoC designs optimized for specific workloads is the key business of arm, which is a paradigm change of the industry.
+Which is possible not only but also due to the technological inventions from ARM (Advanced RISC Machines) and other system on a chip (SoC) design companies.
+SoC designs optimized for specific workloads are the key business of ARM, which is a paradigm change of the industry.
 For the longest time established chip manufactures also defined the designs of a chips.
 Today SoC designs can be manufactured at project manufacturers with TSMC (Taiwan Semiconductor Manufacturing Company Limited) being one of them.
 TSMC is also the world leader in the production of semiconductors for computer chips. 
@@ -51,7 +53,7 @@ Based on this mathematical model we can define a numerical approach.
 Using assumptions, mainly concerning the collision operator, the resulting algorithm is fairly easy to implement and shows good scalability.
 This closes the loop with the above statement that the resulting source code is a perfect candidate for GPU programming.
 
-\section{Numerical Methods}
+\section{Numerical methods}
 \label{sec:numerical_methods}
 \begin{figure}
     \centering
@@ -66,8 +68,6 @@ Especially when it comes to numerical simulations of the thin film equation, see
 The thin film equation is a non-linear (stiff) fourth order PDE which requires choosing an appropriate scheme, because not every numerical scheme will be able to provide first stability and second a correct approximation of the solution.
 A numerical scheme is a blue print of how to discretize derivatives and arrange terms such that an iterative process converges towards a solution.
 That said, developing new numerical schemes for PDEs is still a very active research area.
-% In a time dependent problem, which the thin film equation is, we have to be aware that a discretization in space may be very different from a discretization in time.
-% Often a good approach is to first solve the homogenous problem and only than advance in time.
 One way to compute this differential operators on a computer is via finite differences.
 
 \subsection{Finite differences}
@@ -75,8 +75,8 @@ Using finite differences means nothing more than discretizing the continuous pro
 Figure~\ref{fig:finite_difference} illustrates a discretization approach where the function $f(x)$ is approximated by a finite set of points which are shown as black dots on the red line.
 At every point $x_i$ along the x-axis we know the value of the function $f(x_i)$.
 This however does not mean that we know the value of $f(x)$ at arbitrary $x$ values and even worse we do not know $\partial_x f(x_i)$ at $x_i$. 
-For a continuous function, e.g. the film thickness $h(\mathbf{x},t)$, we can analytically compute the derivatives. 
-Here we are left with a discrete set of point and have yet to come up with an idea to calculate $\nabla h(\mathbf{x}_i, t)$, which is crucial to compute the film pressure, Eq.~(\ref{eq:pfilm}).
+For a continuous function, e.g., the film thickness $h(\mathbf{x},t)$, we can analytically compute the derivatives. 
+Here we are left with a discrete set of points and have yet to come up with an idea to calculate $\nabla h(\mathbf{x}_i, t)$, which is crucial to compute the film pressure, Eq.~(\ref{eq:pfilm}).
 
 Discretization of a derivative is a long studied problem~\cite{booleTreatiseCalculusFinite1872, jordanCalculusFiniteDifferences1965}.
 The Taylor expansion gives us a tool to approximate the solution to a differential.
@@ -95,16 +95,17 @@ Both the forward as well as the backward differential are first order in their e
     \partial_x f(x_i) = \frac{f(x_{i+1}) - f(x_{i-1})}{2h},
 \end{equation}
 where the value of the derivative is averaged over a larger interval. 
-The second derivative is than simply applying the differential operator (forward, backward, central) to  the first derivative, in case of central difference this yields
+The second derivative is then simply applying the differential operator (forward, backward, central) to  the first derivative. 
+In case of central differences this yields
 \begin{equation}\label{eq:second_central_diff}
     \partial_x^2 f(x_i) = \frac{f(x_{i+1})-2f(x_i)+f(x_{i-1})}{^2}.
 \end{equation}
 
-However all finite difference schemes suffer from the concrete choice of the discretization, which is often referred as discretization artifacts.
+However all finite difference schemes suffer from the concrete choice of the discretization, which is often referred to as discretization artifacts.
 The starting equation is usually a continuous one in both space and time, but the numerical solver requires a discretized system. 
 This can be done as shown in Fig.~\ref{fig:finite_difference} by introducing a grid for the spatial dimensions. 
-For now we assume that we can the same to the time and put the temporal dimension into a discrete grid. 
-To understand the error one makes using finite difference we use the example of a sine wave. 
+For now we assume that we can do the same with time and put the temporal dimension into a discrete grid. 
+If we take a sine wave and discretize it with an arbitrary grid spacing $h$, that grid spacing will introduce an error to our finite difference scheme. 
 We mark two points along the curve and connect them, which yields a straight line. 
 Therefore all information in between the points is lost, instead of $y(x) = \sin(x)$ one would guess $y(x) = kx + d$ for the points.
 Besides the fact that information about the function is lost it still could be a good enough approximation for the derivative, especially if the points are not too far apart.
@@ -114,7 +115,7 @@ Which explains the so called fidelity of the finite difference method~\cite{guru
 One needs a fine enough grid to resolve the to be studied dynamics, but the smaller the spacing $h$ gets the more numerically demanding is the calculation.
 
 In fact there are further limitations to the problem of numerically approximating a PDE.
-Numerical methods for PDEs, e.g. the thin film or the wave equation, need to satisfy the CFL condition~\cite{courantUeberPartiellenDifferenzengleichungen1928}.  
+Numerical methods for PDEs, e.g., the thin film or the wave equation, need to satisfy the CFL condition~\cite{courantUeberPartiellenDifferenzengleichungen1928}.  
 Beyond other things it states that choosing an increment for time cannot be independent of the spatial resolution.
 This condition can be formalized as
 \begin{equation}\label{eq:CFL}
@@ -123,14 +124,13 @@ This condition can be formalized as
 with $\Delta x_i$ and $\Delta t$ being the spatial and temporal increment, respectively and $u_{x_i}$ being the magnitude of the velocity in the respective direction.
 In case of Fig.~\ref{fig:finite_difference} we have $\Delta x = h$. 
 Behind this concept is the idea that propagation of information has an upper limit.
-For fluid dynamic problems this upper limit is the speed of sound, in electrodynamics it would be the speed of light.
+For fluid dynamics problems this upper limit is the speed of sound, in electrodynamics it would be the speed of light.
 Any propagation larger than this upper limit introduces stability issues.
 These issues are purely numerical as we know that air can flow with velocities larger than the speed of sound, however by doing so the flow creates a so called shock.
 
-Thinking about a wave package, numerically it should be ensured that several time iterations are computed before the package has reached the next spatial point of the grid.
+Thinking of a wave package, numerically it should be ensured that several time iterations are computed before the package has reached the next spatial point of the grid.
 The maximal value that the Courant number can reach for an explicit solver, to which for example the lattice Boltzmann method belongs (assuming a BGK collision operator), is $C_{max} = 1$.
 For implicit methods the maximal Courant number can be larger than one.
-% In Fig.~\ref{fig:finite_difference} there is a single lattice constant $h$ that sets the spatial resolution of the system as such $\Delta x = h$.
 The iteration from $u(x_i,t_0)$ to $u(x_i,t_1)$ is called a time step. 
 The ``distance'' between consecutive time values, here $\Delta t = t_1 - t_0$ must ensure that forces and therefore acceleration are well within the stability condition Eq.~(\ref{eq:CFL}).
 
@@ -146,7 +146,7 @@ For example the term $\partial_x f(x)$ transforms to
 \begin{equation}\label{eq:fourier_transform}
     \partial_x f(x) = q\cdot \tilde{f}(q),
 \end{equation}
-where $\tilde{f}(q)$ is the Fourier transformed of $f(x)$, e.g. $\tilde{f}(q) = \delta(q - a/2\pi)$ for $f(x) = e^{iax}$. 
+where $\tilde{f}(q)$ is the Fourier transformed of $f(x)$, e.g., $\tilde{f}(q) = \delta(q - a/2\pi)$ for $f(x) = e^{iax}$. 
 Instead of solving a differential equation one solves an algebraic equation, or a set of algebraic equations.
 While it is often straightforward to perform the transformation it can become problematic to perform the backward transformation. 
 Usually the expressions are fairly complicated and often the backward transformation into real space is not easy to perform.
@@ -154,23 +154,24 @@ In Chap.~\ref{chapter:second_paper} we arrive at such an expression for the stru
 A structure factor is a measure of the distribution of length scales, roughly speaking.
 In this specific case there is no need for a backward transformation because (scattering) experiments usually supply data in Fourier space.
 
-However, when simulating the thin film equation we may be interested in forces, pressures or simply the thickness $h(\mathbf{x},t)$, which is why we need a backward transformation.
-Numerically speaking the operators for transformations are matrices, which depend on the explicit problem.
+However, when approximating the thin film equation, by iteratively solving an equation, we may be interested in forces, pressures or simply the thickness $h(\mathbf{x},t)$, which is why we need a backward transformation.
+Numerically speaking the operators for transformations are matrices, which depend on the specific problem.
 Solutions in real space are generated by inversion of these operators and therefore by inversion of an (arbitrary) matrix.
 Computing the inverse of a matrix is a demanding problem. 
 Nevertheless, these transformation approaches are often quite helpful finding an exact solution.
-One rather prominent example is the computation of Green's functions, e.g. in electrostatics~\cite{greenEssayApplicationMathematical1889}.
+One rather prominent example is the computation of Green's functions, e.g., in electrostatics~\cite{greenEssayApplicationMathematical1889}.
 For the shallow water theory, see Sec.~\ref{sec:theory_shallow_water}, one class of effective methods are the (discontinuous) Galerkin methods~\cite{ernTheoryPracticeFinite2004} and to some extent the related finite element method (FEM).
 
 Literature concerning simulations of the thin film equation using spectral solvers is rather sparse. 
 That does however not mean that spectral methods are ill suited for this specific problem.
-Dur{\'a}n-Olivencia, M. et al. have shown that a spectral method is not only able to simulate the thin film equation but also they also included thermal fluctuations and were able to simulate the stochastic thin film equation~\cite{duran-olivenciaInstabilityRuptureFluctuations2019}.
+For example, Dur{\'a}n-Olivencia, M. et al. used a spectral method to approximate the thin film equation. 
+Their work also introduced a self-consistent approach to tread thermal fluctuations~\cite{duran-olivenciaInstabilityRuptureFluctuations2019}.
 
 \subsection{Molecular dynamics}
 The third approach we discuss in this section is the molecular dynamics method (MD)~\cite{haileMolecularDynamicsSimulation1997, zhangMolecularSimulationThin2019, wengMolecularDynamicsInvestigation2000}.
 When we solve the equations of motion of molecules we do not per se think of a \textbf{thin} film flow, however molecular dynamics can be very insightful when dealing with thin film problems. 
 In Sec.~\ref{sec:thin_films} we introduced the term wetting and the three phase contact line.
-Advancement of the three phase contact line can be boiled down to the interaction between fluid molecules and substrate molecules, therefore MD is perfectly suited to study e.g. slip~\cite{jabbarzadehWallSlipMolecular1999, segaRegularizationSlipLength2013}. 
+Advancement of the three phase contact line can be boiled down to the interaction between fluid molecules and substrate molecules, therefore MD is perfectly suited to study e.g., slip~\cite{jabbarzadehWallSlipMolecular1999, segaRegularizationSlipLength2013}. 
 Instead of working with macroscopic fields, such as density $\rho$ or velocity $\mathbf{u}$, the method uses a bottom up approach.
 The main idea is to compute the trajectory of every particle using Newton's equation of motion, therefore to assume that particles are classical objects.
 Interactions as well as boundary conditions can be added via pair potentials.
@@ -181,29 +182,30 @@ A common interaction potential is the Lennard-Jones potential
 where $ij$ denotes the particle pair, $\varepsilon$ and $\sigma$ are the model dependent energy and length parameters, respectively.
 Clearly this approach is rather elegant.
 Knowing the correct values for $\sigma$ and $\varepsilon$, the simulations show good agreement with experiments~\cite{zhangMolecularSimulationThin2019}.
-Which is quite impressive if we take into account that the method is considered noisy.
 
-However there is no free lunch. 
-Because of the microscopic nature of this method it is compute intensive.
-Per definition the method needs to know the phase space coordinates, thus the position and the velocity, of every particle.
+However, there is no free lunch. 
+The method is inherently microscopic which makes it compute intensive.
+To compute a particle trajectory we need to know where the particle is and how fast it is, thus its position and the velocity.
+In a MD simulation we need to know this information for every particle.
 While it is possible to arrange this information efficiently, the computation of the pair potential quickly becomes quite resource demanding in terms of computational power.
 The results from the computation of pair potentials are forces which act on the particles.
 This surmounts to a lot of computational resources for small physical volumes, which is in the context of fluid flows and film formation problematic.
 Assuming a box of a few nanometers in all directions and a physical time of about a picosecond ($10^{-12}s$) is already a lot to do for a common laptop.
 Clearly a lot is depending on the implementation of the algorithm. 
-There are well developed, open source and supported software solutions that not only scale well but have a mature user interface, e.g. LAMMPS and GROMACS~\cite{plimptonFastParallelAlgorithms1995, berendsenGROMACSMessagepassingParallel1995, lindahlGROMACSPackageMolecular2001}.  
+There are well developed, open source and supported software solutions that not only scale well but have a mature user interface, e.g., LAMMPS and GROMACS~\cite{plimptonFastParallelAlgorithms1995, berendsenGROMACSMessagepassingParallel1995, lindahlGROMACSPackageMolecular2001}.  
 However all this development cannot overcome that this method is suited only for relatively small systems and not for macroscopic scales.
 
 Another problem that is inherent to MD simulations is the vast zoo of interaction potentials.
-Water for example is not a Lennard-Jones liquid and therefore the potential Eq.~(\ref{eq:Len-Jon}) cannot be used or water-water interactions.
-Although water seems to be a simple molecule with just two hydrogen atoms and one oxygen atom it is in fact a rather complex substances to simulate.
+Water for example is not a simple Lennard-Jones liquid, such as liquid Argon. 
+Therefore the potential Eq.~(\ref{eq:Len-Jon}) should not be used for water-water interactions.
+Although water seems to be a simple molecule with just two hydrogen atoms and one oxygen atom it is in fact a rather complex substance to simulate.
 There exists not a single model for how water should interact but several, all with very fine tuned adjustments.
 Some include for example the polarity of the water molecule while others neglect it.
 Without knowing why a certain water model is more suited than another one, this approach can come down to a black box.
 This method therefore requires a lot of literature knowledge and validation with both theory and where possible with experiments.
 That said apart from Zhang et al.~\cite{zhangMolecularSimulationThin2019} MD has been used on a diverse set of thin film related problems such as pearling~\cite{koplikPearlingInstabilityNanoscale2006}, dewetting~\cite{bertrandDynamicsDewettingNanoscale2007} or dynamics of droplets~\cite{liuActuatingWaterDroplets2015, wangMolecularDynamicsSimulations2015} to name just a few.
 
-\section{The Lattice Boltzmann Method}\label{sec:LBM}
+\section{The lattice Boltzmann method}\label{sec:LBM}
 \begin{figure}
     \centering
     \includegraphics[width=0.55\textwidth]{graphics/Scales_problem.pdf}
@@ -215,30 +217,30 @@ The lattice Boltzmann method is as the name suggests a discretization approach t
 Boltzmann more then a hundred years ago introduced a model that was build on the assumptions that atoms and molecules move classically.
 This was actually just a small portion of his groundbreaking work which forms a whole subsection of physics called statistical mechanics. 
 He as well knew that there are a lot of oxygen, nitrogen and other atoms that make up the content of air we inhale with a single breath.
-In 1811 already Avogadro calculated that rough number of molecules and around fifty years later Loschmidt came to a similar result~\cite{avagadro1811essai, loschmidtZur1866}
+In 1811 already Avogadro calculated that rough number of molecules and around fifty years later Loschmidt came to a similar result~\cite{avagadro1811essai, loschmidtZur1866}:
 \begin{equation}
-    n = \frac{p N_A}{R T},
+    n = \frac{p N_A}{R T}.
 \end{equation}
-where $n$ is the number density, $p$ the pressure, $R$ the gas constant and $T$ the temperature.
+Here $n$ is the number density, $p$ the pressure, $R$ the gas constant and $T$ the temperature.
 The constant named after Avogadro ($N_A$) states that a mole of any substance has about $6 \cdot 10^{23}$ atoms.
 Boltzmanns ingenious idea, this adjective is justified as even mathematicians find statistical mechanics appealing, to solve the dynamics of this complex coupled system was to use a statistical ansatz.
 Instead of solving the equations of motion for every particle, which is the idea of MD, Boltzmann decided to introduce distribution functions $f(\vec{x},\vec{\xi},t)$, which depend on position, momentum and time and generate an ensemble.
 However, to introduce these distribution functions $f(\vec{x},\vec{\xi},t)$ we must make a guess how the atoms or molecules behave in a gas.
 We actually shortly discussed one of these guesses in Sec.~\ref{sec:navier_stokes_sec} already. 
 The ideal gas is a well working model that assumes that the atoms or molecules in a gas are indistinguishable point particles. 
-Furthermore these particles do not attract or repel each other, neglecting e.g. electrostatic forces.
+Furthermore, these particles do not attract or repel each other, neglecting e.g.,~electrostatic forces.
 The mean free path of these particles is much larger than their physical size.
 Both of these assumptions are actually quite good, because a gas at room temperature and ambient pressure of one bar is a very dilute fluid.
 The particles move in random directions with velocities given by a distribution that depends on temperature. 
 The only way to transfer energy between particles is via elastic collisions.
-This model works exceptionally well for many problems and has been validated experimental numerous times.
+This model works exceptionally well for many problems and has been validated experimentally numerous times.
 Clearly there are shortcomings to the ideal gas, for example at low temperature and high pressures when intermolecular interactions become important.
 However for the scenarios considered in this thesis, the ideal gas serves as a good foundation to the lattice Boltzmann method.
 
 Figure~\ref{fig:scales_dummy} illustrates the idea coming from either a macroscopic system or a microscopic system.
 Instead of dealing with every atom or molecule, which is displayed in the bottom left of the figure, it is also possible to use a more coarse approach which is shown in the centre of the figure where distributions over ensembles of particles are used~\cite{raabeOverviewLatticeBoltzmann2004}.
 Therefore instead of working in the microscopic world the lattice Boltzmann method works in a mesoscopic regime.
-Making it computationally more efficient than e.g. MD for a larger class of problems.
+Making it computationally more efficient than e.g., MD for a larger class of problems.
 Of course, it is also possible to use a coarser approach and in fact a lot of the classical Navier-Stokes solvers operate in the upper right of Fig.~\ref{fig:scales_dummy}, see Sec.~\ref{sec:Joss_need} for some example solvers.
 
 \subsection{The Boltzmann equation and macroscopic conservation equations}
@@ -247,15 +249,15 @@ The dynamics of these distributions $f$ can be formalized and put into an evolut
     \partial_t f + \vec{\xi}\cdot\vec{\nabla} f + \frac{1}{\rho}\vec{F}\cdot\partial_{\vec{\xi}}f = \Omega(f), 
 \end{equation}
 where $\vec{\xi}$ is the momentum. 
-The first two terms describe the advection of the distribution due to the atoms and the third term measures the effect of a force $\mathbf{F}$ on the momentum~\cite{krugerLatticeBoltzmannMethod2017}.
-On the right side of the equation is an arbitrary complex term, the collision operator.
-This operator accounts for all collisions the atoms or particles perform at any given instance of time.
+The first two terms describe the advection of the distribution and the third term measures the effect of a force $\mathbf{F}$ on the momentum~\cite{krugerLatticeBoltzmannMethod2017}.
+On the right hand side of the equation is an arbitrarily complex term, the collision operator.
+This operator accounts for all collisions the particles perform at any given instance of time.
 In principle this operator cannot be computed analytically, because one would need to take into account all possible collision terms from two up to n-point interactions.
 
 However with a smart ansatz it is possible to find a suitable approximation to the collision operator.
 One ansatz we can make is,
 \begin{enumerate}
-    \item The fluids state is not far from its equilibrium.
+    \item The state of the fluid is not far from its equilibrium.
     \item During the collision it approaches its equilibrium with a relaxation time $\tau$.
 \end{enumerate}
 Bhatnagar, Gross and Krook (BGK) were the first ones who worked out the mathematical model behind this ansatz~\cite{bhatnagarModelCollisionProcesses1954}.
@@ -279,15 +281,15 @@ The first of the above equations states that the mass is conserved, while Eq.~(\
 Eqs.~(\ref{eq:BGK_3}, \ref{eq:BGK_4}) tell us that both that the total energy as well as the internal energy are conserved.
 Note that $\vec{v}$ is a relative velocity which measures the deviation $\vec{v}(\vec{x}, t) = \vec{\xi}(\vec{x}, t) - \vec{u}(\vec{x}, t)$.
 
-Taking this four constraints into consideration as well as the two points above one finds that the BGK operator is the simplest one to satisfy them all.
-With one side note however, the full collision operator from Boltzmann does predict a different Prandtl number ($Pr$) than the BGK yields.
+Taking these four constraints into consideration as well as the two points above one finds that the BGK operator is the simplest one to satisfy them all.
+With one side note however: The full collision operator from Boltzmann does predict a different Prandtl number ($Pr$) than the BGK approximation.
 The Prandtl number $Pr = \nu/\alpha$ measures viscosity against thermal diffusivity ($\alpha$). 
 Using BGK one gets $Pr=1$ while monoatomic gases or Boltzmann's operator showing $Pr\simeq 2/3$~\cite{cercignaniBoltzmannEquation1988, krugerLatticeBoltzmannMethod2017}.
 
-The Boltzmann equation, Eq.~(\ref{eq:boltzmann_eq}), was developed as an evolution for a gas and is build upon distributions of microscopic particles, e.g. Eq.~(\ref{eq:boltzmann_eq_dist}).
+The Boltzmann equation, Eq.~(\ref{eq:boltzmann_eq}), was developed as an evolution for a gas and is build upon distributions of microscopic particles, e.g., Eq.~(\ref{eq:boltzmann_eq_dist}).
 Using the BGK approximation for the collision operator we found that its moments conserve mass, momentum and energy.
 The next step is to show that the Boltzmann equation with the BGK operator obeys macroscopic conservation equations, as such Eq~(\ref{eq:cont_3}) and Eq.~(\ref{eq:navier_stokes_fin}).
-For the mass conservation we compute the zeroth moment of Eq.~(\ref{eq:boltzmann_eq}), therefore integrate it over the velocity space
+For the mass conservation we compute the zeroth moment of Eq.~(\ref{eq:boltzmann_eq}), therefore integrating it over the velocity space
 \begin{equation}\label{eq:boltzmann_mass_cons}
     \partial_t\int f\diff^3\xi + \partial_{x_{\beta}}\int\xi_{\beta} f\diff^3\xi + \frac{F_{\beta}}{\rho}\int\partial_{\xi_{\beta}}f\diff^3\xi = \int\Omega(f)\diff^3\xi,
 \end{equation}
@@ -336,7 +338,7 @@ Inserting Eqs.(\ref{eq:mom_flux_tensor_1}-\ref{eq:mom_flux_tensor_2}) into Eq.~(
 \begin{equation}\label{eq:mom_boltzmann}
     \partial_t (\rho u_{\alpha}) + \partial_{x_{\beta}}(\rho u_{\alpha}u_{\beta}) = \partial_{x_{\beta}}\sigma_{\alpha\beta} + F_{\alpha}.
 \end{equation}
-This equation is rather similar to Eq.~(\ref{eq:navier_stokes_2}) or Eq.~(\ref{eq:navier_stokes_fin}), however we cannot solve it yet as we are not able to compute the stress tensor without further knowledge on $f$.
+This equation is rather similar to Eq.~(\ref{eq:navier_stokes_2}) or Eq.~(\ref{eq:navier_stokes_fin}), however we cannot solve it yet as we are not able to compute the stress tensor without further knowledge about $f$.
 
 For completeness let us also compute the energy conservation. 
 We therefore multiply Eq.~(\ref{eq:boltzmann_eq}) with $\xi_{\alpha}\xi_{\alpha}$, thus the trace of the second moment, and integrate
@@ -376,7 +378,7 @@ The missing viscous contributions are not covered by the zeroth order.
 However already at first order of the expansion, thus $f\approx f^{eq} + \epsilon f^{(1)}$, the Navier-Stokes equation can be recovered~\cite{chenLatticeBoltzmannMethod1998}.
 In the next section we use this result and discretize the Boltzmann equation with the BGK operator.
 
-\subsection{From continuum to lattice} 
+\subsection{From continuum to discrete lattice fields} 
 \begin{figure}
     \centering
     \includegraphics[width=0.75\textwidth]{graphics/lbm_citations.pdf}
@@ -394,17 +396,17 @@ The lattice Boltzmann method is the successor of the LGA, where among other thin
 Since the method got first developed in the late 1980s it has gained more and more popularity, as shown in Fig.~\ref{fig:lbm_cite}~\cite{liLatticeBoltzmannMethod2020}.
 Due the simplicity of the method a lot has been worked out over last forty years.
 The reason why the lattice Boltzmann method is lacking behind when it comes to thin film flows is due to its origin as an approximation to the Navier-Stokes equation.
-That said, there are of course studies of wetting and sliding droplets using the lattice Boltzmann method, e.g. Sbragaglia et al.~\cite{sbragagliaSlidingDropsAlternating2014}.
+That said, there are of course numerous studies of wetting and sliding droplets using the lattice Boltzmann method, e.g., Sbragaglia et al.~\cite{sbragagliaSlidingDropsAlternating2014}.
 However they rely on additional contributions for either multiphase or multicomponent models~\cite{shanLatticeBoltzmannModel1993, chenLatticeMethodsTheir1995, shanKineticTheoryRepresentation2006}.
 
 The discretization of Eq.~(\ref{eq:boltzmann_eq}) using the lattice Boltzmann method is straightforward and does not require complex meshing.
-In fact this one of the strengths the lattice Boltzmann method inherited from the LGA.
+In fact this is one of the strengths the lattice Boltzmann method inherited from the LGA.
 As the name suggests a lattice with lattice constants $\Delta x$ and $\Delta t$ for spatial and temporal discretization is the desired numerical domain. 
 The discretized Boltzmann equation without force term reads,
 \begin{equation}\label{eq:LBM_discret_noforces}
     f_i(\vec{x}+\vec{c}_i\Delta t, t+ \Delta t) - f_i(\vec{x}, t) = -\frac{\Delta t}{\tau}(f_i(\vec{x}, t) - f^{eq}_i(\vec{x}, t)),
 \end{equation}
-where the $\vec{c}_{i}$ form a discrete set of $\alpha$ velocities that upon special symmetry considerations replace $\vec{\xi}$ of the previous section~\cite{rubinsteinTheoryLatticeBoltzmann2008}.
+where the $\vec{c}_{i}$ form a discrete set of $\alpha$ velocities that upon symmetry considerations replace $\vec{\xi}$ of the previous section~\cite{rubinsteinTheoryLatticeBoltzmann2008}.
 This equation is also called lattice Boltzmann equation (LBE). 
 The perturbative expansion around the equilibrium distribution, Eq.~(\ref{eq:chap-ens-expansion}) does also hold for a discretized velocity space, therefore
 \begin{equation}\label{eq:expansion_f}
@@ -417,15 +419,15 @@ From Eqs.~(\ref{eq:BGK_1}-\ref{eq:BGK_2}) we know that the non-equilibrium part 
     \sum_i \vec{c}_i f_i^{neq} = \vec{0}, 
 \end{align}
 where due to discretization the integral becomes a sum.
-The moments of the equilibrium functions obey the following the relations~\cite{chenLatticeBoltzmannMethod1998} 
+The moments of the equilibrium functions obey the following relations~\cite{chenLatticeBoltzmannMethod1998} 
 \begin{align}
     \Pi^{eq} &= \sum_{i} f_{i}^{eq} = \rho, \label{eq:moments_equilibria_1}\\
     \Pi^{eq}_{\alpha} &= \sum_i c_{i\alpha}f_i^{eq} = \rho u_{\alpha}, \label{eq:moments_equilibria_2}\\
     \Pi^{eq}_{\alpha\beta} &= \sum_{i} c_{i\alpha} c_{i\beta}f_i^{eq} = \rho u_{\alpha} u_{\beta} + \rho c_s^2\delta_{\alpha\beta}, \label{eq:moments_equilibria_3}\\
     \Pi^{eq}_{\alpha\beta\gamma} &= \sum_i c_{i\alpha} c_{i\beta} c_{i\gamma}f_i^{eq} = \rho c_s^2(u_{\alpha}\delta_{\beta\gamma} + u_{\beta}\delta_{\gamma\alpha} + u_{\gamma}\delta_{\alpha\beta}), \label{eq:moments_equilibria_4}
 \end{align}
-where the greek indices refer to the spatial dimensions $(x,y,z)$. 
-For the zeroth and first moment we also require that,
+where the Greek indices refer to the spatial dimensions $(x,y,z)$. 
+For the zeroth and first moment we also require that
 \begin{align}
     \sum_{i} f_{i}^{eq} &= \sum_{i} f_{i} = \rho, \\
     \sum_i c_{i\alpha}f_i^{eq} &= \sum_i c_{i\alpha}f_i = \rho u_{\alpha}.
@@ -436,14 +438,14 @@ As a solvability condition for the upcoming derivation we use,
     \sum_{i} f_{i}^{(n)} = 0, \label{eq:all_order_constraint_1}\\
     \sum_{i} \vec{c}_{i}f_{i}^{(n)} = \vec{0},  \label{eq:all_order_constraint_2}
 \end{align}
-which basically insures mass and momentum conservation of the collision operator.
+which basically ensures mass and momentum conservation of the collision operator.
 
 Performing a Taylor expansion of Eq.~(\ref{eq:boltzmann_eq}) with a discrete set of velocities assuming no force is present yields~\cite{krugerLatticeBoltzmannMethod2017}
 \begin{equation}\label{eq:Taylor_discret_boltzmann}
     \Delta t (\partial_t + c_{i\alpha}\partial_{\alpha})f_{i} + \frac{\Delta t^2}{2}(\partial_t + c_{i\alpha}\partial_{\alpha})^2 f_{i} + O(\Delta t^3) = -\frac{\Delta t}{\tau} f_{i}^{neq}.
 \end{equation}
 Leaving higher orders aside one finds that this is actually a slow mode expansion of $f_{i}$.
-The distribution functions $f_{i}$, therefore only changes with macroscopic time scales. 
+The distribution functions $f_{i}$, therefore only change on macroscopic time scales. 
 If this statement is violated higher orders need to be considered.
 Subtracting $\Delta t/2 (\partial_t + c_{i\alpha}\partial_{\alpha})$ from both sides yields
 \begin{equation}\label{eq:derive_lbm_orders}
@@ -494,7 +496,7 @@ As there is now an equation for $\Pi^{(1)}_{\alpha\beta}$ it is possible to coll
     (\epsilon\partial_t^{(1)} + \epsilon^2\partial^{(2)})\rho + \epsilon\partial_{\alpha}^{(1)}(\rho u_{\alpha}) &= 0, \label{eq:Navier_stokes_01}\\
     (\epsilon\partial_t^{(1)} + \epsilon^2\partial^{(2)})(\rho u_{\alpha}) + \epsilon\partial_{\beta}^{(1)}\Pi^{eq}_{\alpha\beta} &= -\epsilon^2\partial_{\beta}^{(1)}\left(1 - \frac{\Delta t}{2\tau}\right) \Pi^{(1)}_{\alpha\beta}. \label{eq:Navier_stokes_02}
 \end{align}
-This system in fact resembles the Navier-Stokes with the small pitfall that the viscous stress tensor
+This system in fact resembles the Navier-Stokes equation with the small pitfall that the viscous stress tensor
 \begin{equation}
     \sigma = - \left(1 - \frac{\Delta t}{2\tau}\right) \Pi^{(1)},
 \end{equation}
@@ -503,7 +505,7 @@ Cut the last part short for an isothermal equation of state and $f_{i}^{eq}$ as 
 \begin{equation}\label{eq:eqi_dist1}
     f_{i}^{eq} = \rho(a + b c_{i\alpha} u_{\alpha} + d (c_{i\alpha} u_{\alpha})^2 + e u^2),
 \end{equation}
-then the tensor is given as
+where $a, b, d, e$ are unkown constants~\footnote{In this alphabetic order $c$ is left out to avoid confusion with the lattice velocities.} then the tensor is given as
 \begin{equation}\label{eq:stress_first_order}
     \Pi^{(1)} = -\rho c_s^2\tau(\partial_{\beta}^{(1)}u_{\alpha} + \partial_{\alpha}^{(1)}u_{\beta}) + \tau\partial_{\gamma}^{(1)}(\rho u_{\alpha} u_{\beta} u_{\gamma}),
 \end{equation}
@@ -522,9 +524,9 @@ In fact in Chap.~\ref{chapter:first_paper} all numerical experiments were perfor
 \mathbf{c}_{i}  =
 \left\{
 \begin{array}{ll}
-(0,0) & \alpha = 0 \\
+(0,0) & \alpha = 0, \\
 \left[\cos{\frac{(i-1)\pi}{4}}, \sin{\frac{(i-1)\pi}{4}} \right] &  i=1,3,5,7 \\
-\sqrt{2}\left[\cos{\frac{(i-1)\pi}{4}}, \sin{\frac{(i-1)\pi}{4}} \right] & i=2,4,6,8
+\sqrt{2}\left[\cos{\frac{(i-1)\pi}{4}}, \sin{\frac{(i-1)\pi}{4}} \right] & i=2,4,6,8~,
 \end{array}
 \right.    
 \end{equation}
@@ -546,7 +548,7 @@ such that the equilibria can be written as
 \begin{equation}\label{eq:eqi_dist2}
     f_{i}^{eq} = w_{i}\rho\left(1 + \frac{c_{i\alpha} u_{\alpha}}{c_s^2} +  \frac{(c_{i\alpha} u_{\alpha})^2}{2c_s^4} + \frac{u^2}{2c_s}\right).
 \end{equation}
-Together with the evolution equation Eq.~(\ref{eq:LBM_discret_noforces}) it is therefore possible to approximate the Navier-Stokes equation, at least in regimes of small Knudsen and Mach numbers, $Kn \& Ma \ll 1$.
+Together with the evolution equation Eq.~(\ref{eq:LBM_discret_noforces}) it is therefore possible to approximate the Navier-Stokes equation, at least in regimes of small Knudsen and Mach numbers, $Kn \ll 1$ and $Ma \ll 1$.
 
 Many articles about the lattice Boltzmann method mention a collision step and a streaming step.
 This can be achieved by splitting Eq.~(\ref{eq:LBM_discret_noforces}) into a purely local part, 
@@ -557,12 +559,12 @@ and a non-local propagation step
 \begin{equation}\label{eq:steaming_step}
     f_i(\vec{x}+\vec{c}_i\Delta t,t + \Delta t) = f^{\star}_i(\vec{x},t).
 \end{equation}
-This rearrangement offers the unique computational advantage, because Eq.~(\ref{eq:collision_step}) is perfectly suited for parallel computation.
+This rearrangement offers a unique computational advantage, because Eq.~(\ref{eq:collision_step}) is perfectly suited for parallel computation.
 
-\subsection{Shallow water equations on the lattice}\label{susbsec:shallow_water_lattice_boltzmann}
+\subsection{The shallow water equations on the lattice}\label{susbsec:shallow_water_lattice_boltzmann}
 
-The idea however of this thesis is not to approximate the Navier-Stokes equation but have a numerical solver for the thin film equation.
-Luckily for me and as outlined in Sec.~\ref{sec:theory_shallow_water} there is a system which has some similarities with the thin film equation, namely the shallow water equations, Eqs.~(\ref{eq:shallow_water_01}-\ref{eq:shallow_water_02}). 
+The idea however of this thesis is not to approximate the Navier-Stokes equation but to have a numerical solver for the thin film equation.
+As outlined in Sec.~\ref{sec:theory_shallow_water} there is a system which has some similarities with the thin film equation, namely the shallow water equations, Eqs.~(\ref{eq:shallow_water_01}-\ref{eq:shallow_water_02}). 
 In fact it is possible to derive with a similar ansatz, the shallow water equations from the Boltzmann equation~\cite{salmonLatticeBoltzmannMethod1999, zhouLatticeBoltzmannMethods2004, dellarNonhydrodynamicModesPriori2002}.
 The starting point are the two equations for mass and momentum conservation from Sec.~\ref{sec:theory_shallow_water},
 \begin{align}
@@ -589,7 +591,7 @@ where $D$ accounts for the spatial dimensions.
 The derivation of the lattice Boltzmann method for the shallow water system is very similar to the lattice Boltzmann method for the Navier-Stokes equation. 
 The starting point for both models is Eq.~(\ref{eq:LBM_discret_noforces}) and the expansion of $f$, see Eq.~(\ref{eq:expansion_f}). 
 Instead of repeating all calculations from the pervious section, Dellar~\cite{dellarNonhydrodynamicModesPriori2002} showed a rather direct approach to compute the stress tensor. 
-The idea is to use the non-dimensional discretized (force free) Boltzmann equation,
+The idea is to use the non-dimensional Boltzmann equation without forcing,
 \begin{equation}\label{eq:dellar_sw_lbe}
   \partial_t f_i + c_i\cdot\nabla f_i = -\frac{1}{\epsilon\tau}(f_i - f_i^{eq}),  
 \end{equation}
@@ -598,19 +600,19 @@ and compute its moments straight away such that,
     \partial_t \sum_i f_i + \partial_{\alpha}\sum_i c_{i\alpha} f_i = -\frac{1}{\epsilon\tau}\left(\sum_i f_i - \sum_i f_i^{eq}\right),\label{eq:zeroth_mom_sw}\\
     \partial_t \sum_i c_{i\alpha} f_i + \partial_{\beta}\sum_i c_{i\alpha} c_{i\beta} f_i = -\frac{1}{\epsilon\tau}\left(\sum_i c_{i\alpha} f_i - \sum_ic_{i\alpha} f_i^{eq}\right).\label{eq:first_mom_sw} 
 \end{align}
-The discretized moments given by, 
+The discretized moments are given by
 \begin{align}
     \sum_i f_i^{eq} &= \sum_i f_i = h,\label{eq:sw_lbm_mom_0}\\
     \sum_i c_{i\alpha}f_i^{eq} &= \sum_i c_{i\alpha}f_i = hu_{\alpha},\label{eq:sw_lbm_mom_1}\\
     \sum_i c_{i\alpha}c_{i\beta}f^{eq}_i &= \sum_i c_{i\alpha}c_{i\beta}f_i = \Pi_{\alpha\beta},\label{eq:sw_lbm_mom_2}
 \end{align}
 where we simply used Eqs.~(\ref{eq:boltzmann_moment_1}-\ref{eq:boltzmann_moment_3}) with the discrete velocity set $\mathbf{c}_i$ and the shallow water equilibrium function Eq.~(\ref{eq:shallow_w_equilibrium}).
-Inserting the expansion of $f$, Eq.~(\ref{eq:expansion_f}), into Eq.~(\ref{eq:zeroth_mom_sw}) we have,
+Inserting the expansion of $f$, Eq.~(\ref{eq:expansion_f}), into Eq.~(\ref{eq:zeroth_mom_sw}) we have
 \begin{equation}
     \partial_t h + \partial_{\alpha}(h u_{\alpha}) = 0,
 \end{equation}
 where we have used the solvability condition, Eqs.~(\ref{eq:all_order_constraint_1}-\ref{eq:all_order_constraint_2}). 
-For the first moment we get,
+For the first moment we get
 \begin{equation}
     \partial_t (hu_{\alpha}) + \partial_{\beta}\left(\Pi^{eq}_{\alpha\beta} + \epsilon\Pi^{(1)}_{\alpha\beta} + \epsilon^2\Pi^{(2)}_{\alpha\beta} + O(\epsilon^3)\right) = 0,
 \end{equation}
@@ -623,11 +625,11 @@ If we cut the expansion of $f$ at $O(\epsilon)$ we get
 \begin{equation}
     \partial_t\left(\Pi^{eq}_{\alpha\beta} + \epsilon\Pi^{(1)}_{\alpha\beta}\right) + \partial_{\gamma}\left[\sum_i c_{i\alpha}c_{i\beta}c_{i\gamma} (f^{(0)}_i + \epsilon f^{(1)}_i)\right] = -\frac{1}{\epsilon\tau}\left(\Pi^{eq}_{\alpha\beta} + \epsilon\Pi^{(1)}_{\alpha\beta} - \Pi^{eq}_{\alpha\beta}\right),
 \end{equation}
-where at $O(1)$ we find,
+where at $O(1)$ we find
 \begin{equation}
     \partial_t\Pi^{eq}_{\alpha\beta} + \partial_{\gamma}\left(\sum_i c_{i\alpha}c_{i\beta}c_{i\gamma} f^{(0)}_i\right) = -\frac{1}{\tau}\Pi^{(1)}_{\alpha\beta}.
 \end{equation}
-The stress term $\Pi_{\alpha\beta}^{(1)}$ is therefore given by, 
+The stress term $\Pi_{\alpha\beta}^{(1)}$ is therefore given by
 \begin{align}
     \Pi^{(1)}_{\alpha\beta} &= -\tau\partial_t^{(0)}\Pi^{eq} = \partial_t^{(0)}\left(\frac{1}{2}h^2 g\delta_{\alpha\beta} + h u_{\alpha}u_{\beta}\right) =  \partial_t^{(0)}P_{\alpha\beta} \\
      &= -\tau\left[\theta h(\partial_{\beta}u_{\alpha} + \partial_{\alpha}u_{\beta}) + \left(\theta - gh\right)(\delta_{\alpha\beta}\partial_{\gamma}h u_{\gamma} + u_{\alpha}\partial_{\beta}h + u_{\beta}\partial_{\alpha}h)\right],
@@ -642,13 +644,15 @@ In principle we could adopt a form similar to Eq.~(\ref{eq:eqi_dist2}), however 
     f^{eq}_i &= w_i h\left(\frac{3}{2}gh + 3 c_{i\alpha}u_{\alpha} + \frac{9}{2}(c_{i\alpha}u_{\alpha})^2 - \frac{3}{2}u^2\right), \quad i\neq 0 .
 \end{align}
 
-In Chap.~\ref{chapter:first_paper} we will recap the main the ideas of this derivation. 
+In Chap.~\ref{chapter:first_paper} we will recap the main ideas of this derivation. 
 We will then discuss constructive matching conditions between the shallow water model and the thin film equation.
-The shallow water lattice Boltzmann model is not sufficient for thin film dynamics, we also have to introduce forces. 
+The shallow water lattice Boltzmann model is not sufficient for thin film dynamics since we also have to introduce forces. 
 These forces account for wetting dynamics, such as contact angles, and the velocity boundary condition at $h = 0$.
 
 The derivation of the lattice Boltzmann method for the Navier-Stokes equation as well as the shallow water system concludes this chapter.
-Following is a chapter about the sustainable approach I choose to keep the software first open source and maintainable for the future.
-After the introduction of \textit{Swalbe.jl} in Chap.~\ref{chapter:fourth_paper} the method is thoroughly tested against problems such as the Rayleigh-Taylor instability in Chap.~\ref{chapter:first_paper}.
-While in Chap.~\ref{chapter:second_paper} an additional contribution due to thermal fluctuations is considered. 
-Although the focus is solemnly on thermal fluctuations, this chapter should server as a guideline for the inclusion of further dynamics.
+It follows a chapter about the sustainable approach I chose to keep the software first open source and maintainable for the future.
+After the introduction of \textit{Swalbe.jl} in Chap.~\ref{chapter:fourth_paper} the method is thoroughly tested against problems such as the Rayleigh-Taylor instability in Chap.~\ref{chapter:first_paper}, while in Chap.~\ref{chapter:second_paper} an additional contribution due to thermal fluctuations is considered. 
+Although the focus is solemnly on thermal fluctuations, this chapter should serve as a guideline for the inclusion of further dynamics to the thin film model.
+
+Beyond additions to the thin film model we discuss a coupled problem in Chap.~\ref{chapter:third_paper}. 
+Coupled in the sense that we not only consider the dynamics of the film but allow for dynamical degrees of freedom for the substrate.

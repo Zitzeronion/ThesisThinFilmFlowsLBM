@@ -19,7 +19,7 @@ The process itself is fairly complex, however at some point the yield on the waf
 
 Over the past six decades numerical methods have become more and more essential to study fluid dynamics. 
 Culminating in a topic of research of its own called computational fluid dynamics (CFD). 
-Not only is it used in an academic environment but also in areas that do not come to mind at first glance, e.g. computer games and animated movies.
+Not only is it used in an academic environment but also in for entertainment purposes, e.g. computer games and animated movies.
 One numerical approach among the vast zoo of CFD methods is the lattice Boltzmann method (LBM).
 Instead of a direct simulation of the fluid's density and velocity the LBM uses a statistical approach based on the Boltzmann equation. 
 We make use of this approach and derive a model that is capable of solving the thin film equation.
@@ -31,59 +31,75 @@ Dewetting, i.e. the process when a liquid retracts from a surface, is extensivel
 When it comes to dewetting one mostly ignored effect of experiments is the presence of thermal fluctuations.
 Theoretically this poses a different and more complex problem as the resulting equation is no longer deterministic.
 The resulting stochastic thin film (STF) equation can however be treated with the here developed LBM.
-Including fluctuations do in fact accelerate dewetting, which is in agreement with previous studies, but can also lead to novel couplings when the substrates' wettability is heterogeneous.\\
+Including fluctuations does in fact accelerate dewetting, which is in agreement with previous studies, but can also lead to novel couplings when the substrates' wettability is heterogeneous.\\
 Dewetting can also be addressed using a time and spatially dependent wettability.
 The priority program SPP 2171 of the German Research Foundation (DFG) aims to deepen our understanding of liquid-substrate interactions.
 Our contribution to this program is the study of so-called switchable substrates.
 With simple arguments it is shown that a morphological transition during dewetting can be induced. 
 Instead of several droplets fewer rivulets are present based on the dynamics of the local wettability.
 
-\pagebreak
+Lastly, it should be mentioned that this thesis is of cumulative nature.
+It encompasses the work of four peer review publications.
+The first three chapters are intended as a general introduction to the topic, the theory and the numerical method.
+Introducing, therefore, the concept of a thin liquid film, the governing equations of motion and suitable numerical algorithms to solve them. 
+Following these introductory chapters are the four chapters containing the four peer reviewed articles and one chapter to conclude the thesis.
+
+\newpage
 \section*{Kurzfassung}
 Hydrodynamik, als solches die Bewegung von Flüssigkeiten, ist ein wichtiger Teil unseres Alltags.
-Die definierenden Gleichungen beschreiben nicht nur die Dynamik von Wettersystemen planetarer Ordnung ($10^6$m), sondern auch die Benetzung fein strukturierter Oberflächen ($10^{-9}$m).
-Es ist erstaunlich, dass die Theorie der Hydrodynamik sowohl die Bewegung von atmosphärischen Schichten als auch die Verschiebung der Kontaktline eines Tropfens mit einer Größe kleiner als einem Mikrometer ($10^{-6}$m) beschreiben kann.
+Die definierenden Gleichungen beschreiben nicht nur die Dynamik von Wettersystemen ($10^6$m), sondern auch die Benetzung fein strukturierter Oberflächen ($10^{-9}$m).
+Es ist erstaunlich, dass die Theorie der Hydrodynamik sowohl die Bewegung von atmosphärischen Schichten als auch die Verschiebung der Kontaktline eines Tropfens mit einer Größe kleiner als ein Mikrometer ($10^{-6}$m) beschreiben kann.
 Diese Eigenschaft der Skaleninvarianz macht die Hydrodynamik zu einem äußerst interessanten Forschungsgebiet.
 
-Osborn Reynolds hatte sich bereits im 19. Jahrhundert mit der Frage der Schmiermittelreibung beschäftigt.
-Dabei stellte er fest, dass ein Schmiermittel einen dünnen Film zwischen den Mechanischen Komponenten bildet.
-Diese Tatsache, dass der Film nur eine geringe Höhe zwischen den Komponten einnehmen konnte macht es möglich die Navier-Stokes Gleichung zu vereinfachen.
+Die Frage der Schmiermittelreibung besch\"aftigte Osborn Reynolds bereits im 19. Jahrhundert.
+Dabei stellte er fest, dass ein Schmiermittel einen dünnen Film zwischen den mechanischen Komponenten bildet.
+Die Tatsache, dass der Film \"ublicherweise sehr d\"unn ist, machte es Reynolds möglich vereinfachte Gleichungen aus der Navier-Stokes Gleichung abzuleiten.
 Diese Lubrikationsapproximation fand ihre Anwendung in der Dünnfilmgleichung, die seit mehr als 100 Jahren neues Licht auf diese vermeintlich einfachen Probleme wirft.
 
-Heutzutage wird die Dünnfilmgleichung genutzt, um Phänomene in der Natur zu studieren und um industrielle Prozesse zu optimieren.
-Insekten würden zum Beispiel in einem Wassertropfen ertrinken wenn, Sie von einem Tropfen benetzt würden. 
-Als Antwort auf dieses Problem ist ein Insektenpanzer nur schwer benetzbar oder einfacher gesagt ``wasserabweisend''.
+Heutzutage finden sich viele Anwendungsf\"alle dieser Gleichung, zum einen, um Ph\"anomene in der Natur zu studieren, oder aber auch, um industrielle Prozesse zu optimieren.
+Insekten würden zum Beispiel in einem Wassertropfen ertrinken, wenn sie von einem Tropfen benetzt würden. 
+Die Natur oder besser gesagt die Evolution l\"oste diese Problem indem Insektenpanzer nur schwer benetzbar oder einfacher gesagt ``wasserabweisend'' sind.
 In der Landwirtschaft wiederum sollten Pestizide an den Pflanzen haften und nicht einfach im Boden versickern.
-Ob die Pestizide an der Pflanze haften oder nicht hängt von den Benetzungseigenschaften der Trägerflüssigkeit des Pestizids ab. 
-Um eine bessere Benetzung zu garantieren, wird mit Oberflächenspannungsreduzierenden Komponenten, sogenannten Tensiden, gearbeitet.
-Ein anderer industrieller Sektor, der auch noch in Zukunft wichtiger werden wird, beschäftigt sich mit der Herstellung von Computerchips.
-Der Prozess vom Silizium Einkristall zum logischen Schaltkreis ist hochkomplex, aber an einem Punkt der Produktion wird per Lithographie eine Struktur aufgedruckt. 
-Dieser Schritt ist unter anderem dadurch begrenzt wie gleichmäßig sich einen bestimmte chemische Beschichtung, der sogenannte Photoresist, am Wafer verteilt hat. 
-Ein Problem das zwar auf den ersten Blick nicht viel mit dem Verteilen von Pestiziden gemein hat, aber dessen Problemstellung auch im Gebiet der Benetzungsprobleme angesiedelt ist.
+Ob dies wirklich der Fall ist, hängt unter anderem, stark von den Benetzungseigenschaften der Trägerflüssigkeit des Pestizids ab. 
+Um eine bessere Benetzung zu garantieren, wird mit oberflächenspannungsreduzierenden Komponenten, sogenannten Tensiden, gearbeitet.
+Ein anderer industrieller Sektor, der auch in Zukunft noch wichtiger werden wird, beschäftigt sich mit der Herstellung von Computerchips.
+Der Prozess vom Silizium Einkristall zum logischen Schaltkreis (Chip) ist hochkomplex. 
+Einer der Produktionschritte ist das ``Drucken'' einer Struktur per Lithographie Verfahren. 
+Dazu wird aus einem Tropfen per Rotationsbeschichtung ein Film aufgetragen, jede kleine Unregelm\"a{\ss}igkeit dieses Films kann zu Sch\"aden am Endprodukt f\"uhren. 
+Was diesen Problemen gemein ist, ist die hervorragende Rolle der Benetzbarkeit und die Dynamik des d\"unnen Films.
 
-In den letzten sechzig Jahren sind numerische Methoden zur Untersuchung von hydrodynamischen Problem immer wichtiger geworden.
-Kulminiert ist dieser Trend in einem eigenen Forschungsfeld der numerischen Strömungsmechanik, oder colorful fluid dynamic (CFD).
-Aber auch außerhalb der Forschung findet die CFD ein breites Anwendungsspektrum.
+In den letzten sechzig Jahren sind numerische Methoden zur Untersuchung von hydrodynamischen Problemen immer wichtiger geworden.
+Kulminiert ist dieser Trend in einem eigenen Forschungsfeld, der numerischen Strömungsmechanik, oder computational fluid dynamics (CFD).
+Aber auch außerhalb der Forschung findet CFD ein breites Anwendungsspektrum.
 Zum einen werden CFD Simulationen genutzt um Flugzeugflügel oder Motoren von Kraftfahrzeugen zu optimieren, zum anderen findet CFD auch Anwendung in Filmen und Computerspielen.
-Eine von vielen Methoden der numerischen Strömungsmechanik ist die Gitter Boltzmann Methode (LBM), die sich der Boltzmann Gleichung der Statistischen Physik bedient.
-Um die Dynamik dünner Flüssigkeitsfilme mit der LBM zu simulieren bedarf es einiger Annahmen und Erweiterungen.
-Ausgangspunkt für unser Model ist die LBM für seichte Gewässer (shallow waters). 
-Mit ein paar Annahmen und etwas Algebra lässt sich das Gleichungssystem des seichten Gewässers in die Dünnfilmgleichung umformen.
-Das so entstandene Model wird mit bekannten Problem der Dünnfilmgleichung getestet und validiert.
+Unter dem zahlreichen Methoden der numerischen Strömungsmechanik findet sich auch die Gitter Boltzmann Methode (LBM), die sich im Gegensatz zu vielen anderen Methoden der Boltzmann Gleichung der Statistischen Physik bedient.
+Per se l\"asst sich die LBM aber nicht als L\"oser f\"ur die D\"unnfilmgleichung nutzen, dazu bedarf es einiger Annahmen und Erweiterungen.
+Ausgangspunkt für unser Modell ist die LBM für seichte Gewässer (shallow waters). 
+Mit ein paar Annahmen und etwas Algebra l\"asst sich das Gleichungssystem des seichten Gewässers in die D\"unnfilmgleichung \"uberf\"uhren.
+Das so entstandene Modell wird mit bekannten Problem der Dünnfilmgleichung getestet und validiert.
 Diese ``benchmark''-Probleme reichen von Instabilitäten über Tropfendynamik bis hin zur Entnetzung von Oberflächen.
 
-Entnetzung wird hier verstanden als das aufbrechen eines Flüssigkeitsfilms.
-Anstelle einer homogenen Flüssigkeitsschicht entstehen beim Entnetzen einzelne Tropfen. 
+Der Begriff Entnetzung bedeutet nichts anderes als das Aufbrechen eines Flüssigkeitsfilms, es entsteht also ein Loch.
+Anstelle einer homogenen Flüssigkeitsschicht wachsen die L\"ocher und es entstehen einzelne Tropfen. 
 Im Laufe dieser Arbeit wird Entnetzung ein immer wiederkehrendes Thema sein.
-Üblicherweise wird in Entnetzungsexperimenten die Rolle der thermischen Fluktuationen nicht berücksichtigt.
-Der hier definierte Ansatz macht es möglich, mit simplen Erweiterungen deren Effekt zu simulieren und zu klassifizieren.
+Es wird sich zum Beispiel die Frage stellen welche Rolle thermischen Fluktuationen bei der Entnetzung von d\"unnen Filme spielen.
+Der hier definierte Ansatz macht es möglich, mit einer simplen Erweiterungen deren Effekt zu simulieren und zu klassifizieren.
 Die somit gewonnen Erkenntnisse können vorherige Studien reproduzieren und teilweise ergänzen.
 
 Entnetzung von Flüssigkeiten kann viele Gründe haben, zum Beispiel durch räumliche und zeitliche Änderungen der Benetzbarkeit der Oberfläche.
-Dieses Problem ist in keinster Weise trivial was sich auch darin äußert, dass die Deutsche Forschungsgemeinschaft (DFG) ein Schwerpunktsprogramm fördert welches sich unter anderem mit dieser Fragestellung widmet. Konkret beschäftigt sicher der SPP 2171 mit dem dynamischen Benetzen von flexiblen, adaptiven and schaltbaren Substraten.
-Deswegen findet sich in diese Arbeit auch der Themenkomplex der schaltbaren Substrate, also Oberflächen die ihre Benetzungseigenschaft durch z.B. Beleuchtung ändern.
-Mit einem einfachen Modell wird gezeigt, dass es möglich ist die Entnetzungsmorphologie des dünnen Films zu ändern.
-Anstatt von Tropfen, wie es zu vermuten wäre auf einem gemusterten Substrate, werden Bandstrukturen gebildet.
-Dieser bisher unerforsche Übergange zu Bandstrukturen hängt nicht nur von den schaltbaren Eigenschaften des Substrates ab, sondern auch von z.B der Oberflächenspannung der Flüssigkeit.
+Diese Dynamik zu verstehen ist in keinster Weise trivial. 
+Die Deutsche Forschungsgemeinschaft (DFG) hat deswege Ende 2019 ein Schwerpunktsprogramm gefördert, welches sich unter anderem mit dieser Fragestellung widmet. 
+Konkret besch\"aftigt sich das SPP 2171 mit dem dynamischen Benetzen von flexiblen, adaptiven and schaltbaren Substraten.
+Deswegen findet sich in dieser Arbeit auch der Themenkomplex der schaltbaren Substrate, also Oberflächen, die ihre Benetzungseigenschaft durch zum Beispiel, Beleuchtung \"andern.
+Wir entwickeln daf\"ur ein einfaches Modell eines schaltbaren Substrates und zeigen, dass es damit es möglich ist die Entnetzungsmorphologie des dünnen Films zu ändern.
+Die Kopplung des schaltbaren Substrates mit der Entnetzung des Films erzeugt, f\"ur gewisse Parameter, einen metastabilien Bandzustand anstelle einzelner Tropfen.
+Die Fl\"ussigkeit sammelt sich nach dem Aufbrechen des Films nicht in einzelnen Tropfen, sondern in mehrere Rinnsale.
+Ein treibender Effekt dieser Morphologie\"anderung ist die Oberfl\"achenspannung und die lokale Benetzbarkeit.
+
+Abschlie{\ss}end handelt es bei dieser Dissertation um eine kumulative Dissertation.
+Den Gro{\ss}teil der Arbeit machen vier Publikation aus Peer Review Journalen aus.
+Die ersten drei Kapitel dienen als Einf\"uhrung in das Gebiet, die mathematischen Gleichungen und die numerische Methode.
+Wir besch\"aftigen uns daher in diesen einf\"uhrenden Kaptilen mit d\"unnen Filmen, der Navier-Stokes Gleichung und mit verschidenen Algorithmen um die D\"unnfilmgleichung numerisch zu l\"osen.
+Danach folgen vier Kapitel mit den Publikation und ein Kapitel in dem die gesamte Arbeit zusammengefasst wird. 
 
 \end{abstract}
