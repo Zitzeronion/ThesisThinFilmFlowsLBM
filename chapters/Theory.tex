@@ -3,14 +3,14 @@
 \epigraph{\textit{Wir wollen immer da hin, wo jeglicher Druck mal ein Ende hat
 Ha'm immer tausend Sachen auf'm Zettel, sach' ma', kennst du das?}}{Deichkind}
 
+\section{The Navier-Stokes equation}
+\label{sec:navier_stokes_sec}
 The starting point to study fluid dynamics is the Navier-Stokes equation~\cite{claude-louis-marie-henriMemoireLoisMouvement1827, stokesSteadyMotionIncompressible1848}, as motivated in Chap.~\ref{chapter:intro}.
 Both Claude Navier in 1823 as well as Gorge G. Stokes in 1842 derived the momentum equation for a Newtonian liquid.
 Historically these two were not the only ones. 
 Siméon Denis Poisson and Barré de Saint-Venant came to the same conclusion around the same time~\cite{poissonNouvelleTheorieAction1831, de1843notea, jrHistoryAerodynamicsIts1998}.
 But history is written and Navier as well as Stokes are identified with the derivation of the momentum of a fluid element. 
 
-\section{The Navier-Stokes equation}
-\label{sec:navier_stokes_sec}
 Mathematically the Navier-Stokes equation can be derived from one definition and two constraints.
 The two constraints are mass and momentum conservation.
 Mass conservation simply states that mass cannot be lost or created.
@@ -24,17 +24,17 @@ This definition can be refined, because a fluid is either a gas or a liquid that
 And as such there is a linear relation between shear rate and shear velocity for a Newtonian fluid.
 Clearly there are other liquids (which encloses granular systems to some extent) that exhibit different behaviour, for example toothpaste.
 As long as there is no force applied to the tube the toothpaste does not flow.
-Even the acceleration due gravity when pointing the tube towards the ground does not exert enough force to generate a flow.
+Even the acceleration due to gravity when pointing the tube towards the ground does not exert enough force to generate a flow.
 In contrast to Newtonian liquids those liquids have a different response function to shear, they can be addressed as \textit{power law} fluids.
-While the phenomenology of these fluids, e.g. shear thinning or thickening, is very interesting and important in many industrial applications it is beyond the scope of this work. 
+While the phenomenology of these fluids, e.g., shear thinning or thickening, is very interesting and important in many industrial applications it is beyond the scope of this work. 
 That said, in Chap.~\ref{chapter:second_paper} an extension towards more complex flows is presented. 
 Instead of however changing the shear response we model thermal fluctuations to approximate the stochastic thin film equation (STF).
 In fact, the step to derive an extension to our approach are nicely summarized in Chap.~\ref{chapter:second_paper}. 
 It should serve as a guideline for further features, such as viscoelasticity for non-Newtonian liquids~\cite{bouchutNewModelShallow2013}. 
 
 Knowing what a fluid is and taking into account the conservation of mass and momentum it is possible to derive the Navier-Stokes equation. 
-By applying a continuity equation we assume that the fluid itself is a continuum and therefore ignoring the underlying molecular structure for now. 
-This allows us to describe the fluids state with a density $\rho(\mathbf{x},t)$, instead of describing every atom or molecule individually.
+By applying a continuity equation we assume that the fluid itself is a continuum and therefore ignore the underlying molecular structure for now. 
+This allows us to describe the fluid state with a density $\rho(\mathbf{x},t)$, instead of describing every atom or molecule individually.
 Assuming an infinitesimal small volume of fluid $V_0$ its density can only change if there is a flow through the boundaries of the volume $\partial V_0$,
 \begin{equation}\label{eq:cont_1}
     \partial_t\int_{V_0}\rho\diff V = -\oint_{\partial V_0} \rho\vec{u}\cdot\diff \vec{A}, 
@@ -76,9 +76,9 @@ This however is not yet the Navier-Stokes equation, in fact this is the Euler eq
 In the derivation there is one term missing, because the momentum of a fluid can also change due to internal friction, or put simply, due to viscosity.
 These viscous contributions are collected in the viscous stress tensor $\hat{\sigma}$ as
 \begin{equation}\label{eq:stress_tens}
-    \hat{\sigma}_{\alpha\beta} = \mu\left(\frac{\partial u_{\alpha}}{\partial x_{\beta}} + \frac{\partial u_{\beta}}{\partial x_{\alpha}}\right) + \lambda\delta_{\alpha\beta}\frac{\partial u_{\gamma}}{\partial x_{\gamma}},
+    \hat{\sigma}_{\alpha\beta} = \mu\left(\frac{\partial u_{\alpha}}{\partial x_{\beta}} + \frac{\partial u_{\beta}}{\partial x_{\alpha}}\right) + \lambda\delta_{\alpha\beta}\frac{\partial u_{\gamma}}{\partial x_{\gamma}}.
 \end{equation}
-This tensor introduces a lot of the complexity of the Navier-Stokes equation as in principle neither $\mu$ nor $\lambda$ need to be constants and in fact they are tensors themselves.
+This tensor introduces a lot of the complexity to the Navier-Stokes equation as in principle neither $\mu$ nor $\lambda$ need to be constants and in fact they are tensors themselves.
 
 For the sake of clarity however here it is assumed that both $\mu$ and $\lambda$ are constants.
 Inclusion of pressure to $\hat{\sigma}$ yields the total stress tensor $\tilde{\sigma}$. 
@@ -115,7 +115,7 @@ Inserting this constraint Eq.~(\ref{eq:incomp}) into Eq.~(\ref{eq:navier_stokes_
 \begin{equation}\label{eq:navier_stokes_4}
     \rho(\partial_t\vec{u} + \vec{\nabla}\cdot\vec{u}\vec{u}) = - \vec{\nabla} p + \mu\Delta\vec{u} + \vec{F},
 \end{equation}
-where the symbol $\Delta$ denotes the laplace operator ($\Delta f = \vec{\nabla}\cdot\vec{\nabla} f$).
+where the symbol $\Delta$ denotes the Laplace operator ($\Delta f = \vec{\nabla}\cdot\vec{\nabla} f$).
 The left hand side can be rewritten using the material derivative
 \begin{equation}\label{eq:mat_dev}
     D_t = \partial_t + \vec{u}\cdot\vec{\nabla}, 
@@ -131,7 +131,7 @@ The clever way out of this misery is to use an equation of state that relates pr
 Especially the relation between pressure, density and temperature helps in closing the system of equations.
 To define an equation of state is far from trivial.
 It requires a thermodynamically consistent approach that is based on observations or theoretical assumptions.
-The equation of state for an ideal gas was born from theoretical assumptions, e.g. non-interacting gas molecules, and reads~\cite{schwablStatisticalMechanics2006}
+The equation of state for an ideal gas was born from theoretical assumptions, e.g., non-interacting gas molecules, and reads~\cite{schwablStatisticalMechanics2006}
 \begin{equation}\label{eq:eq_of_state}
     p = \rho R T,
 \end{equation}
@@ -147,7 +147,7 @@ For the concrete example of thin film flows, however, there is no need to ``solv
 That is why in the next two sections different theories that build upon the Navier-Stokes are introduced.
 Both of these theories using a scaling argument to severely simplify the resulting system of equations.
 
-\section{Shallow Water Theory}
+\section{Shallow water theory}
 \label{sec:theory_shallow_water}
 Solving the Navier-Stokes equation for the problems discussed in Chaps.~\ref{chapter:fourth_paper}-\ref{chapter:third_paper} is not needed.
 Looking at Figs.~\ref{fig:examples_intro}-\ref{fig:morph_transition} one can identify that the height or thickness of the fluid layer is much smaller than the horizontal extension of the substrate.
@@ -209,9 +209,9 @@ We therefore assume that the vertical velocity component is small as compared to
 The task now is to make, Eq.~(\ref{eq:navier_stokes_4}), aware about these constraints.
 Although this sounds straightforward partial differential equations are complex. 
 They are one of the topics in mathematics where researchers are satisfied with the irritating result that an equation cannot be solved, an undesired outcome for most Physicists.
-Nevertheless, to come up with consistent strategies to solve them one can classify them, e.g. hyperbolic, parabolic, linear, nonlinear, initial value problem or boundary value problem.
+Nevertheless, to come up with consistent strategies to solve them one can classify them, e.g., hyperbolic, parabolic, linear, nonlinear, initial value problem or boundary value problem.
 There is in fact overlap between those terms, however to keep things simple it is sufficient to talk about initial or boundary value problems.
-The former can be solved knowing the initial configuration which then defines the evolution, e.g. the initial coordinates and velocity of a pendulum. 
+The former can be solved knowing the initial configuration which then defines the evolution, e.g., the initial coordinates and velocity of a pendulum. 
 For the latter ones it is mandatory to know the solution at the boundaries. 
 If we know the current temperature distribution on a metallic plate and the heat flux on the boundaries then we are able to calculate the temperature field on that plate at later times.
 The shallow water system can be derived from the Navier-Stokes equation using both well defined boundary conditions and system specific approximations.
@@ -244,7 +244,7 @@ which corresponds to the classical scaling of boundary layer theory~\cite{milne-
 
 In Eqs.~(\ref{eq:vel_scaling}-\ref{eq:scaling_thin_layer}) there is no distinct difference between both horizontal dimensions $(x,y)$. 
 For the sake of clarity and to simplify the derivation of the shallow water model we neglect the $y$-components.
-Of course, to study large oceanic systems or Coriolis forces one needs both horizontal dimensions, see e.g.~\cite{dellarShallowWaterEquations2005, marcheDerivationNewTwodimensional2007}, but for the following derivation it is sufficient to use only one.
+Of course, to study large oceanic systems or Coriolis forces one needs both horizontal dimensions, see e.g.,~\cite{dellarShallowWaterEquations2005, marcheDerivationNewTwodimensional2007}, but for the following derivation it is sufficient to use only one.
 Furthermore we use Eq.~(\ref{eq:long_wave_scaling}), which represents long wave theory or scaling. 
 We make use of this approach once more in the derivation of the thin film equation.
 The benefit of this choice is the smoothing effect on variations which makes them more gradual. 
@@ -266,14 +266,14 @@ In the following it will be helpful to introduce dimensionless numbers~\cite{ruz
 These numbers have a long history in fluid dynamics.
 The Reynolds number for example is a measure if a flow is turbulent or not, it depends only on proportions and not on an exact experiment.
 With the knowledge of these number comparing experiments is straightforward, even if the experiments differ in many aspects.
-The two dimensionless numbers of interest for the shallow water theory are the Reynolds number and the Froud number
+The two dimensionless numbers of interest for the shallow water theory are the Reynolds number and the Froude number
 \begin{equation}\label{eq:Re_and_Fr}
     Re = \frac{\rho L v_0}{\mu},\quad Fr = \frac{v_0}{\sqrt{g L}},
 \end{equation}
-where $L$ is a characteristic length scale of the problem, e.g. the mean water depth, $v_0$ and $g$ are a characteristic velocity and the gravitational acceleration ($g = 9.81 m/s^2$), respectively.
+where $L$ is a characteristic length scale of the problem, e.g., the mean water depth, $v_0$ and $g$ are a characteristic velocity and the gravitational acceleration ($g = 9.81 m/s^2$), respectively.
 A characteristic velocity can be for example the inflow velocity from a boundary, or the speed of a certain wave type such as a tsunami.
 Both numbers measure the magnitude of certain effects, in the case of the Reynolds number the inertial forces are compared against viscosity.
-The Froud number is a measure to compare kinetic ($v_0$) with potential energy ($g L$).
+The Froude number is a measure to compare kinetic ($v_0$) with potential energy ($g L$).
 
 In the next step both $Fr$ and $Re$ are used to make Eq.~(\ref{eq:navier_stokes_fin}) dimensionless.
 For convenience the vector equation is split into two respective equations with gravity being the only force present.
@@ -283,7 +283,7 @@ Writing the full equation with all components yields
     \partial_t u_z + u_z\partial_x u_x + u_z\partial_z u_z &= -\partial_z p - \frac{1}{Fr^2} + \frac{1}{Re}\Delta u_z ,
 \end{align}
 with the two dimensional Laplacian $\Delta = (\partial_x^2 + \partial_z^2)$.
-Using long wave scaling, Eq.~(\ref{eq:long_wave_scaling}) and the rescaled length and time variables (e.g. $\tilde{x}$),
+Using long wave scaling, Eq.~(\ref{eq:long_wave_scaling}) and the rescaled length and time variables (e.g., $\tilde{x}$),
 \begin{align}\label{eq:2d_RNS_eps}
     \varepsilon(\partial_{\tilde{t}} \tilde{u}_x + \tilde{u}_x \partial_{\tilde{x}} \tilde{u}_x + \tilde{u}_z \partial_{\tilde{z}} \tilde{u}_x ) &= -\varepsilon\partial_{\tilde{x}} \tilde{p} + \frac{1}{Re}(\varepsilon^2 \partial_{\tilde{x}}^2 \tilde{u}_x + \partial_{\tilde{z}}^2 \tilde{u}_x ) ,\\
     \varepsilon^2(\partial_{\tilde{t}} \tilde{u}_z + \tilde{u}_z\partial_{\tilde{x}} \tilde{u}_x + \tilde{u}_z\partial_{\tilde{z}} \tilde{u}_z) &= -\partial_{\tilde{z}}\tilde{p} - \frac{1}{Fr^2} + \frac{\varepsilon}{Re}(\varepsilon^2 \partial_{\tilde{x}}^2 \tilde{u}_z + \partial_{\tilde{z}}^2 \tilde{u}_z ) .
@@ -416,15 +416,16 @@ Applying the boundary condition to this equation and using the definition for he
     \partial_t(hU) + \partial_x(\beta hU^2) = -h\partial_x p - \tau_b,
 \end{equation}
 where two new variables appear.
-The first one is Boussinesq coefficient $\beta$ which is defined by the equation
+The first one is the Boussinesq coefficient $\beta$ which is defined by the equation
 \begin{equation}\label{eq:boussinesq}
     \int_b^{\eta} u_x^2 \diff z = \beta h U^2,
 \end{equation}
-and the second one is the friction or the shear stress at the bottom of the fluid column $\tau_b$
+and the second one is the friction or the shear stress at the bottom of the fluid column
 \begin{equation}\label{eq:sw_bot_friction}
     \tau_b = \frac{\partial_z u_x|_{z=b}}{\varepsilon Re}. 
 \end{equation}
-Both $\beta$ as well as $\tau_b$ do depend on $u$, therefore to know their exact contribution one needs to know about the flow.
+Both $\beta$ as well as $\tau_b$ do depend on $u$. 
+Therefore to know their exact contribution one needs to know about the flow.
 Without the concrete knowledge of $u$ there is however one observation concerning Eq.~(\ref{eq:boussinesq})
 \begin{equation}\label{eq:beta_lims}
     \beta = 1 + \frac{1}{h}\int_b^{\eta}\left(1 - \frac{u}{U}\right)^2 \diff z,
@@ -469,10 +470,10 @@ The friction term Eq.~(\ref{eq:sw_bot_friction}) becomes
 The friction term $\tau_b$ depends linearly on $U$ the mean flow velocity.
 Interestingly for large Reynolds numbers the friction can become negligible, with the transition to the inviscid shallow water regime.
 
-A word of caution when using $\tau_b$.
-Friction forces in real experiments are very dependent on the actual boundary condition at $z = b$.
+A word of caution is needed when using $\tau_b$.
+Friction forces in real experiments are dependent on the actual boundary condition at $z = b$.
 Both the topography and the specific type of material at the bottom will influence the measured value of $\tau_b$. 
-By modelling a dissipative force such as friction we make an error, sometimes this is error is negligible.
+By modelling a dissipative force such as friction we make an error, and a priori we do not know if that error is large or small.
 It is therefore often simpler and more accurate to use data from empirical studies or real world experiments.
 Within the shallow water literature an often encountered coefficient is the one of Manning, the empirical law that connects flow velocity with friction can be found in Ref.~\cite{f.asceOpenChannelHydraulics2021}.
 
@@ -494,19 +495,20 @@ In the last section the chapter concludes with a comparison of shallow water wit
 \label{sec:thin_films}
 Thin liquid films are an interesting problem to study.
 Their dynamics is seemingly easy to explain but bares a lot of complexity.
-Many of us have played with soap bubbles and experienced their bursting. 
-Rain drops on plant leafs form fascinating shapes and sometimes when we shake those leafs they seem to fall off without any resistance. 
+Many of us have played with soap bubbles and experienced their bursting, which is essentially a free standing film thus there is no solid substrate.
+Or have seen thin oil films on water puddles and their beautiful refraction patterns.
+As already mentioned, coatings are a prime example for thin liquid films. 
 Complexity is generated due to the shape of the equation that describes the thin film dynamics, usually a non linear forth order partial differential equation of the film thickness.
-When the thickness of a film becomes small, e.g. only a few tens of nanometers the complexity can even be enhanced. 
-Complex behaviour can arise due to thermal fluctuations or strictly speaking the mathematical unsolvable problem of moving contact lines e.g. when a wet to dry transition happens.
+When the thickness of a film becomes small, e.g., only a few tens of nanometers the complexity can even be enhanced. 
+Complex behaviour can arise due to thermal fluctuations or strictly speaking the mathematical unsolvable problem of moving contact lines e.g., when a wet to dry transition happens.
 Similar to the above section's scaling argument and the long wave theory, the Navier-Stokes equation can be reduced to the thin film equation. 
 Although with the difference to the shallow water system, see Eqs.~(\ref{eq:shallow_water_01}-\ref{eq:shallow_water_02}), that the thin film equation does only admit a continuity like equation and no accompanying momentum equation~\cite{oronLongscaleEvolutionThin1997, degennesWettingStaticsDynamics1985, crasterDynamicsStabilityThin2009}.
 
 \begin{figure}
     \centering
     \includegraphics[width=0.95\textwidth]{graphics/contact_line.pdf}
-    \caption{Liquid droplet placed on a smooth substrate.
-    The three phase contact line which is the interface between the vapor, the solid and liquid phase is displayed as thick black line.}
+    \caption{A liquid droplet placed on a smooth substrate.
+    The three phase contact line which is the interface between the vapor, the solid and liquid phase is displayed as a thick black line.}
     \label{fig:contact_line_drop}
 \end{figure}
 Similar to the shallow water system, the thin film equation only considers the dynamics of a thin liquid \textit{layer}. 
@@ -516,7 +518,7 @@ The defining equation that describes the dynamics of a thin liquid film can be w
 \begin{equation}\label{eq:simple_thin_film}
     \partial_t h = \nabla\cdot\left(M(h)\nabla p\right).
 \end{equation}
-On the left hand side we have the change in thickness ($\partial_t h$), that can only be achieved by applying a pressure gradient ($\nabla p$).
+On the left hand side we have the change in thickness ($\partial_t h$), which can only be achieved by applying a pressure gradient ($\nabla p$).
 In Eq.~(\ref{eq:simple_thin_film}) two unknowns are introduced.
 The first one is the mobility $M(h)$ which determines the exact velocity boundary condition for $h=0$.
 Using the no-slip boundary condition~\cite{beckerThinfilmEquationRecent2005}, see Eq.~(\ref{eq:no-slip_sw1}), we have 
@@ -525,8 +527,17 @@ Using the no-slip boundary condition~\cite{beckerThinfilmEquationRecent2005}, se
 \end{equation}
 with $\mu$ being the (dynamic) viscosity. 
 Therefore the mobility is inversely proportional to the viscosity.
-Of course the velocity boundary condition can be relaxed which is often desired e.g. for contact line movement.
-For problems such as dewetting\footnote{Dewetting usually refers to an unstable film which by so-called film rupture recedes into separated droplets. Depending on the film's properties different modes of dewetting can be identified, such as spinodal dewetting or hole nucleation.} it is actually a known approximation to relax the velocity boundary condition at the liquid solid interface~\cite{munchDewettingRatesThin2005, munchLubricationModelsSmall2005, fetzerNewSlipRegimes2005}.
+Of course the velocity boundary condition can be relaxed which is often desired e.g., for contact line movement.
+
+For problems such as dewetting it is actually a known approximation to relax the velocity boundary condition at the liquid solid interface~\cite{munchDewettingRatesThin2005, munchLubricationModelsSmall2005, fetzerNewSlipRegimes2005}.
+Dewetting usually refers to an unstable film which by so-called film rupture recedes into separated droplets. 
+Depending on the film's properties different modes of dewetting can be identified, such as spinodal dewetting or hole nucleation.
+Film stability and the dewetting instability is a reoccurring topic throughout this thesis. 
+Dewetting becomes less likely that thicker the film is, as a rule of thumb.
+Thicker thin films usually tend to rupture via nucleation, while thinner films tend to rupture via spinodal dewetting.
+Rupture and dewetting can also be caused by gradients, e.g., surface tension gradients or even thermal fluctuations.
+The dynamics of a dewetting thin film depend heavily on the dynamics of the contact line. 
+
 The term contact line or to be precise three-phase contact line defines the single one dimensional interface that connects all three phases involved in the problem, as displayed in Fig.~\ref{fig:contact_line_drop}.
 The addition of a ``slip length'' ($\delta$) makes it possible to interpolate the height of vanishing fluid velocity into the substrate.
 Using this interpolation the mobility function Eq.~(\ref{eq:no-slip-mobility}) can be extended towards a slip like behaviour in the proximity of $h\approx 0$ as
@@ -537,7 +548,7 @@ Using this interpolation the mobility function Eq.~(\ref{eq:no-slip-mobility}) c
 The second unknown is the pressure, to be more specific the thin film pressure.
 So far the terms surface tension ($\gamma$) or equilibrium contact angle ($\theta_{\text{eq}}$) did not appear.
 When we derived the Navier-Stoke equation we did not consider multiphase or multicomponent problems. 
-In the derivation of the shallow water equations we encountered an interface, but it's shape was solely determined by the hydrostatic pressure.
+In the derivation of the shallow water equations we encountered an interface, but its shape was solely determined by the hydrostatic pressure.
 Both theories therefore are not well-equipped to account for either surface tension or balances between surface energies and as such contact angles.
 The thin film pressure introduces both of them and can be modelled using
 \begin{equation}\label{eq:thin_film_pressure}
@@ -546,7 +557,7 @@ The thin film pressure introduces both of them and can be modelled using
 where $\Delta h = \partial_x^2 h + \partial_y^2 h$ denotes the two-dimensional Laplacian of the thickness and $\Pi(h)$ is the disjoining pressure functional.
 The first term ensures that the fluid's enclosing surface area, the interface between the fluid and vapor phase, is minimal.
 The surface tension is therefore the strength with which the surface area minimization is enforced.
-The disjoining pressure ($\Pi(h)$) on the other hand takes into account the inter-molecular interactions that can arise, e.g. the interaction between solid substrate and film~\cite{crasterDynamicsStabilityThin2009, moultonEffectDisjoiningPressure2013}.
+The disjoining pressure ($\Pi(h)$) on the other hand takes into account the inter-molecular interactions that can arise, e.g., the interaction between solid substrate and film~\cite{crasterDynamicsStabilityThin2009, moultonEffectDisjoiningPressure2013}.
 Independent of the exact model the disjoining pressure can be understood as a derivative of an interaction potential.
 The model used for this work was first derived by Schwartz and Eley~\cite{schwartzSimulationDropletMotion1998} and consists of two contributions
 \begin{equation}\label{eq:disj_pressure_one}
@@ -567,7 +578,7 @@ This is an effective model for wetting of partially wettable substrates, see Fig
 \begin{equation}\label{eq:disj_spreading}
     S = \int\Pi(h)|_{h=h_{\ast}} \diff h, 
 \end{equation}
-where different $\gamma$'s denote the different surface energies, e.g. $\gamma_{vs}$ is the surface energy between the vapour and the solid phases.
+where different $\gamma$'s denote the different surface energies, e.g., $\gamma_{vs}$ is the surface energy between the vapour and the solid phases.
 By the very construction of $\Pi(h)$ everything cancels but the factor that contains the equilibrium contact angle  
 \begin{equation}\label{eq:disj_young}
     S = -\gamma(1 - \cos\theta_{\text{eq}}),
@@ -578,8 +589,8 @@ where we have used Young's law~\cite{youngIIIEssayCohesion1805}
 \end{equation}
 as an approximation to the surface energies at equilibrium.
 For a perfectly wettable substrate the contact angle vanishes and thus $S=0$.
-While we can easily formulate Eq.~(\ref{eq:surface_energies_contact_angle}) it is almost impossible to measure the different $\gamma$s experimentally.
-What can be measured in experiments on the other hand are the spreading parameter $S$ and/or the Hamaker constant~\cite{hamakerLondonVanWaals1937, bonnWettingSpreading2009, diezMetallicthinfilmInstabilitySpatially2016, peschkaSignaturesSlipDewetting2019} 
+While we can easily formulate Eq.~(\ref{eq:surface_energies_contact_angle}) it is almost impossible to measure the different $\gamma$'s experimentally.
+What can be measured in experiments on the other hand are the spreading parameter $S$ and/or the Hamaker constant~\cite{hamakerLondonVanWaals1937, bonnWettingSpreading2009, diezMetallicthinfilmInstabilitySpatially2016, peschkaSignaturesSlipDewetting2019} from atomic force microscopy (AFM) or dielectric response spectra~\cite{bergstromHamakerConstantsInorganic1997}. 
 \begin{figure}
     \centering
     \includegraphics[width=0.95\textwidth]{graphics/Wettings.pdf}
@@ -595,7 +606,7 @@ What follows now is the derivation of Eq.~(\ref{eq:simple_thin_film}) from the N
 
 \subsection{Scaling and boundary conditions}
 \label{subsec:thin_film_scaling}
-Thin liquid films are \textit{thin}, there is always a spatial dimension which is much smaller than the other ones. 
+Thin liquid films are \textit{thin}, i.e., there is always a spatial dimension which is much smaller than the other ones. 
 Some instructive everyday example that enforces this understanding would be the thickness of an oil film in a frying pan. 
 The pan is about 30cm in diameter while the thickness of the oil film is not even 1cm.
 Assuming that the oil is covering the whole surface of the pan $\varepsilon < 10^{-1}$.
@@ -607,10 +618,7 @@ The basic assumption is, again, the absence of strong slopes and therefore
     |\nabla h| \ll 1,  
 \end{equation}
 meaning that the thickness changes gradually along the two horizontal dimensions.
-% Furthermore the Reynolds numbers for thin film flows are small ($Re < 1$), thus the inertial effects are at most subdominant.
 
-% To derive Eq.~(\ref{eq:simple_thin_film}) we again start with t
-% The starting point of the derivation of Eq.~(\ref{eq:simple_thin_film}) is the Navier-Stokes equation, see Eq.~(\ref{eq:navier_stokes_fin}) with the continuity equation~(\ref{eq:incomp}).
 Before we start the derivation we rescale length and velocity components to have dimensionless quantities.
 We use a similar scaling as in Eq.~(\ref{eq:thickness_length}) and get 
 \begin{align}\label{eq:thin_film_scaling}
@@ -621,7 +629,7 @@ We use a similar scaling as in Eq.~(\ref{eq:thickness_length}) and get
 where $U$ and $V$ are characteristic velocities and $L$ and $H$ are characteristic length scales in horizontal and vertical dimension.
 The scaling factor in front of the pressure can be calculated assuming stationary unidirectional flow with $\mathbf{u} = (u(z), 0, 0)$.
 It is this scaling factor ($\mu U L /H^2$) that requires that inertial effects are small and $Re<1$.
-In many applications the small Reynolds number limit is a good approximation, however for e.g. spin coating inertia is not negligible.
+In many applications the small Reynolds number limit is a good approximation, however for e.g., spin coating inertia is not negligible.
 To account for inertial effects the scaling, Eq.~(\ref{eq:thin_film_scaling}), must be modified. 
 For example the pressure scaling would change to $p = \rho U^2\tilde{p}$~\cite{crasterDynamicsStabilityThin2009}.
 
@@ -653,7 +661,8 @@ For the last of the above equations the analogy to the shallow water model can b
  
 The system so far does not resemble Eq.~(\ref{eq:simple_thin_film}).
 Therefore, some more derivation is in order, starting with the application of the boundary conditions.
-Between the fluid and solid phase a no-slip boundary condition is used, therefore analogue to Eq.~(\ref{eq:no-slip_sw1}) and~(\ref{eq:no-slip_sw2}) we have
+Between the fluid and solid phase a no-slip boundary condition is used. 
+Similar to Eq.~(\ref{eq:no-slip_sw1}) and~(\ref{eq:no-slip_sw2}) we have
 \begin{equation}\label{eq:thin_all_v_noslip}
     \mathbf{u}|_{z=0} = \mathbf{0},    
 \end{equation}
@@ -665,7 +674,7 @@ and for the vapour fluid interface a stress balance needs to be satisfied~\cite{
 where $\tilde{\sigma}_{l,v}$ are the stress tensors for the liquid ($l$) and the vapour ($v$) phase. 
 Furthermore, we have the normal vector $\mathbf{n}$ along the fluid interface and the surface gradient $\nabla_S$.
 The two surface tension terms account for changes along the surface ($\nabla_S$) and the Laplace pressure due the curvature ($\kappa$) of the liquid vapour interface $2\kappa = \nabla\cdot\mathbf{n}$.
-The stress tensor for a Newtonian liquid has been defined in Eq.~(\ref{eq:total_stress}) and for the sake of completeness is given in matrix notation as 
+The stress tensor for a Newtonian liquid has been defined in Eq.~(\ref{eq:total_stress}) and for the sake of completeness it is given in matrix notation as 
 \begin{gather}\label{eq:stress_matrix}
     \tilde{\sigma} = \begin{bmatrix}
     -p + 2\mu\partial_x u_x & \mu(\partial_y u_x + \partial_x u_y) & \mu(\partial_z u_x + \partial_x u_z) \\
@@ -683,12 +692,12 @@ Computing the inner product of Eq.~(\ref{eq:thin_film_upper_bc}) with the normal
 \end{equation}
 where $p_v$ is the pressure in the vapour phase and $\mathbf{T} = \mu(\nabla\mathbf{u} + \nabla\mathbf{u}^T)$.
 In fact only the contribution from the liquid is considered, because $\mu_l \gg \mu_v$.
-Assuming a water/air interface (which not too different from a water/water vapour interface) we have a ratio of dynamic viscosity $\mu_{air} / \mu_{\ce{H2O}} = 0.018~mPa\cdot s/ 1.0016~mPa\cdot s \approx 0.02$.
+Assuming a water/air interface (which is not too different from a water/water vapor interface) we have a ratio of dynamic viscosity $\mu_{air} / \mu_{\ce{H2O}} = 0.018~mPa\cdot s/ 1.0016~mPa\cdot s \approx 0.02$.
 Inserting the scaling defined in the Eq.~(\ref{eq:thin_film_scaling}) and collecting only leading order contributions we have 
 \begin{equation}
     \tilde{p} = p_v + P - \gamma(\partial_{\tilde{x}}^2 h + \partial_{\tilde{y}}^2 h),
 \end{equation}
-where $P$ accounts for all additional contributions to the pressure, e.g. the hydrostatic pressure, see for examples Eq.~(\ref{eq:hydro_static_int}), but as well for the disjoining pressure $\Pi(h)$ Eq.~(\ref{eq:disj_pressure_one}).
+where $P$ accounts for all additional contributions to the pressure, e.g., the hydrostatic pressure, see for example Eq.~(\ref{eq:hydro_static_int}), but as well for the disjoining pressure $\Pi(h)$ Eq.~(\ref{eq:disj_pressure_one}).
 
 Now that the normal stresses are balanced at the fluid vapour interface the same has to be done for the tangential stresses.
 Again we use Eq.~(\ref{eq:thin_film_upper_bc}) and compute the inner product with the tangential unit vectors $\mathbf{t}_i$ 
@@ -705,7 +714,6 @@ Having defined the leading order equations for the flow velocity, the next step 
 
 \subsection{Vertical integration}
 \label{subsec:thin_film_int}
-% I am here 
 The system of equations so far do not resemble Eq.~(\ref{eq:simple_thin_film}).
 To get to Eq.~(\ref{eq:simple_thin_film}) we still need to perform the integration along the vertical dimension.
 Dropping the tilde for now as all variables are dimensionless we have, 
@@ -728,7 +736,7 @@ Performing another integration of the velocities with respect to the thickness t
 \end{align}
 where due to the no slip boundary condition the mobility function $M(h)$, Eq.~(\ref{eq:no-slip-mobility}) naturally arises.
 
-Now that the horizontal velocities are known we can simply integration the continuity equation Eq.~(\ref{eq:incomp})
+Now that the horizontal velocities are known we can perform the integration of the continuity equation Eq.~(\ref{eq:incomp})
 \begin{equation}\label{eq:cont_thin}
     \int_0^h(\partial_x u_x + \partial_y u_y + \partial_z u_z) = 0,
 \end{equation}
@@ -756,8 +764,8 @@ Inserting $Q_x$ and $Q_y$, Eqs.~(\ref{eq:discharge_thin_x}) and (\ref{eq:dischar
 \begin{equation}
     \partial_t h(\mathbf{x},t) = \nabla\cdot\left(\frac{h^3}{3\mu}\nabla p + \frac{h^2}{2\mu}\tau\right),
 \end{equation}
-which compared to Eq.~(\ref{eq:simple_thin_film}) includes the shear contribution $\tau$.
-Assuming the interface is not accelerated (e.g. in case of dewetting) the shear term can be neglected and the resulting equation is 
+which in contrast to Eq.~(\ref{eq:simple_thin_film}) includes the shear contribution $\tau$.
+Assuming the interface is not accelerated (e.g., in case of dewetting) the shear term can be neglected and the resulting equation is 
 \begin{equation}\label{eq:thin_final}
     \partial_t h(\mathbf{x},t) = \nabla\cdot\left(\frac{h^3}{3\mu}\nabla p\right),
 \end{equation}
@@ -779,9 +787,9 @@ A simple example for this can be the string of a guitar.
 In the rest case, which forms a stable solution for the length of the string, the string is flat.
 If one gently touches the string a small perturbation is added and will undulate the string such that it starts to vibrate.
 The vibrations will turn into waves with well defined wavelengths. 
-Most of them will be damped and usually only one wavemode will survive.
-The sound related to that wavemode defines the eigenmode of the string.
-Due to friction and boundary conditions the string will come go back to be flat, which means that the string is linearly stable.
+Most of them will be damped and usually only one wave mode will survive.
+The sound related to that wave mode defines the eigenmode of the string.
+Due to friction and boundary conditions the string will go back to be flat, which means that the string is linearly stable.
 
 Using this analysis for the thin film equation we simply add a small perturbation to a flat film with
 \begin{equation}\label{eq:lin_stab_delta}
@@ -838,7 +846,7 @@ A characteristic time scale of the problem is given as
     t_0 = \frac{3\mu}{\gamma h_0^3 q_0^4},
 \end{equation}
 with is used to normalize the time in Fig.~\ref{fig:dispertion_1}.
-Because the concept of linear stability is such an important one, we encounter it again in Chap.~\ref{chapter:first_paper} see Fig.~\ref{fig:RTI} as well as in Chap.~\ref{chapter:second_paper} see Figs.~\ref{fig:theory_simulation_structure_factor}, \ref{fig:spectral_analysis_deter_sine8}, \ref{fig:spectral_analysis_stoch_sine8}, \ref{fig:square_wave_both}.
+Because the concept of linear stability is such an important one, we encounter it again in Chap.~\ref{chapter:first_paper} (see Fig.~\ref{fig:RTI}) as well as in Chap.~\ref{chapter:second_paper} (see Figs.~\ref{fig:theory_simulation_structure_factor}, \ref{fig:spectral_analysis_deter_sine8}, \ref{fig:spectral_analysis_stoch_sine8}, \ref{fig:square_wave_both}).
 Chap.~\ref{chapter:second_paper} focuses only on the addition of a fluctuating term and the so called stochastic thin film equation.
 The new term due to thermal fluctuations offers some interesting features on both the structure factor as well as the dispersion.
 
@@ -853,12 +861,11 @@ The new term due to thermal fluctuations offers some interesting features on bot
     \label{fig:dispertion_1}
 \end{figure}
 
-\section{Differences and Overlap}
+\section{Differences and overlap}
 \label{sec:shallow_to_thin}
-
 The theoretical starting point of this chapter is the Navier-Stokes equation.
-This equation relates the change of momentum of the fluid to various effect, e.g. viscous contributions. 
-As of today, nobody has solved the Millennium problem and showed that there exist a unique and smooth solution to this equation.
+This equation relates the change of momentum of the fluid to various effects, e.g., viscous contributions. 
+As of today, nobody has solved the Millennium Problem and proven that there exist a unique and smooth solution to this equation.
 A well defined solution would have the benefit that even complex flow fields could be computed using analytical methods, such as pen and paper.
 What we can do, is computing approximative results of this equation using numerical techniques.
 This is in fact the idea of the following chapter.
@@ -873,14 +880,14 @@ Applying this scaling and collect terms in orders $O(\varepsilon)$ we derive a d
 We exchange the fluid density $\rho(\mathbf{x},t)$ for a fluid ``height'' $h(\mathbf{x},t)$, which is measured from the bottom topography to the fluid/vapour interface.
 The resulting set of equations, Eqs.~(\ref{eq:shallow_water_01}-\ref{eq:shallow_water_02}), are hyperbolic partial differential equations.
 Assuming that $\mathcal{S}$ in Eq.~(\ref{eq:shallow_water_02}) is a Newtonian viscous stress analogue to Eq.~(\ref{eq:stress_tens}) we have a second order vector equation in $(h, u_x, u_y)$.  
-The shallow water equations covers a wide ranges of geophysical flow problems, from slowly creeping lava to quickly evolving weather systems.
+The shallow water equations cover a wide ranges of geophysical flow problems, from slowly creeping lava to quickly evolving weather systems.
 At no point in the derivation of the theory we required that dimensionless numbers, such as the Reynolds number, are small or vanishing. 
-In fact it straightforward to derive the inviscid shallow water equations for large Reynolds numbers. 
+In fact it is straightforward to derive the inviscid shallow water equations for large Reynolds numbers. 
 An interesting phenomenon that can be explained with the inviscid shallow water equations are soliton like solutions.
 These solutions are stable travelling waves with a constant velocity and no dispersion, famous examples are tsunamis and river bora.
 One word of caution these solutions are valid in ``open'' water, as soon as these waves come close to shore the breaking wave dynamics cannot be explained with the simple set of equations we derived here. 
-In most of the shallow flows considered here the fluids viscosity is at most subleading.
-Which does not mean that there are no models considering viscosity, see for example Ref.~\cite{marcheDerivationNewTwodimensional2007}.
+In most of the shallow flows considered here the fluid viscosity is at most subleading.
+This does not mean that there are no models considering viscosity, see for example Ref.~\cite{marcheDerivationNewTwodimensional2007}.
 The main source of friction and thus dissipation is however the interaction with the bottom topography, we for example required that the flow velocity vanished at $z = -h(x,y)$.
 Lastly, in our derivation we did not consider surface tension as a leading order contribution to the shallow water equations.
 The shape of the fluid/vapour interface is driven by the hydrostatic pressure.
@@ -890,12 +897,12 @@ In Sec.~\ref{sec:thin_films} we start with a discussion on the phenomenology of 
 If we leave aside the disjoining pressure $\Pi(h)$, see Eq.~(\ref{eq:disj_pressure_one}), and only consider the capillary pressure ($\Delta h$), the thin film equation is a degenerate, fourth order parabolic partial differential equation of the film thickness $h(\mathbf{x},t)$~\cite{peschkaVariationalApproachDynamic2018}.
 In contrast to the shallow water equations and the Navier-Stoke equation, the thin film equation is a single scalar equation.
 Therefore there is no momentum equation, but only a continuity equation for the film thickness.
-The thin film equation is a highly non-linear equation similar to both the Navier-Stoke and the shallow water equations. 
+The thin film equation is a highly non-linear equation similar to both the Navier-Stokes and the shallow water equations. 
 One example for these non-linearities is the dynamics of droplet formation after rupture of an unstable thin film. 
 The equation allows for many instabilities such as fingering, tearing and pearling~\cite{crasterDynamicsStabilityThin2009, wilczekSlidingDropsEnsemble2017}. 
 The steps to derive the thin film equation are in parts similar to the shallow water system.
 Starting with a rescaling of the continuity equation, Eq.~(\ref{eq:incomp}), and the Navier-Stokes equation, Eq.~(\ref{eq:navier_stokes_fin}) (with $\mathbf{F} = 0$) and assuming that one dimension is much smaller than the others. 
-However, in contrast to shallow water system this scaling ansatz we choose is only suitable for negligible inertial contributions.
+However, in contrast to the shallow water system this scaling ansatz we choose is only suitable for negligible inertial contributions.
 Terms are then collected in orders of $\varepsilon$ similar to the shallow water derivation.
 The boundary condition at $z=0$ is another shared feature between the shallow water equations and the thin film equation, at least for the no-slip mobility Eq.~(\ref{eq:no-slip-mobility}).
 If we relax this boundary condition, which is the case in the following chapters, then we introduce a so-called slip length which is not accounted for in the shallow water equations.
@@ -907,8 +914,8 @@ In the last step we use the material derivative, Eq.~(\ref{eq:mat_dev}), to comp
 Because of Eqs.~(\ref{eq:discharge_thin_x}-\ref{eq:discharge_thin_x}) we know that the discharge is pressure dependent, and thus we end up with Eq.~(\ref{eq:thin_final}).
 The velocities are therefore effectively captured by a pressure gradient and if applicable a shear rate $\tau$.
 
-While there are many similarities between the thin film equation and the shallow water equations, there are also some major difference.
-The most pressing difference between these two models is the fact that the shallow water equation is a vector equation while the the thin film equation is a scalar equation.
+While there are many similarities between the thin film equation and the shallow water equations, there are also some major differences.
+The most pressing difference between these two models is the fact that the shallow water equation is a vector equation while the thin film equation is a scalar equation.
 In the shallow water equations the liquid/vapour interface is driven by hydrostatic pressure while in the thin film equation we neglect the hydrostatic pressure and introduce surface tension and capillarity.
 The question that naturally arise here is: can one model be translated into the other one?
 Although this question seems odd at first it is actually of great significance to show that problems can be solved with different approaches.
