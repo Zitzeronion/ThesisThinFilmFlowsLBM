@@ -76,7 +76,7 @@ Figure~\ref{fig:finite_difference} illustrates a discretization approach where t
 At every point $x_i$ along the x-axis we know the value of the function $f(x_i)$.
 This however does not mean that we know the value of $f(x)$ at arbitrary $x$ values and even worse we do not know $\partial_x f(x_i)$ at $x_i$. 
 For a continuous function, e.g., the film thickness $h(\mathbf{x},t)$, we can analytically compute the derivatives. 
-Here we are left with a discrete set of points and have yet to come up with an idea to calculate $\nabla h(\mathbf{x}_i, t)$, which is crucial to compute the film pressure, Eq.~(\ref{eq:pfilm}).
+Here we are left with a discrete set of points and have yet to come up with an idea to calculate $\nabla h(\mathbf{x}_i, t)$, which is crucial to compute the film pressure.
 
 Discretization of a derivative is a long studied problem~\cite{booleTreatiseCalculusFinite1872, jordanCalculusFiniteDifferences1965}.
 The Taylor expansion gives us a tool to approximate the solution to a differential.
@@ -139,7 +139,7 @@ This method is second order in time and implicit and has been successfully appli
 
 \subsection{Spectral methods}
 Another strategy to solve a differential equation is to perform a transformation.
-One rather famous transformation is the Fourier Transformation (FT), which we have used to find the dispersion relation in Sec.~\ref{sec:thin_films} and will encounter again in Chap.~\ref{chapter:second_paper}.
+One rather famous transformation is the Fourier Transformation (FT), which we have used to find the dispersion relation in Sec.~\ref{sec:thin_films} and will encounter again in the third publication.
 The set of solvers using a FT to solve a given differential equation is called spectral methods.
 Doing so has the advantage of interchanging the derivatives with simple multiplications.
 For example the term $\partial_x f(x)$ transforms to  
@@ -150,7 +150,7 @@ where $\tilde{f}(q)$ is the Fourier transformed of $f(x)$, e.g., $\tilde{f}(q) =
 Instead of solving a differential equation one solves an algebraic equation, or a set of algebraic equations.
 While it is often straightforward to perform the transformation it can become problematic to perform the backward transformation. 
 Usually the expressions are fairly complicated and often the backward transformation into real space is not easy to perform.
-In Chap.~\ref{chapter:second_paper} we arrive at such an expression for the structure factor $\mathcal{S}(q, t)$.
+In the third publication we arrive at such an expression for the structure factor $\mathcal{S}(q, t)$.
 A structure factor is a measure of the distribution of length scales, roughly speaking.
 In this specific case there is no need for a backward transformation because (scattering) experiments usually supply data in Fourier space.
 
@@ -241,7 +241,7 @@ Figure~\ref{fig:scales_dummy} illustrates the idea coming from either a macrosco
 Instead of dealing with every atom or molecule, which is displayed in the bottom left of the figure, it is also possible to use a more coarse approach which is shown in the centre of the figure where distributions over ensembles of particles are used~\cite{raabeOverviewLatticeBoltzmann2004}.
 Therefore instead of working in the microscopic world the lattice Boltzmann method works in a mesoscopic regime.
 Making it computationally more efficient than e.g., MD for a larger class of problems.
-Of course, it is also possible to use a coarser approach and in fact a lot of the classical Navier-Stokes solvers operate in the upper right of Fig.~\ref{fig:scales_dummy}, see Sec.~\ref{sec:Joss_need} for some example solvers.
+Of course, it is also possible to use a coarser approach and in fact a lot of the classical Navier-Stokes solvers operate in the upper right of Fig.~\ref{fig:scales_dummy}, see first publication for some example solvers.
 
 \subsection{The Boltzmann equation and macroscopic conservation equations}
 The dynamics of these distributions $f$ can be formalized and put into an evolution equation which is called the Boltzmann equation
@@ -519,7 +519,7 @@ where we have neglected the $O(u^3)$ (error) term and used $p = \rho c_s^{2}$ as
 
 So far however no assumptions on the lattice distributions are made and the discrete equilibrium distribution function has not been specified.
 Paving work by He and Luo as well as group theoretical arguments derived by Rubinstein and Luo showed that based on dimensionality just a few (discrete) velocities are sufficient~\cite{heTheoryLatticeBoltzmann1997, rubinsteinTheoryLatticeBoltzmann2008}.
-In fact in Chap.~\ref{chapter:first_paper} all numerical experiments were performed on a D2Q9 lattice therefore $\mathbf{c}_{i}$ is
+In fact in second publication all numerical experiments were performed on a D2Q9 lattice therefore $\mathbf{c}_{i}$ is
 \begin{equation}\label{eq:speeds_method}
 \mathbf{c}_{i}  =
 \left\{
@@ -644,15 +644,15 @@ In principle we could adopt a form similar to Eq.~(\ref{eq:eqi_dist2}), however 
     f^{eq}_i &= w_i h\left(\frac{3}{2}gh + 3 c_{i\alpha}u_{\alpha} + \frac{9}{2}(c_{i\alpha}u_{\alpha})^2 - \frac{3}{2}u^2\right), \quad i\neq 0 .
 \end{align}
 
-In Chap.~\ref{chapter:first_paper} we will recap the main ideas of this derivation. 
+In the second publication we will recap the main ideas of this derivation. 
 We will then discuss constructive matching conditions between the shallow water model and the thin film equation.
 The shallow water lattice Boltzmann model is not sufficient for thin film dynamics since we also have to introduce forces. 
 These forces account for wetting dynamics, such as contact angles, and the velocity boundary condition at $h = 0$.
 
 The derivation of the lattice Boltzmann method for the Navier-Stokes equation as well as the shallow water system concludes this chapter.
 It follows a chapter about the sustainable approach I chose to keep the software first open source and maintainable for the future.
-After the introduction of \textit{Swalbe.jl} in Chap.~\ref{chapter:fourth_paper} the method is thoroughly tested against problems such as the Rayleigh-Taylor instability in Chap.~\ref{chapter:first_paper}, while in Chap.~\ref{chapter:second_paper} an additional contribution due to thermal fluctuations is considered. 
+After the introduction of \textit{Swalbe.jl} in the first publication the method is thoroughly tested against problems such as the Rayleigh-Taylor instability in the second publication, while in the third publication an additional contribution due to thermal fluctuations is considered. 
 Although the focus is solemnly on thermal fluctuations, this chapter should serve as a guideline for the inclusion of further dynamics to the thin film model.
 
-Beyond additions to the thin film model we discuss a coupled problem in Chap.~\ref{chapter:third_paper}. 
+Beyond additions to the thin film model we discuss a coupled problem in the last publication. 
 Coupled in the sense that we not only consider the dynamics of the film but allow for dynamical degrees of freedom for the substrate.

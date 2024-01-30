@@ -17,7 +17,7 @@ A step of crucial importance that happens after the coating, be it with a slot d
 Numerical simulations based on the thin film equation may help to understand at least this part of the process.
 In the long run the found results should help to improve both the process itself as well as the efficiency of the final product.
 
-To this end a novel approach for modelling the dynamics of thin liquid films has been developed, see Chap.~\ref{chapter:theory}-\ref{chapter:second_paper}.
+To this end a novel approach for modelling the dynamics of thin liquid films has been developed, see Chap.~\ref{chapter:theory} and the first three publications.
 It is important to highlight that this model consists of two parts. 
 There is the theoretical work, where we use shallow water theory and find matching conditions that allow us to solve the thin film equation. 
 In Chap.~\ref{chapter:theory} we introduce both the shallow water theory and the thin film equation and discuss some overlap between them, we however like to point out that we are not the first ones to do so.  
@@ -38,7 +38,7 @@ In Chap.~\ref{chapter:method} we introduced the idea behind the Chapman-Enskog e
 Finite volume methods are highly dependent on the quality of the mesh and developing self-consistent boundary conditions can be a tedious task, e.g., contact angle dynamics.
 Molecular dynamics simulations are inherently noisy and computationally demanding for large volumes, and yet all of those three methods can be used to simulate thin film problems.
 Each method can address different aspects of a problem and yet all have to satisfy the underlying physical boundary conditions, e.g., mass conservation.
-We briefly addressed why our method fits well into the current landscape of thin film solvers in Sec~\ref{section:statement_software} of Chap.~\ref{chapter:fourth_paper}.
+We briefly addressed why our method fits well into the current landscape of thin film solvers in the first publication.
 
 This statement of need covers only the positive sides of our method, but as written above all methods have their shortcomings and so does ours.
 All the numerical experiments conducted in this thesis do not rely on the lattice Boltzmann approach we developed.
@@ -74,11 +74,11 @@ The code base is available under an open source licence and everyone interested 
 It is becoming harder and harder to validate numerical simulations and argue about data, we think that transparency of our source code is at least a baby step into the right direction. 
 The package approach, similar to e.g., Python, Matlab or R, makes it simple to share and collaborate with colleagues.
 Apart from these quality of life/usability features there are few things that make the derived model special and scientifically interesting.
-In contrast to various numerical methods used in the literature of thin film dynamics, the here presented method is build upon the lattice Boltzmann method as described in Chaps~\ref{chapter:method}-\ref{chapter:first_paper}.
+In contrast to various numerical methods used in the literature of thin film dynamics, the here presented method is build upon the lattice Boltzmann method as described in Chaps~\ref{chapter:method} and the first two publications.
 It is therefore not intended as a general tool to approximate differential equations, but only for the hydrodynamics of thin liquid films.
 While the term simplicity was used earlier as weakness, one of the nineteen guiding principles of python reads: ``Simple is better than complex''.
 A small codebase is maintainable, it is possible to write tests for every function and add documentation, all of this would be harder for general purpose solvers with much more lines of code.
-In Chap.~\ref{chapter:first_paper} we show that our simple approach is in fact more than capable to simulate relevant physical problems.
+In the second publication we show that our simple approach is in fact more than capable to simulate relevant physical problems.
 Multiple tests with analytical results have been used to validate the method, see Tanner's law and Cox-Voinov relation.
 Another benefit of the here presented approach is the dimensional reduction.
 While it is restricting on the one hand, e.g., contact angles smaller than $\pi/2$, it reduces the demand for computational resources quite significant.
@@ -86,20 +86,20 @@ That in fact allows us to introduce various additions to our model and still hav
 All simulations presented in this thesis can be computed on a laptop with dedicated GPU, there is no real need for HPC resources.
 Working on initial conditions and setting up parameters can be a tedious task that can make or break a simulation.
 The here presented method turned out to be fairly robust and numerically stable in many regards.
-To name just two, initial or ``boundary'' conditions with non-differentiable functions did not cause any issues, see e.g., Chap.~\ref{chapter:second_paper} Eq.~(\ref{eq:sharp_contact_angle_spatial}).
+To name just two, initial or ``boundary'' conditions with non-differentiable functions did not cause any issues, see e.g.,  third publication.
 Although the method approximates the thin film equation and as such is only strictly valid for small contact angles, we found that contact angle up to $70^{\circ}$ seemed to be within the validity of the method, at least if we assume that Cox-Voinov is applicable in the regime.
 Another feature that turned out to be of great value is the inclusion of hydrodynamic slip.
 Having a method that can be used in the no-slip regime while also be applicable in the intermediate to large slip regime is outstanding.
-And as shown in Chap.~\ref{chapter:second_paper} slip does in fact play an important role in the dynamics of a dewetting thin film.
-While the model does not account for e.g., surfactants, we supply a matching condition between our method and thin film like theories in Chaps.~\ref{chapter:first_paper}-\ref{chapter:second_paper}.
+And as shown in the third publication slip does in fact play an important role in the dynamics of a dewetting thin film.
+While the model does not account for e.g., surfactants, we supply a matching condition between our method and thin film like theories in the second and third publication.
 The seemingly simple ``Yes'' or ``No'' question could be discussed in even more detail, but it is a subjective open question.
-Therefore we would like to have a look at Chaps.\ref{chapter:second_paper}-\ref{chapter:third_paper} and their findings.
+Therefore we would like to have a look at third and last publication and their findings.
  
-In Chap.~\ref{chapter:second_paper} we introduce thermal fluctuations to our model.
+In the third publication we introduce thermal fluctuations to our model.
 These fluctuations lead to a constant excitement of the fluid air interface that is smoothed out by the surface tension, leading to the appearance of thermo-capillary waves.
 Their amplitude however is usually so small that they can be neglected in experimental analysis or numerical simulations. 
 However having a dewetting thin film it can be assumed that the thickness of the film will be comparable to the amplitude of the fluctuations, at least in regions where the film ruptures.
-As shown in Chap.~\ref{chapter:second_paper} these fluctuations can be added to the model using a matching condition for a fluctuating force term. 
+As shown in the third publication these fluctuations can be added to the model using a matching condition for a fluctuating force term. 
 The fluctuating force term is then tested against the theory of capillary waves and does show in fact good agreement with the predicted spectrum.
 In the following it is shown that the stability difference, as measured in rupture times, between fluctuating and deterministic thin films~\footnote{$k_BT > 0$ fluctuating thin film, $k_BT = 0$ deterministic thin film.} does inversely depend on the logarithm of the wettability. 
 By the virtue of the model a combination of a spatially varying wettability as well as the addition of thermal fluctuations is studied using a dewetting thin film.
@@ -107,7 +107,7 @@ Depending on the chosen function of the wettability it is possible to create num
 At the beginning of this chapter we discuss the underlying theory and the modification to the thin film equation.
 The constructive approach we use to match our model with the stochastic thin film equation should in fact serve as a blueprint for other additions e.g., surfactant dynamics. 
 
-In Chap.~\ref{chapter:third_paper} a simple toy model is developed to study dewetting dynamics under the influence of ``switchable'' substrates.
+In the last publication a simple toy model is developed to study dewetting dynamics under the influence of ``switchable'' substrates.
 The model is build on the idea that the wettability, e.g., the equilibrium contact angle $\theta_{\text{eq.}}$, can be changed based on external stimuli. 
 We assume that the these stimuli can be modelled by an arbitrary function.
 In the here discussed case the arbitrary function is a trigonometric function ($\theta(x,t) \propto \sin(x t)$) that admits not only a spatial gradient but also a time dependent behaviour.

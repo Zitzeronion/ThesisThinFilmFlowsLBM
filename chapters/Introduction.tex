@@ -149,8 +149,7 @@ The solution consists of some variable, here the capillary number, that scales w
 These results can be addressed as dimensional analysis, a rather fancy word for matching dimensions on both sides of the equation.
 In the end the height or thickness needs to be of the dimension of a length.
 They often support so-called self similar behaviour, meaning under change of one or more parameters it is possible to collapse data on a master curve. 
-Another dynamic problem that exhibits self similar behaviour is droplet coalescence, which is shortly discussed in Chapter~\ref{chapter:fourth_paper} and liquid lens coalescence~\cite{hackSelfSimilarLiquidLens2020, scheelViscousInertialCoalescence2023}. 
-% I am here
+Another dynamic problem that exhibits self similar behaviour is droplet coalescence, which is shortly discussed in the first publication in this thesis and liquid lens coalescence~\cite{hackSelfSimilarLiquidLens2020, scheelViscousInertialCoalescence2023}. 
 \section{Literature overview}
 \label{section:literature}
 \begin{figure}
@@ -210,7 +209,7 @@ Their stochastic term has zero mean, therefore the fluctuations do not create or
 The stochastic thin film equation is then, again, derived from the LLNS equation by integration along the minor dimension, usually considered the vertical dimension.
 This step however poses a hard problem, because the stochastic stress tensor in principle depends on the vertical dimension.
 Grün and coworkers found an elegant way to circumvent the problem with a single multiplicative Gaussian term~\cite{grunThinFilmFlowInfluenced2006, meckeThermalFluctuationsThin2005, fetzerThermalNoiseInfluences2007, zhangNanoscaleThinfilmFlows2020, zhangMolecularSimulationThin2019, nesicFullyNonlinearDynamics2015}. 
-This idea will be revisited in Chap.~\ref{chapter:second_paper}.
+This idea will be revisited in the third publication.
 Around the same time Davidovitch et al., came up with a similar form for the stochastic thin film equation, studying the spreading of a droplet~\cite{davidovitchSpreadingViscousFluid2005}.
 The addition of a Gaussian noise term made it therefore possible to reproduce the observed capillary wave spectrum and to explain the difference in spreading behaviour.
 A further impact of this term was the reduction of rupture times for spinodal dewetting thin films~\cite{grunThinFilmFlowInfluenced2006, fetzerThermalNoiseInfluences2007}.
@@ -252,7 +251,7 @@ Allowing for the dynamic control of the substrates wettability with e.g.,~light 
     \label{fig:morph_transition}
 \end{figure}
 This opens up a new avenue for microfluidic devices.
-In Chap.~\ref{chapter:third_paper} we discuss the influence a switchable wettability can have on the dewetting of a thin film.
+In last publication we discuss the influence a switchable wettability can have on the dewetting of a thin film.
 In fact the switching can induce morphological transitions as depict in Fig.~\ref{fig:morph_transition}. 
 
 \section{Scientific software}
@@ -385,7 +384,7 @@ For mature software projects, e.g., OpenFOAM~\cite{jasakOpenFOAMLibraryComplex, 
 Often however when a student starts a new software project, functionality or performance is the main point of interest.
 During the development step tests and even more important documentation are left aside.
 Ultimately this does not only open the gate for various bugs but to some extent it also renders the software useless for other researchers.
-Needless to say, my very own CFD solver, see Chap.~\ref{chapter:fourth_paper}, generated correct results due to the cancellation of two bugs.
+Needless to say, my very own CFD solver, see first publication, generated correct results due to the cancellation of two bugs.
 Defining a test suite from the beginning of the project would have spared me valuable time and effort.
 
 On the other hand, research became more than ever dependent on computational resources.
@@ -401,7 +400,7 @@ However, exa-scaling computing pushes this problem to new severity.
 Now or never is the time to install protocols. 
 Guides on how to deal with scientific software such that data can be reproduced or even more important reused.
 While this may not be of interest for most readers, to me it is an essential point.
-That said, Chap.~\ref{chapter:fourth_paper} describes the software developed and used for this thesis. 
+That said, the first publication describes the software developed and used for this thesis. 
 One can find the open source software repository that hosts the code, tests and documentation.
 Upon pull or merge requests an automated testing suite performs tests to ensure no bugs break necessary functionality.
 Furthermore by definition of version control it is possible to reproduce all results generated with that software, called \textit{Swalbe.jl}.
@@ -430,12 +429,12 @@ However, as will be shown the Navier-Stokes equation can be approximated using t
 Not only is it possible to approximate the Navier-Stokes but also the shallow water equations, of course with a different set of constraints~\cite{salmonLatticeBoltzmannMethod1999, zhouLatticeBoltzmannMethods2004, vanthangStudy1DLattice2010, dellarNonhydrodynamicModesPriori2002}.
 
 Following that argumentation is the published article for the \textit{Journal of Open Source Software}. 
-Highlighting the implementation and development of the lattice Boltzmann solver called \textbf{Swalbe} (\textbf{s}hallow \textbf{wa}ter \textbf{l}attice \textbf{B}oltzmann solv\textbf{e}r) in Chap.~\ref{chapter:fourth_paper}.
+Highlighting the implementation and development of the lattice Boltzmann solver called \textbf{Swalbe} (\textbf{s}hallow \textbf{wa}ter \textbf{l}attice \textbf{B}oltzmann solv\textbf{e}r) in the first publication.
 Key aspects are the automated continuous integration (CI) with a test suite and web-hosted documentation, as motivated in Sec.~\ref{section:statement_software}.
 The Julia package allows for either fast iterative model development in two dimensions or large scale simulations in three dimensions with GPU acceleration.
 It allows for prototyping and testing which is fast and easy to use, but also a framework for large three dimensional simulations with minor to no code changes.
 
-Use cases and a derivation of the model can be found in Chap.~\ref{chapter:first_paper}.
+Use cases and a derivation of the model can be found in the second publication.
 In this chapter the mandatory modelling assumptions are introduced that allow to match the shallow water system with the thin film equation.
 It further highlights which modifications are made to the shallow water lattice Boltzmann algorithm. 
 With some emphasis on the numerical implementation of e.g., the computation of gradients and the Laplacian in agreement with Ref~\cite{junkDiscretizationsIncompressibleNavier2000, thampiIsotropicDiscreteLaplacian2013}. 
@@ -445,15 +444,15 @@ Spreading dynamics is tested against the Cox-Voinov and Tanner's laws.
 The linear relation between Bond and Capillary number is validated with the sliding of a droplet.
 And for completeness a discussion on the performance of the algorithm and applicability for accelerated computing follows at the end of the chapter.
 
-In the next chapter, Chap.~\ref{chapter:second_paper}, a functional extension to the lattice Boltzmann model is shown.
+In the third publication, a functional extension to the lattice Boltzmann model is shown.
 Instead of approximating the deterministic thin film equation the stochastic thin film equation (STF) is the topic of interest in this chapter.
 Thermal fluctuations are often neglected in simulations while their existence in the experiment cannot be denied.
 For nanometric thin films fluctuations can accelerate the time scales of instabilities. 
 Interestingly the time scales of these instabilities and resulting film ruptures are in fact contact angle dependent.
 Depending however on the substrate properties (patterning), it is still likely that fluctuations are only subdominant.
 
-Dynamics during dewetting can either be generated due to forces, as shown in Chaps.~\ref{chapter:first_paper}-\ref{chapter:second_paper} or it can be induced due to time dependent potentials. 
-Giving the recent interest in dynamics of simple liquids on complex substrates and the dynamic wetting of flexible, adaptive and switchable surfaces, Chap.~\ref{chapter:fourth_paper} is dedicated to the question: ``What happens during dewetting with a spatio-temporal evolving wettability gradient?''
+Dynamics during dewetting can either be generated due to forces, as shown in the second and thrid publication or it can be induced due to time dependent potentials. 
+Giving the recent interest in dynamics of simple liquids on complex substrates and the dynamic wetting of flexible, adaptive and switchable surfaces, the last publication is dedicated to the question: ``What happens during dewetting with a spatio-temporal evolving wettability gradient?''
 To study this problem a series of three dimensional simulations is performed with varying spatial as well as temporal evolution of the wettability.
 On the one hand the wettability dynamics has a small but measurable stabilizing effect on the spinodal dewetting of the thin film leading to a net increase in rupture times if the dynamic wetting is switched on.
 On the other hand after the rupture of the film a clear morphological transition is observable.

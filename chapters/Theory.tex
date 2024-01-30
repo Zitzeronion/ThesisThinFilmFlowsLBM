@@ -27,9 +27,9 @@ As long as there is no force applied to the tube the toothpaste does not flow.
 Even the acceleration due to gravity when pointing the tube towards the ground does not exert enough force to generate a flow.
 In contrast to Newtonian liquids those liquids have a different response function to shear, they can be addressed as \textit{power law} fluids.
 While the phenomenology of these fluids, e.g., shear thinning or thickening, is very interesting and important in many industrial applications it is beyond the scope of this work. 
-That said, in Chap.~\ref{chapter:second_paper} an extension towards more complex flows is presented. 
+That said, in the third publication an extension towards more complex flows is presented. 
 Instead of however changing the shear response we model thermal fluctuations to approximate the stochastic thin film equation (STF).
-In fact, the step to derive an extension to our approach are nicely summarized in Chap.~\ref{chapter:second_paper}. 
+In fact, the step to derive an extension to our approach are nicely summarized in the third publication. 
 It should serve as a guideline for further features, such as viscoelasticity for non-Newtonian liquids~\cite{bouchutNewModelShallow2013}. 
 
 Knowing what a fluid is and taking into account the conservation of mass and momentum it is possible to derive the Navier-Stokes equation. 
@@ -149,7 +149,7 @@ Both of these theories using a scaling argument to severely simplify the resulti
 
 \section{Shallow water theory}
 \label{sec:theory_shallow_water}
-Solving the Navier-Stokes equation for the problems discussed in Chaps.~\ref{chapter:fourth_paper}-\ref{chapter:third_paper} is not needed.
+Solving the Navier-Stokes equation for the problems discussed in all publications is not needed.
 Looking at Figs.~\ref{fig:examples_intro}-\ref{fig:morph_transition} one can identify that the height or thickness of the fluid layer is much smaller than the horizontal extension of the substrate.
 This statement together with some more approximations allows to derive another system from the Navier-Stokes equation and the continuity equation which is called the shallow water or Saint-Venant equations~\cite{bTheorieMouvementNonpermanent1871}.
 
@@ -198,7 +198,7 @@ Of course, the model can be refined with a so called multi layer approach~\cite{
 Third, the horizontal velocity of the fluid has to vanish at the ``solid'' ground, or in terms of Fig.~\ref{fig:shallow_water_drawing} looking down from the free surface at $-h(x,y)$.
 Although there is a viscosity associated with the fluid, friction with the bottom topography is the dominating dissipation channel.
 This kind of boundary condition has been introduced in Chap.~\ref{chapter:intro} is called \textbf{no-slip} boundary condition~\cite{richardsonNoslipBoundaryCondition1973, degennesFluidWallSlippage2002, salmonLatticeBoltzmannMethod1999}.
-While this may seem counterintuitive because fluid has no problem to flow over yet dry surfaces, modelling wetting or the wet-dry transition is a complex task, as seen later in this chapter and in Chap.~\ref{chapter:first_paper}.
+While this may seem counterintuitive because fluid has no problem to flow over yet dry surfaces, modelling wetting or the wet-dry transition is a complex task, as seen later in this chapter and in the second publication.
 After all, a theoretical model which is defined as a set of partial differential equations cannot account for the true complexity of nature~\cite{scrivenPhysicsApplicationsDIP1988}.
 We come back to the idea of the no-slip boundary condition in Sec.~\ref{sec:thin_films}.
 
@@ -485,7 +485,7 @@ The generalization of these equations towards a second horizontal dimension is s
 \end{align}
 where $\mathbf{u} = (u_x, u_y)$ and the only unknown $\mathcal{S}$ is a yet undefined source term. 
 The system Eqs.~(\ref{eq:shallow_water_01}-\ref{eq:shallow_water_02}) concludes the shallow water model. 
-In Chap.~\ref{chapter:first_paper} we show how this translates into a numerical solver.
+In second publication we show how this translates into a numerical solver.
 
 Following in this chapter are two more sections.
 The next section and the main point of interest of this work is a short and phenomenological oriented derivation of the thin film model.
@@ -634,7 +634,7 @@ To account for inertial effects the scaling, Eq.~(\ref{eq:thin_film_scaling}), m
 For example the pressure scaling would change to $p = \rho U^2\tilde{p}$~\cite{crasterDynamicsStabilityThin2009}.
 
 In the shallow water section, we quickly reduced the problem to two dimensions (one horizontal and one vertical).
-Here we keep the second horizontal dimension ($\tilde{y}, \tilde{u}_y$), because most numerical experiments in Chaps.~\ref{chapter:fourth_paper}-\ref{chapter:third_paper} are computed in a two dimensional domain. 
+Here we keep the second horizontal dimension ($\tilde{y}, \tilde{u}_y$), because most numerical experiments in the last and second to last publication are computed in a two-dimensional domain. 
  
 The first step in the derivation is to insert the dimensionless variables into the continuity equation, Eq.~(\ref{eq:incomp})
 \begin{equation}\label{eq:cont_thin_film_1}
@@ -770,8 +770,8 @@ Assuming the interface is not accelerated (e.g., in case of dewetting) the shear
     \partial_t h(\mathbf{x},t) = \nabla\cdot\left(\frac{h^3}{3\mu}\nabla p\right),
 \end{equation}
 which completes the task to derive the thin film equation from the Navier-Stokes equation. 
-To sum up the approach in one sentence, we non dimensionalized the variables, collected terms in orders of $\varepsilon$, used our boundary conditions and performed an integration along the vertical dimension to average out the vertical dynamics.
-Of course this derivation comes short if there are additional forces to consider such as thermal fluctuations, that said in Chap.~\ref{chapter:second_paper} we discuss the effect of thermal fluctuations on dewetting and show how the thin film equation has to be modified.
+To sum up the approach in one sentence, we non-dimensionalized the variables, collected terms in orders of $\varepsilon$, used our boundary conditions and performed an integration along the vertical dimension to average out the vertical dynamics.
+Of course this derivation comes short if there are additional forces to consider such as thermal fluctuations, that said in the third publication we discuss the effect of thermal fluctuations on dewetting and show how the thin film equation has to be modified.
 
 Because the thin film equation is the main theoretical framework for the following Chaps. it is instructive to derive some more phenomenology of Eq.~(\ref{eq:thin_final}).
 One helpful tool is the so called linear stability analysis. 
@@ -846,17 +846,17 @@ A characteristic time scale of the problem is given as
     t_0 = \frac{3\mu}{\gamma h_0^3 q_0^4},
 \end{equation}
 with is used to normalize the time in Fig.~\ref{fig:dispertion_1}.
-Because the concept of linear stability is such an important one, we encounter it again in Chap.~\ref{chapter:first_paper} (see Fig.~\ref{fig:RTI}) as well as in Chap.~\ref{chapter:second_paper} (see Figs.~\ref{fig:theory_simulation_structure_factor}, \ref{fig:spectral_analysis_deter_sine8}, \ref{fig:spectral_analysis_stoch_sine8}, \ref{fig:square_wave_both}).
-Chap.~\ref{chapter:second_paper} focuses only on the addition of a fluctuating term and the so called stochastic thin film equation.
+Because the concept of linear stability is such an important one, we encounter it again in the second publication as well as in the third publication.
+The third publication focuses only on the addition of a fluctuating term and the so called stochastic thin film equation.
 The new term due to thermal fluctuations offers some interesting features on both the structure factor as well as the dispersion.
 
 \begin{figure}
     \centering
     \includegraphics[width=0.65\textwidth]{graphics/spectratheta20.pdf}
     \caption{Dispersion relation of a spinodally dewetting thin film with and without thermal fluctuations.
-    Where $S(q)$ is the structure factor depending on the wavemode $q$.
+    Where $S(q)$ is the structure factor depending on the wave mode $q$.
     The dots and triangles are generated using the here presented numerical method. 
-    Full and dashed lines are the theoretical prediction based on Eq.~(\ref{eq:simple_thin_film}) and its fluctuating extension, Eq.~(\ref{eq:structure_factor_2}).
+    Full and dashed lines are the theoretical prediction and its fluctuating extension.
     }
     \label{fig:dispertion_1}
 \end{figure}
@@ -921,4 +921,4 @@ The question that naturally arise here is: can one model be translated into the 
 Although this question seems odd at first it is actually of great significance to show that problems can be solved with different approaches.
 There are several numerical methods to iteratively solve the thin film equation.
 There are as well several different numerical methods to approximate the Navier-Stokes equation.
-The important contribution to our understanding of CFD is that methods build to solve the shallow water equations can actually be used to solve the thin film problem, as discussed in Chap.~\ref{chapter:first_paper}
+The important contribution to our understanding of CFD is that methods build to solve the shallow water equations can actually be used to solve the thin film problem, as discussed in the second publication.
