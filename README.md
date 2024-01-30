@@ -3,6 +3,7 @@
 [![ResearchGate](https://img.shields.io/badge/ResearchGate-00CCBB?style=for-the-badge&logo=ResearchGate&logoColor=white)](https://www.researchgate.net/profile/Stefan-Zitz)
 [![Github](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Zitzeronion)
 [![Mastodon](https://img.shields.io/badge/-MASTODON-%232B90D9?style=for-the-badge&logo=mastodon&logoColor=white)](https://julialang.social/@Zitzero)
+[![Build LaTeX document](https://github.com/Zitzeronion/ThesisThinFilmFlowsLBM/actions/workflows/latex.yaml/badge.svg)](https://github.com/Zitzeronion/ThesisThinFilmFlowsLBM/actions/workflows/latex.yaml)
 
 Hello everybody :wave:
 
