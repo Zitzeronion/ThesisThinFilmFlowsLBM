@@ -84,7 +84,7 @@ For the sake of clarity however here it is assumed that both $\mu$ and $\lambda$
 Inclusion of pressure to $\hat{\sigma}$ yields the total stress tensor $\tilde{\sigma}$. 
 Due to symmetries of the problem there are various constraints on this tensor.
 A fluid element can be rotated similar to a solid body, but it can also be stretched. 
-In contrast to a solid body a fluid element is allowed to deform.
+In contrast to a rigid body, an idealized model of a solid body, a fluid element is allowed to deform.
 Working out these constraints we find that the pressure has to be a diagonal term and thus
 \begin{equation}\label{eq:total_stress}
     \tilde{\sigma}_{\alpha\beta} = - p \delta_{\alpha\beta} + \mu\left(\frac{\partial u_{\alpha}}{\partial x_{\beta}} + \frac{\partial u_{\beta}}{\partial x_{\alpha}}\right) + \lambda\delta_{\alpha\beta}\frac{\partial u_{\gamma}}{\partial x_{\gamma}}.
@@ -264,19 +264,22 @@ Some features however such as the drag on an airfoil do not simply scale with th
 Therefore while a miniaturised model may create enough lift force, simply scaling up the size is not sufficient to ensure enough lift.  
 In the following it will be helpful to introduce dimensionless numbers~\cite{ruzickaDimensionlessNumbers2008,neversFluidMechanicsChemical2019}.
 These numbers have a long history in fluid dynamics.
-The Reynolds number for example is a measure if a flow is turbulent or not, it depends only on proportions and not on an exact experiment.
-With the knowledge of these number comparing experiments is straightforward, even if the experiments differ in many aspects.
+%The Reynolds number for example is a measure if a flow is turbulent or not, it depends only on proportions and not on an exact experiment.
+The Reynolds number ($Re$) is such a dimensionless number and is calculated as the ratio of characteristic inertial and viscous forces.
+It is often used to distinguish between laminar and turbulent flows, however there is not a singular value that sets a sharp boundary between the two regimes as it is very specific to the geometry of the problem.
+% More often than not it depends on the specific experiment.
+That said, with the knowledge of these number comparing experiments is straightforward, even if the experiments differ in many aspects.
 The two dimensionless numbers of interest for the shallow water theory are the Reynolds number and the Froude number
 \begin{equation}\label{eq:Re_and_Fr}
     Re = \frac{\rho L v_0}{\mu},\quad Fr = \frac{v_0}{\sqrt{g L}},
 \end{equation}
 where $L$ is a characteristic length scale of the problem, e.g., the mean water depth, $v_0$ and $g$ are a characteristic velocity and the gravitational acceleration ($g = 9.81 m/s^2$), respectively.
 A characteristic velocity can be for example the inflow velocity from a boundary, or the speed of a certain wave type such as a tsunami.
-Both numbers measure the magnitude of certain effects, in the case of the Reynolds number the inertial forces are compared against viscosity.
+Both numbers measure the magnitude of certain effects.
 The Froude number is a measure to compare kinetic ($v_0$) with potential energy ($g L$).
 
 In the next step both $Fr$ and $Re$ are used to make Eq.~(\ref{eq:navier_stokes_fin}) dimensionless.
-For convenience the vector equation is split into two respective equations with gravity being the only force present.
+For convenience the vector equation is split into two respective equations where the gravity contribution can be understood as the arbitrary $\vec{F}$ term on the right.
 Writing the full equation with all components yields
 \begin{align}\label{eq:2d_RNS}
     \partial_t u_x + u_x\partial_x u_x + u_z\partial_z u_x &= -\partial_x p + \frac{1}{Re}\Delta u_x ,\\
@@ -308,7 +311,7 @@ Summarizing the impact of the approximation, on the continuity equation Eq.~(\re
 \begin{align}
     \partial_x u_x + \partial_z u_z &= 0, \label{eq:cont_sw_euler}\\
     \partial_t u_x + u_x\partial_x u_x + u_z\partial_{z} u_x &= -\partial_x p + \frac{\partial_z^2 u_x}{\varepsilon Re}, \label{eq:mom_sw_euler}\\
-    \partial_z p &= -\frac{1}{Fr^2} \left(+\frac{\varepsilon\partial_{\tilde{z}}^2 \tilde{u}_z}{Re}\right), \label{eq:hydrostat_sw_euler}
+    \partial_z p &= -\frac{1}{Fr^2} \left(+\frac{\varepsilon\partial_{\tilde{z}}^2 u_z}{Re}\right), \label{eq:hydrostat_sw_euler}
 \end{align}
 with the addition of boundary conditions at the liquid air interface ($z = \eta$)
 \begin{align}
@@ -386,7 +389,7 @@ Performing the integral therefore yields
 \begin{equation}\label{eq:sw_mom_left}
     \int_b^{\eta}\left(-\partial_x p + \frac{\partial_z^2 u_x}{\varepsilon Re}\right)\diff z = -h\partial_x p + \frac{\partial_z u_x|_{z = \eta} - \partial_z u_x|_{z=b}}{\varepsilon Re},
 \end{equation}
-with the boundary condition that fluid does not accelerate into the air phase, see Eq.~(\ref{eq:sw_boundaries_top_3}), the left hand side reduces to
+with the boundary condition that fluid does not accelerate into the air phase, the left hand side reduces to
 \begin{equation}
     \int_b^{\eta}\left(-\partial_x p + \frac{\partial_z^2 u_x}{\varepsilon Re}\right)\diff z = -h\partial_x p - \frac{\partial_z u_x|_{z=b}}{\varepsilon Re}.
 \end{equation}
@@ -485,7 +488,7 @@ The generalization of these equations towards a second horizontal dimension is s
 \end{align}
 where $\mathbf{u} = (u_x, u_y)$ and the only unknown $\mathcal{S}$ is a yet undefined source term. 
 The system Eqs.~(\ref{eq:shallow_water_01}-\ref{eq:shallow_water_02}) concludes the shallow water model. 
-In second publication we show how this translates into a numerical solver.
+In the second publication we show how this translates into a numerical solver.
 
 Following in this chapter are two more sections.
 The next section and the main point of interest of this work is a short and phenomenological oriented derivation of the thin film model.
@@ -516,7 +519,7 @@ In principle this layer can be unsupported, it can as well be placed on top of a
 Within this thesis we consider exclusively supported thin films on substrates.
 The defining equation that describes the dynamics of a thin liquid film can be written as~\cite{thielePatternedDepositionMoving2014, oronLongscaleEvolutionThin1997, crasterDynamicsStabilityThin2009, bonnWettingSpreading2009} 
 \begin{equation}\label{eq:simple_thin_film}
-    \partial_t h = \nabla\cdot\left(M(h)\nabla p\right).
+    \partial_t h = \nabla\cdot\left[M(h)\nabla p\right].
 \end{equation}
 On the left hand side we have the change in thickness ($\partial_t h$), which can only be achieved by applying a pressure gradient ($\nabla p$).
 In Eq.~(\ref{eq:simple_thin_film}) two unknowns are introduced.
@@ -624,7 +627,7 @@ We use a similar scaling as in Eq.~(\ref{eq:thickness_length}) and get
 \begin{align}\label{eq:thin_film_scaling}
     \tilde{x} &= \frac{x}{L},\quad \tilde{y} = \frac{y}{L},\quad \tilde{z} = \frac{z}{H},\nonumber \\
     \tilde{u}_x &= \frac{u_x}{U},\quad \tilde{u}_y = \frac{u_y}{U},\quad \tilde{u}_z = \frac{u_z}{V},\nonumber \\
-    \tilde{t} &= \frac{L}{U} t,\quad \tilde{p} = \frac{H^2 p}{\mu U L}, 
+    \tilde{t} &= \frac{U}{L} t,\quad \tilde{p} = \frac{H^2 p}{\mu U L}, 
 \end{align}
 where $U$ and $V$ are characteristic velocities and $L$ and $H$ are characteristic length scales in horizontal and vertical dimension.
 The scaling factor in front of the pressure can be calculated assuming stationary unidirectional flow with $\mathbf{u} = (u(z), 0, 0)$.
@@ -643,7 +646,7 @@ The first step in the derivation is to insert the dimensionless variables into t
 which means that $V = U H/L$ to ensure all terms are of the same order in $\varepsilon$.
 Upon inserting them into the Navier-Stokes equation for the x-component only we get
 \begin{align}
-     \rho L \partial_{\tilde{t}}\tilde{u}_x &+ \rho\left[\frac{U^2}{L}\left(\tilde{u}_x\partial_{\tilde{x}}\tilde{u}_x + \tilde{u}_y\partial_{\tilde{y}}\tilde{u}_x\right) + \frac{U V}{H}\tilde{u}_z\partial_{\tilde{z}}\tilde{u}_x\right] = \nonumber \\ &-\frac{\mu U}{H^2} \partial_{\tilde{x}} \tilde{p} + \mu\left[\frac{U}{L^2}(\partial^2_{\tilde{x}}\tilde{u}_x + \partial^2_{\tilde{y}}\tilde{u}_x) + \frac{U}{H^2}\partial^2_{\tilde{z}}\tilde{u}_x\right].
+     \rho \frac{U^2}{L} \partial_{\tilde{t}}\tilde{u}_x &+ \rho\left[\frac{U^2}{L}\left(\tilde{u}_x\partial_{\tilde{x}}\tilde{u}_x + \tilde{u}_y\partial_{\tilde{y}}\tilde{u}_x\right) + \frac{U V}{H}\tilde{u}_z\partial_{\tilde{z}}\tilde{u}_x\right] = \nonumber \\ &-\frac{\mu U}{H^2} \partial_{\tilde{x}} \tilde{p} + \mu\left[\frac{U}{L^2}(\partial^2_{\tilde{x}}\tilde{u}_x + \partial^2_{\tilde{y}}\tilde{u}_x) + \frac{U}{H^2}\partial^2_{\tilde{z}}\tilde{u}_x\right].
 \end{align}
 For the $y$ and $z$ component we refer to the review by Oron et al.~\cite{oronLongscaleEvolutionThin1997}.
 Although the equation is now non-dimensional it is instructive to multiply both sides with $H^2/\mu U$ and collect the characteristic quantities in dimensionless numbers, here the Reynolds number $Re = (\rho H U)/\mu$, see Eq.~(\ref{eq:Re_and_Fr}), and $\varepsilon$  
@@ -870,7 +873,8 @@ A well defined solution would have the benefit that even complex flow fields cou
 What we can do, is computing approximative results of this equation using numerical techniques.
 This is in fact the idea of the following chapter.
 Mathematically the incompressible Navier-Stokes equation is a second order partial differential vector equation. 
-It can be considered hyperbolic if the flow is advection dominated or parabolic if it is diffusion dominated.
+It can be considered hyperbolic if the flow is advection dominated. 
+On the other hand, it can be considered parabolic if it is diffusion dominated, therefore inertial effects are negligible ($Re\rightarrow 0$) and the change of the momentum is given solemnly by the viscous contribution.
 The Reynolds number is the one dimensionless number that helps to distinguish between these two regimes. 
 
 For many flows we actually do not need to solve the Navier-Stokes equation.

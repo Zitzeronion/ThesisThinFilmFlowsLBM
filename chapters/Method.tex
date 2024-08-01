@@ -5,7 +5,7 @@ Weder Lesen, noch Schreiben, noch was anderes.}}{Alligatoah}
 Based on the theory discussed in the previous chapter it is possible to build a model for numerical simulations.
 Numerical simulations have been at the heart of fluid dynamics for a long time.
 This is mainly because of two statements.
-On the one hand we cannot find an analytical solution to every given flow problem, which is due to the shape and the structure of the Navier-Stokes equations.
+On the one hand we cannot find an analytical solution to every given flow problem, which is due to the shape and the structure of the Navier-Stokes equation.
 In fact there are only a few flows that admit an analytical solution. 
 They are often referred to as benchmark problems.
 One of those is the famous ''Hagen–Poiseuille flow'', see  Sec.~\ref{sec:theory_shallow_water}, which is an analytical solution for a flow field in a canal and was first derived by Poiseuille and Haagen in the 18th century~\cite{suteraHistoryPoiseuilleLaw}.
@@ -98,7 +98,7 @@ where the value of the derivative is averaged over a larger interval.
 The second derivative is then simply applying the differential operator (forward, backward, central) to  the first derivative. 
 In case of central differences this yields
 \begin{equation}\label{eq:second_central_diff}
-    \partial_x^2 f(x_i) = \frac{f(x_{i+1})-2f(x_i)+f(x_{i-1})}{^2}.
+    \partial_x^2 f(x_i) = \frac{f(x_{i+1})-2f(x_i)+f(x_{i-1})}{h^2}.
 \end{equation}
 
 However all finite difference schemes suffer from the concrete choice of the discretization, which is often referred to as discretization artifacts.
@@ -248,8 +248,8 @@ The dynamics of these distributions $f$ can be formalized and put into an evolut
 \begin{equation}\label{eq:boltzmann_eq}
     \partial_t f + \vec{\xi}\cdot\vec{\nabla} f + \frac{1}{\rho}\vec{F}\cdot\partial_{\vec{\xi}}f = \Omega(f), 
 \end{equation}
-where $\vec{\xi}$ is the momentum. 
-The first two terms describe the advection of the distribution and the third term measures the effect of a force $\mathbf{F}$ on the momentum~\cite{krugerLatticeBoltzmannMethod2017}.
+where $\vec{\xi}$ is a velocity. 
+The first two terms describe the advection of the distribution and the third term measures the effect of a force $\vec{F}$ on the momentum~\cite{krugerLatticeBoltzmannMethod2017}.
 On the right hand side of the equation is an arbitrarily complex term, the collision operator.
 This operator accounts for all collisions the particles perform at any given instance of time.
 In principle this operator cannot be computed analytically, because one would need to take into account all possible collision terms from two up to n-point interactions.
@@ -406,7 +406,7 @@ The discretized Boltzmann equation without force term reads,
 \begin{equation}\label{eq:LBM_discret_noforces}
     f_i(\vec{x}+\vec{c}_i\Delta t, t+ \Delta t) - f_i(\vec{x}, t) = -\frac{\Delta t}{\tau}(f_i(\vec{x}, t) - f^{eq}_i(\vec{x}, t)),
 \end{equation}
-where the $\vec{c}_{i}$ form a discrete set of $\alpha$ velocities that upon symmetry considerations replace $\vec{\xi}$ of the previous section~\cite{rubinsteinTheoryLatticeBoltzmann2008}.
+where the $\vec{c}_{i}$ form a discrete set of $i$ velocities that upon symmetry considerations replace $\vec{\xi}$ of the previous section~\cite{rubinsteinTheoryLatticeBoltzmann2008}.
 This equation is also called lattice Boltzmann equation (LBE). 
 The perturbative expansion around the equilibrium distribution, Eq.~(\ref{eq:chap-ens-expansion}) does also hold for a discretized velocity space, therefore
 \begin{equation}\label{eq:expansion_f}
@@ -637,7 +637,7 @@ The stress term $\Pi_{\alpha\beta}^{(1)}$ is therefore given by
 where we neglected the term $O(u^3)$ and used $\theta = 1/3$ as a constant non-dimensional reference temperature~\cite{dellarNonhydrodynamicModesPriori2002}.
 At leading order, therefore at $f_i = f_i^{eq}$ we recover Eqs.~(\ref{eq:lbe_shallow_cont}-\ref{eq:lbe_shallow_mom}) from Eqs.~(\ref{eq:zeroth_mom_sw}-\ref{eq:first_mom_sw}) assuming $\mathcal{S} = 0$.
 
-The lattice speeds introduced in Eq.~(\ref{eq:speeds_method}) are already two dimensional and so are the weights $W_i$, see Eq.~(\ref{eq:weightsD2Q9_meth}), therefore the last missing piece are the discretized equilibrium distributions $f_i^{eq}$.
+The lattice speeds introduced in Eq.~(\ref{eq:speeds_method}) are already two dimensional and so are the weights $w_i$, see Eq.~(\ref{eq:weightsD2Q9_meth}), therefore the last missing piece are the discretized equilibrium distributions $f_i^{eq}$.
 In principle we could adopt a form similar to Eq.~(\ref{eq:eqi_dist2}), however Dellar showed this approach is unstable and in fact suggested to use the equilibrium distributions derived by Salmon~\cite{dellarNonhydrodynamicModesPriori2002, salmonLatticeBoltzmannMethod1999},
 \begin{align}
     f^{eq}_0 &= h + w_0h\left(-\frac{15}{8}gh - \frac{3}{2}u^2\right),\\
