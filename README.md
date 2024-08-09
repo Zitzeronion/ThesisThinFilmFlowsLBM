@@ -7,7 +7,10 @@
 
 Hello everybody :wave:
 
-My name is Stefan and I'm a researcher at [Roskilde University](https://forskning.ruc.dk/en/persons/zitz).
+My name is Stefan and I'm a researcher, who defended his PhD on the 17th of July 2024. 
+Currently, as of June 2024, I am working at the [Research Center for Pharmaceutical Engineering (RCPE)](https://www.rcpe.at/en/en_home/).
+From the beginning of 2022 to March 2024 I was employed at [Roskilde University](https://forskning.ruc.dk/en/persons/zitz).
+The work for this dissertation started at the [Helmholtz Institute for Renewable Energies](https://www.hi-ern.de/en), where I was employed from March 2017 to December 2021.
 This repository houses my dissertation, my research focus is fluid dynamics or to be exact computational fluid dynamics. 
 The thesis is made of two parts. 
 The first part is a somewhat lengthy introduction where I try to say something smart about fluid dynamics and the lattice Boltzmann method (LBM), which is a model to put the continuous Navier-Stokes equation into a discrete form so that a computer can solve them.
